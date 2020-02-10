@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="menu-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-title text-center">
+                        <h2>Liste Des clubs</h2>
+                        <p>Au sein de notre etablissement il y a plusieurs clubs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <a href="{{ path('club') }}"><button  data-filter="*">All</button></a>
+                            {% for categorie in listeCategories %}
+                                <a href="{{ path('afficherClubSelonClub',{'id':categorie.id}) }}"><button data-filter=".drinks">{{ categorie.nomCategorie }}</button></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row special-list">
+                {% for club in listeClub %}
+                    {% if club.categorie.id == id %}
+                    <div class="col-lg-4 col-md-6 special-grid drinks">
+                        <div class="gallery-single fix">
+                            <img src='/assets/images/{{ club.image }}' class="img-fluid" alt="Image">
+                            <div class="why-text">
+                                <h4>{{ club.nom }}</h4>
+                                <p>{{ club.description }}</p>
+                                <a href="{{ path('inscription',{'id':club.id}) }}"><button>s'inscrire</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{%  block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $("button").mouseenter(function(){
+                $(this).addClass("active");
+            });
+            $("button").mouseleave(function(){
+                $(this).attr("class","");
+            })
+        });
+    </script>
+{% endblock %}

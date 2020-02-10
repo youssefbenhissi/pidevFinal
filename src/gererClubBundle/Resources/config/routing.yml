@@ -1,0 +1,12 @@
+gerer_club_homepage:
+    path:     /
+    defaults: { _controller: gererClubBundle:Default:index }
+club:
+    path:     /clubs
+    defaults: { _controller: gererClubBundle:club:afficher }
+afficherClubSelonClub:
+    path:     /afficherClubSelonClub/{id}
+    defaults: { _controller: gererClubBundle:club:afficherClubSelonClub }
+inscription:
+    path:     /inscription/{id}
+    defaults: { _controller: gererClubBundle:club:inscription }

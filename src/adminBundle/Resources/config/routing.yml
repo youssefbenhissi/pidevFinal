@@ -1,0 +1,25 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: adminBundle:Default:index }
+
+afficher_ctegorie:
+    path:     /afficherCtegorie
+    defaults: { _controller: adminBundle:DashboardController:afficherCtegorie }
+supprimerCategorie:
+    path:     /supprimerCategorie/{id}
+    defaults: { _controller: adminBundle:DashboardController:supprimerCategorie }
+supprimerClub:
+    path:     /supprimerClub/{id}
+    defaults: { _controller: adminBundle:DashboardController:supprimerClub }
+modifierClub:
+    path:     /modifierClub/{id}
+    defaults: { _controller: adminBundle:DashboardController:modifierClub }
+modifierCategorie:
+    path:     /modifierCategorie/{id}
+    defaults: { _controller: adminBundle:DashboardController:modifierCategorie }
+afficherAbonne:
+    path:     /afficherAbonne
+    defaults: { _controller: adminBundle:DashboardController:afficherAbonne }
+supprimerInscription:
+    path:     /supprimerInscription/{id}
+    defaults: { _controller: adminBundle:DashboardController:supprimerInscription }

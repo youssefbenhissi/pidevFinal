@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<!-- row -->
+    <section id="main-content">
+        <section class="wrapper">
+<div class="row mt">
+    <div class="col-md-12">
+        <div class="content-panel">
+            <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i> Table des categorie</h4>
+                <hr>
+                <thead>
+                <tr>
+                    <th><i class="fa fa-bullhorn"></i> ID categorie</th>
+                    <th class="hidden-phone">Nom categorie</th>
+                    <th><i class=" fa fa-edit"></i> Status</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for categorie in listeCa %}
+                <tr>
+                    <td>
+                        <a href="basic_table.html#">{{ categorie.id }}</a>
+                    </td>
+                    <td class="hidden-phone">{{ categorie.nomCategorie }}</td>
+                    <td><span class="label label-info label-mini">Due</span></td>
+                    <td>
+                        <a href="{{ path('modifierCategorie',{'id':categorie.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                        <a href="{{ path('supprimerCategorie',{'id':categorie.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i> Table des clubs</h4>
+                <hr>
+                <thead>
+                <tr>
+                    <th><i class="fa fa-bullhorn"></i> ID club</th>
+                    <th class="hidden-phone">Nom</th>
+                    <th class="hidden-phone">Description</th>
+                    <th class="hidden-phone">Capacite</th>
+                    <th class="hidden-phone">Moyenne</th>
+                    <th class="hidden-phone">nom de categorie</th>
+                    <th><i class=" fa fa-edit"></i> Status</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for club in listeCl %}
+                    <tr>
+                        <td>
+                            <a href="basic_table.html#">{{ club.id }}</a>
+                        </td>
+                        <td class="hidden-phone">{{ club.nom }}</td>
+                        <td class="hidden-phone">{{ club.description }}</td>
+                        <td class="hidden-phone">{{ club.capacite }}</td>
+                        <td class="hidden-phone">{{ club.moyenneLike }}</td>
+                        <td class="hidden-phone">{{ club.categorie.nomCategorie }}</td>
+                        <td><span class="label label-info label-mini">Due</span></td>
+                        <td>
+                            <a href="{{ path('modifierClub',{'id':club.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                            <a href="{{ path('supprimerClub',{'id':club.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- /content-panel -->
+    </div>
+    <!-- /col-md-12 -->
+</div>
+<!-- /row -->
+        </section>
+    </section>
+{% endblock %}
