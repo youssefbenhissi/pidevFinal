@@ -53,6 +53,11 @@ class DashboardControllerController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
+
+            $image = $categorie->getImage();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $categorie->setImage($name_image);
             $this->getDoctrine()->getManager()->persist($categorie);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('afficher_ctegorie');
@@ -71,17 +76,12 @@ class DashboardControllerController extends Controller
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('afficherAbonne');
     }
-    public function modifierInscriptionAction(Request $request,$id)
+    public function modifierInscriptionAction($id)
     {
         $categorie=$this->getDoctrine()->getRepository(inscription::class)->find($id);
-        $form=$this->createForm(inscriptionType::class,$categorie);
-        $form->handleRequest($request);
-        if($form->isSubmitted())
-        {
-            $this->getDoctrine()->getManager()->persist($categorie);
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('afficherAbonne');
-        }
-        return $this->render('@admin/DashboardController/modifierInscription.html.twig', array("form"=>$form->createView()));
+        $categorie->setStatus("Approuvée");
+        $this->getDoctrine()->getManager()->persist($categorie);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('afficherAbonne');
     }
 }

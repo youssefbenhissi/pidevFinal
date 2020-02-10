@@ -1,7 +1,7 @@
 <?php
 
 namespace gererClubBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -68,6 +68,7 @@ class Club
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
+     * @Assert\File(maxSize="1024",mimeTypes={"image/jpeg","image/jpg"})
      */
     private $image;
 
