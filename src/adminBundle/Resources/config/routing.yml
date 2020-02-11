@@ -26,3 +26,9 @@ supprimerInscription:
 modifierInscription:
     path:     /modifierInscription/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierInscription }
+ajouterClub:
+    path:     /ajouterClub
+    defaults: { _controller: adminBundle:DashboardController:ajouterClub }
+ajouterCategorie:
+    path:     /ajouterCategorie
+    defaults: { _controller: adminBundle:DashboardController:ajouterCategorie }

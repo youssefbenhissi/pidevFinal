@@ -20,8 +20,12 @@ class ClubType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('capacite')
+            ->add('questionPr')
+            ->add('questionDe')
+            ->add('questionTr')
             ->add('image',FileType::class,
-                ['data_class' => null , 'required'=> true])
+                ['data_class' => null , 'required'=> false])
+            ->add('categorie',EntityType::class,array('class'=>'gererClubBundle:categorieClub','choice_label'=>'nomCategorie','multiple'=>false))
             ->add('Modifier',SubmitType::class);
     }/**
      * {@inheritdoc}

@@ -14,7 +14,7 @@ class inscriptionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('reponsePr')->add('reponseDe')->add('reponseTr')->add('Modifier',SubmitType::class);
+        $builder->add('reponsePr')->add('reponseDe')->add('reponseTr')->add('valider',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

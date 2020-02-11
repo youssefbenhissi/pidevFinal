@@ -68,7 +68,7 @@ class Club
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
-     * @Assert\File(maxSize="1024",mimeTypes={"image/jpeg","image/jpg"})
+     * @Assert\File(maxSize="1024",mimeTypes={"image/jpeg","image/jpg/","image/png/"})
      */
     private $image;
 
@@ -77,22 +77,87 @@ class Club
      *
      * @ORM\Column(name="nbrLike", type="integer")
      */
-    private $nbrLike;
+    private $nbrLike=0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="nbrFoisLike", type="integer")
      */
-    private $nbrFoisLike;
+    private $nbrFoisLike=0;
 
     /**
      * @var float
      *
      * @ORM\Column(name="moyenneLike", type="float")
      */
-    private $moyenneLike;
+    private $moyenneLike=0;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="questionPr", type="string", length=255)
+     */
+    private $questionPr;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="questionDe", type="string", length=255)
+     */
+    private $questionDe;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="questionTr", type="string", length=255)
+     */
+    private $questionTr;
 
+    /**
+     * @return string
+     */
+    public function getQuestionPr()
+    {
+        return $this->questionPr;
+    }
+
+    /**
+     * @param string $questionPr
+     */
+    public function setQuestionPr($questionPr)
+    {
+        $this->questionPr = $questionPr;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQuestionDe()
+    {
+        return $this->questionDe;
+    }
+
+    /**
+     * @param string $questionDe
+     */
+    public function setQuestionDe($questionDe)
+    {
+        $this->questionDe = $questionDe;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQuestionTr()
+    {
+        return $this->questionTr;
+    }
+
+    /**
+     * @param string $questionTr
+     */
+    public function setQuestionTr($questionTr)
+    {
+        $this->questionTr = $questionTr;
+    }
 
     /**
      * Get id

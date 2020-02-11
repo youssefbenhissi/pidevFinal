@@ -13,7 +13,6 @@
                 <tr>
                     <th><i class="fa fa-bullhorn"></i> ID categorie</th>
                     <th class="hidden-phone">Nom categorie</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -24,7 +23,6 @@
                         <a href="basic_table.html#">{{ categorie.id }}</a>
                     </td>
                     <td class="hidden-phone">{{ categorie.nomCategorie }}</td>
-                    <td><span class="label label-info label-mini">Due</span></td>
                     <td>
                         <a href="{{ path('modifierCategorie',{'id':categorie.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                         <a href="{{ path('supprimerCategorie',{'id':categorie.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
@@ -44,7 +42,6 @@
                     <th class="hidden-phone">Capacite</th>
                     <th class="hidden-phone">Moyenne</th>
                     <th class="hidden-phone">nom de categorie</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -59,7 +56,6 @@
                         <td class="hidden-phone">{{ club.capacite }}</td>
                         <td class="hidden-phone">{{ club.moyenneLike }}</td>
                         <td class="hidden-phone">{{ club.categorie.nomCategorie }}</td>
-                        <td><span class="label label-info label-mini">Due</span></td>
                         <td>
                             <a href="{{ path('modifierClub',{'id':club.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                             <a href="{{ path('supprimerClub',{'id':club.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>

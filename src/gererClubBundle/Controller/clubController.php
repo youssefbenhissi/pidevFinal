@@ -6,6 +6,7 @@ use gererClubBundle\Entity\categorieClub;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
 use gererClubBundle\Form\inscriptionType;
+use Proxies\__CG__\gererClubBundle\Entity\eleve;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -27,14 +28,23 @@ class clubController extends Controller
     {
         $club=$this->getDoctrine()->getRepository(Club::class)->find($id);
         $inscription=new inscription();
-        $inscription->setClub($club);
+        $question1=$club->getQuestionPr();
+        $question2=$club->getQuestionDe();
+        $question3=$club->getQuestionTr();
+        $inscription->setQuestionPr($question1);
+        $inscription->setQuestionDe($question2);
+        $inscription->setQuestionTr($question3);
         $form=$this->createForm(inscriptionType::class,$inscription);
+        $eleve=$this->getDoctrine()->getRepository(\gererClubBundle\Entity\eleve::class)->find("31");
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
+            $inscription->setClub($club);
+            $inscription->setEleve($eleve);
             $this->getDoctrine()->getManager()->persist($inscription);
             $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute("club");
         }
-        return $this->render('@gererClub/club/inscription.html.twig',array("form"=>$form->createView(),"club"=>$club));
+        return $this->render('@gererClub/club/inscription.html.twig',array("form"=>$form->createView(),"club"=>$club,"inscription"=>$inscription));
     }
 }

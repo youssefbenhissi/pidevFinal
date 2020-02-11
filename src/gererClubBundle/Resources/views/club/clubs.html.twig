@@ -17,10 +17,10 @@
             <div class="col-lg-12">
                 <div class="special-menu text-center">
                     <div class="button-group filter-button-group">
-                        <a href="{{ path('club') }}"><button class="active" data-filter="*">All</button></a>
+                        <a href="{{ path('club') }}"><button class="bouttonMenu" data-filter="*" >All</button></a>
                         {% for categorie in liste %}
                            <!-- </a>-->
-                            <a href="{{ path('afficherClubSelonClub',{'id':categorie.id}) }}"><button data-filter=".drinks">{{ categorie.nomCategorie }}</button></a>
+                            <a href="{{ path('afficherClubSelonClub',{'id':categorie.id}) }}"><button data-filter=".drinks" class="bouttonMenu">{{ categorie.nomCategorie }}</button></a>
                         {% endfor %}
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="why-text">
                         <h4>{{ club.nom }}</h4>
                         <p>{{ club.description }}</p>
-                        <a href="{{ path('inscription',{'id':club.id}) }}"><button>s'inscrire</button></a>
+                        <a href="{{ path('inscription',{'id':club.id}) }}"><button class="btn btn-secondary px-4 py-3 mt-3">s'inscrire</button></a>
                     </div>
                 </div>
             </div>
@@ -48,10 +48,10 @@
     <script src="{{ asset ('assets/js/main1.js') }}"></script>
 <script>
     $(document).ready(function(){
-        $("button").mouseenter(function(){
+        $(".bouttonMenu").mouseenter(function(){
             $(this).addClass("active");
         });
-        $("button").mouseleave(function(){
+        $(".bouttonMenu").mouseleave(function(){
             $(this).attr("class","");
         })
     });

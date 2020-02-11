@@ -50,10 +50,18 @@ class DashboardControllerController extends Controller
     {
         $categorie=$this->getDoctrine()->getRepository(Club::class)->find($id);
         $form=$this->createForm(ClubType::class,$categorie);
+        $nom_initial = $categorie->getImage();
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
+            $verif=$form->get('image')->getData();
+if($verif == null){
 
+    $categorie->setImage($nom_initial);
+    $this->getDoctrine()->getManager()->persist($categorie);
+    $this->getDoctrine()->getManager()->flush();
+    return $this->redirectToRoute('afficher_ctegorie');
+}
             $image = $categorie->getImage();
             $name_image=uniqid().'.'.$image->guessExtension();
             $image->move($this->getParameter('image_directory'), $name_image);
@@ -83,5 +91,35 @@ class DashboardControllerController extends Controller
         $this->getDoctrine()->getManager()->persist($categorie);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('afficherAbonne');
+    }
+    public function ajouterClubAction(Request $request)
+    {
+        $club=new Club();
+        $form=$this->createForm(ClubType::class,$club);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $image = $club->getImage();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $club->setImage($name_image);
+            $this->getDoctrine()->getManager()->persist($club);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('afficher_ctegorie');
+        }
+        return $this->render('@admin/DashboardController/ajouterClub.html.twig', array("form"=>$form->createView()));
+    }
+    public function ajouterCategorieAction(Request $request)
+    {
+        $categorie=new \gererClubBundle\Entity\categorieClub();
+        $form=$this->createForm(categorieClubType::class,$categorie);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $this->getDoctrine()->getManager()->persist($categorie);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('afficher_ctegorie');
+        }
+        return $this->render('@admin/DashboardController/ajouterCategorie.html.twig', array("form"=>$form->createView()));
     }
 }

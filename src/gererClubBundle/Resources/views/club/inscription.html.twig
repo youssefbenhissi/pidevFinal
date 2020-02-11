@@ -4,30 +4,29 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-md-6 py-5 px-md-5 bg-primary">
-                <div class="heading-section heading-section-white ftco-animate mb-5">
-                    <span class="subheading">Request A Quote</span>
-                    <h2 class="mb-4">Request A Quote</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts.</p>
-                </div>
                 {{ form_start(form) }}
                     <div class="d-md-flex">
-                        <div class="form-group">
+                        <div class="form-group ml-md-4">
+                            <h1 style="font-family: 'Calisto MT'">{{ club.questionPr }}</h1>
                             {{ form_row(form.reponsePr, {'attr': {'class': 'form-control'} }) }}
                         </div>
+                    </div>
+                    <div>
                         <div class="form-group ml-md-4">
+                            <h1 style="font-family: 'Calisto MT'">{{ club.questionDe }}</h1>
                             {{ form_row(form.reponseDe, {'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">
 
                         <div class="form-group ml-md-4">
+                            <h1 style="font-family: 'Calisto MT'">{{ club.questionTr }}</h1>
                             {{ form_row(form.reponseTr, {'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group ml-md-4">
-                            {{ form_row(form.Reserver, {'attr': {'class': 'btn btn-secondary py-3 px-4','value':'S incrire'} }) }}
+                            {{ form_row(form.valider, {'attr': {'class': 'btn btn-secondary py-3 px-4','value':'S incrire'} }) }}
                         </div>
                     </div>
                 {{ form_end(form) }}
