@@ -22,12 +22,12 @@
     </div>
 </section>
     <section class="ftco-section bg-light" style="padding: 18px;">
-        <p class="breadcrumbs" style="font-size: large;">
+      <center>  <p class="breadcrumbs" style="font-size: large;">
             CATEGORIES :
             {% for categ in categories %}
             <b><span class="mr-2"><a href="{{ path('Affiche_categorie_User',{'id':categ.id}) }}">{{ categ.nom }} </a></span>|</b>
         {% endfor %}
-        </p>
+        </p></center>
         <div class="container">
             <div class="row">
 

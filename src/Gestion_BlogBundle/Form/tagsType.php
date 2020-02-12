@@ -13,7 +13,7 @@ class tagsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('url');
+        $builder->add('nom');
     }/**
      * {@inheritdoc}
      */

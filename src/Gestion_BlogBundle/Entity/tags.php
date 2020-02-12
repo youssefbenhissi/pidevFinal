@@ -28,12 +28,6 @@ class tags
      */
     private $nom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
 
 
     /**
@@ -70,29 +64,7 @@ class tags
         return $this->nom;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return tags
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
 
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
 
     public function __toString()
     {
