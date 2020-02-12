@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>prenom</td>
+        <td>Numero de Telephone</td>
+        <td>Adresse mail</td>
+        <td>modifier</td>
+        <td>supprimer</td>
+    </tr>
+    {% for cc in p %}
+        <tr>
+            <td>{{ cc.id }}</td>
+            <td>{{ cc.nom }}</td>
+            <td>{{ cc.prenom }}</td>
+            <td>{{ cc.numTelephone }}</td>
+            <td>{{ cc.adressMail }}</td>
+            <td><a href="{{ path('modifierParents',{'id':cc.id}) }}">Modifier</a></td>
+            <td><a href="{{ path('supprimerParents',{'id':cc.id}) }}">supprimer</a></td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

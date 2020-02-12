@@ -1,0 +1,114 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <!-- row -->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                <div class="col-md-12">
+                    <div class="content-panel">
+                        <table class="table table-striped table-advance table-hover">
+                            <h4><i class="fa fa-angle-right"></i> Table des Eleves</h4>
+                            <hr>
+                            <thead>
+                            <tr>
+                                <th><i class="fa fa-bullhorn"></i> ID </th>
+                                <th class="hidden-phone">Nom </th>
+                                <th><i class=" fa fa-edit"></i> prenom</th>
+                                <th><i class=" aa-edit"></i> Adresse Mail</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ee in e %}
+                                <tr>
+                                    <td>
+                                        <a href="basic_table.html#">{{ ee.id }}</a>
+                                    </td>
+                                    <td class="hidden-phone">{{ ee.nom }}</td>
+                                    <th><i class=" fa fa-edit"></i> {{ ee.prenom  }}</th>
+                                    <th><i class=" aa-edit"></i> {{ ee.adressMail  }}</th>
+                                    <td><span class="label label-info label-mini">Due</span></td>
+                                    <td>
+                                        <a href="{{ path('modifierE',{'id':ee.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                        <a href="{{ path('supprimerE',{'id':ee.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-advance table-hover">
+                            <h4><i class="fa fa-angle-right"></i> Table des Parents</h4>
+                            <hr>
+                            <thead>
+                            <tr>
+                                <th><i class="fa fa-bullhorn"></i> ID </th>
+                                <th class="hidden-phone">Nom</th>
+                                <th class="hidden-phone">Prenom</th>
+                                <th class="hidden-phone">NumTelephone</th>
+                                <th class="hidden-phone">AdresseMail</th>
+
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pa in pa %}
+                                <tr>
+                                    <td>
+                                        <a href="basic_table.html#">{{ pa.id }}</a>
+                                    </td>
+                                    <td class="hidden-phone">{{ pa.nom }}</td>
+                                    <td class="hidden-phone">{{ pa.prenom }}</td>
+                                    <td class="hidden-phone">{{ pa.numTelephone}}</td>
+                                    <td class="hidden-phone">{{ pa.adressMail}}</td>
+
+                                    <td><span class="label label-info label-mini">Due</span></td>
+                                    <td>
+                                        <a href="{{ path('modifierP',{'id':pa.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                        <a href="{{ path('supprimerP',{'id':pa.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <table class="table table-striped table-advance table-hover">
+                            <h4><i class="fa fa-angle-right"></i> Table des Personnels</h4>
+                            <hr>
+                            <thead>
+                            <tr>
+
+                                <th class="hidden-phone">Matricule</th>
+                                <th class="hidden-phone">Nom</th>
+                                <th class="hidden-phone">Prenom</th>
+                                <th class="hidden-phone">Date Debut Travail</th>
+                                <th class="hidden-phone">Solde de Conge</th>
+                                <th><i class=" fa fa-edit"></i> type</th>
+                                <th><i class=" fa fa-edit"></i> description</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pp in p %}
+                                <tr>
+
+                                    <td class="hidden-phone">{{ pp.matricule }}</td>
+                                    <td class="hidden-phone">{{ pp.nom }}</td>
+                                    <td class="hidden-phone">{{ pp.prenom }}</td>
+                                    <td class="hidden-phone">{{ pp.dateDebTravail |date}}</td>
+                                    <td class="hidden-phone">{{ pp.soldeConge }}</td>
+                                    <td class="hidden-phone">{{ pp.type }}</td>
+                                    <td class="hidden-phone">{{ pp.description }}</td>
+                                    <td><span class="label label-info label-mini">Due</span></td>
+                                    <td><a href="{{ path('modifierPer',{'id':pp.matricule}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                                    <td><a href="{{ path('supprimerPer',{'id':pp.matricule}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /content-panel -->
+                </div>
+                <!-- /col-md-12 -->
+            </div>
+            <!-- /row -->
+        </section>
+    </section>
+{% endblock %}

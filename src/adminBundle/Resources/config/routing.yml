@@ -1,0 +1,28 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: adminBundle:Default:index }
+
+afficher_per:
+    path:     /afficher
+    defaults: { _controller: adminBundle:Dashboard:afficher }
+supprimerE:
+    path:     /supprimerE/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerE }
+supprimerP:
+    path:     /supprimerP/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerP }
+supprimerPer:
+    path:     /supprimerPer/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerPer }
+modifierE:
+    path:     /modifierE/{id}
+    defaults: { _controller: adminBundle:Dashboard:modifierE }
+modifierP:
+    path:     /modifierP/{id}
+    defaults: { _controller: adminBundle:Dashboard:modifierP }
+modifierPer:
+  path:     /modifierPer/{id}
+  defaults: { _controller: adminBundle:Dashboard:modifierPersonnel }
+ajouterE:
+    path:     /ajouterE
+    defaults: { _controller: adminBundle:Dashboard:ajouterE }

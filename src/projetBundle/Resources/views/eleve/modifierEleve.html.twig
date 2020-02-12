@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({{ asset ('assets/images/image_6.jpg') }}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-2 bread">Contact Us</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+        <div class="container">
+            <div class="row d-flex align-items-stretch no-gutters">
+                <div class="col-md-9 p-4 p-md-5 order-md-last bg-light" style="margin: auto;
+                width: 50%;
+                padding: 10px;">
+                    {{ form_start(f) }}
+                    <div class="form-group">
+                        {{ form_row(f.nom, {'attr': {'class': 'form-control','placeholder':'nom','disabled':'disabled'} }) }}
+
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(f.prenom, {'attr': {'class': 'form-control','placeholder':'prenom','disabled':'disabled'} }) }}
+
+                    <div class="form-group">
+                        {{ form_row(f.adressMail, {'attr': {'class': 'form-control','placeholder':'adressMail'} }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(f.Modifier, {'attr': {'class': 'btn btn-primary py-3 px-5','value':'modifier'}}) }}
+                    </div>
+                    {{ form_end(f) }}
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+projet_homepage:
+    path:     /
+    defaults: { _controller: projetBundle:Default:index }
+
+afficher:
+    path:     /afficher
+    defaults: { _controller: projetBundle:gestion:afficher }
+
+afficherEleve:
+    path:     /afficherEleve
+    defaults: { _controller: projetBundle:eleve:afficherEleve }
+ajouterParents:
+    path:     /ajouterParents
+    defaults: { _controller: projetBundle:gestion:ajouterParents }
+modifierEleve:
+    path:     /modifierEleve/{id}
+    defaults: { _controller: projetBundle:eleve:modifierEleve }
+supprimerEleve:
+    path:     /supprimerEleve/{id}
+    defaults: { _controller: projetBundle:eleve:supprimerEleve }
+supprimerParents:
+    path:     /supprimerParents/{id}
+    defaults: { _controller: projetBundle:gestion:supprimerParents }
+modifierParents:
+    path:     /modifierParents/{id}
+    defaults: { _controller: projetBundle:gestion:modifierParents }
+afficherPersonnel:
+    path:     /afficherPersonnel
+    defaults: { _controller: projetBundle:personnel:afficherPersonnel }
