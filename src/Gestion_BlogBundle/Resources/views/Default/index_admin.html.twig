@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}partie Admin{% endblock %}
+{% block sidebaradmin %}
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li class="mt">
+                    <a  href="#">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li  class="mt">
+                    <a href="{{ path('gestion_blog_homepage_Admin') }}">
+                        <i class="fa fa-edit"></i>
+                        <span>Gestion de Blog</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+{% endblock %}

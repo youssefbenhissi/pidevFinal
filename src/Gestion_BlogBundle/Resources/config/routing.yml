@@ -1,0 +1,53 @@
+Blog_Homepage_User:
+    path:     /
+    defaults: { _controller: Gestion_BlogBundle:Default:index }
+
+Blog_ADMIN:
+    path:     /admin/
+    defaults: { _controller: Gestion_BlogBundle:Default:admin }
+
+ajouter_article_Admin:
+    path:     /admin/ajouter-article
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:ajouter }
+
+gestion_blog_homepage_Admin:
+    path:     /admin/gestion-blog
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Affiche_list_article }
+
+modifier_article_Admin:
+    path:     /admin/gestion-blog/modifier-article/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Update }
+
+supprimer_article_Admin:
+    path:     /admin/gestion-blog/supprimer-article/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Delete }
+
+Single_Affiche_article_User:
+    path:     /{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Single_Affiche }
+
+Searche_article_Admin:
+    path:     /admin/gestion-blog/rechercher
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Recherche }
+
+
+
+Gestion_Categorie_Admin:
+    path:     /admin/gestion-blog/categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:index }
+
+ajouter_categorie_Admin:
+    path:     /admin/ajouter-categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:ajout }
+
+modifier_categorie_Admin:
+    path:     /admin/gestion-blog/modifier-categorie/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Update }
+
+supprimer_categorie_Admin:
+    path:     /admin/gestion-blog/supprimer-categorie/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Delete }
+
+Affiche_categorie_User:
+    path:     categorie/{id}
+    defaults: { _controller: Gestion_BlogBundle:Default:ParCat }
