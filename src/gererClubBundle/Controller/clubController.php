@@ -6,17 +6,25 @@ use gererClubBundle\Entity\categorieClub;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
 use gererClubBundle\Form\inscriptionType;
+use Knp\Component\Pager\PaginatorInterface;
 use Proxies\__CG__\gererClubBundle\Entity\eleve;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Bundle\PaginatorBundle\Definition\PaginatorAwareInterface;
 
 class clubController extends Controller
 {
-    public function afficherAction()
+    public function afficherAction(Request $request)
     {
         $listeCategories=$this->getDoctrine()->getRepository(categorieClub::class)->findAll();
-        $listeClubs=$this->getDoctrine()->getRepository(Club::class)->findAll();
-        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$listeClubs));
+        $query=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h');
+        $paginator=$this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            1
+        );
+        return $this->render('@gererClub/club/list.html.twig',array("liste"=>$listeCategories,"pagination"=>$pagination));
     }
     public function afficherClubSelonClubAction($id)
     {

@@ -43,6 +43,40 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
       <path value="$PROJECT_DIR$/vendor/bundles/FOS" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/SpamDetection" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Tests" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Twig" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Resources" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Search" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Security" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Sender" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Util" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Validator" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/FormHandler" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/FormModel" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/FormType" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Entity" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/EntityManager" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Event" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/FormFactory" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Provider" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Reader" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/MessageBuilder" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Model" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/ModelManager" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Command" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Composer" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/.git" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Deleter" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/DependencyInjection" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Document" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/DocumentManager" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/Controller" />
+      <path value="$PROJECT_DIR$/vendor/FOSMessageBundle/DataTransformer" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle" />
+      <path value="$PROJECT_DIR$/vendor/bundles/knp" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
