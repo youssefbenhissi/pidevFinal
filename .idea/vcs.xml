@@ -3,7 +3,9 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/Liip/LiipImagineBundle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/LiipImagineBundle" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/PaginatorBundle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/VichUploaderBundle" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/src" vcs="Git" />
   </component>
 </project>

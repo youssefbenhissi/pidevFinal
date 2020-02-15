@@ -35,3 +35,6 @@ ajouterCategorie:
 testerEmail:
     path:     /testerEmail
     defaults: { _controller: adminBundle:DashboardController:testerEmail }
+galerie:
+    path:     /galerie
+    defaults: { _controller: adminBundle:DashboardController:galerie }

@@ -2,7 +2,9 @@
 
 namespace adminBundle\Controller;
 
+use adminBundle\Entity\galerie;
 use adminBundle\Entity\Mail;
+use adminBundle\Form\galerieType;
 use adminBundle\Form\MailType;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
@@ -150,5 +152,17 @@ if($verif == null){
             $this->get('session')->getFlashBag()->add('notice','Message Envoye avec succes');
         }
         return $this->render('@admin/DashboardController/test.html.twig',array('f'=>$form->createView()));
+    }
+    public function galerieAction(Request $request)
+    {
+        $galerie=new galerie();
+        $form=$this->createForm(galerieType::class,$galerie);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $this->getDoctrine()->getManager()->persist($galerie);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        return $this->render('@admin/DashboardController/gelerie.html.twig', array("form"=>$form->createView()));
     }
 }

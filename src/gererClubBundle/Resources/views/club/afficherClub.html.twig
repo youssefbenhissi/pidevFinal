@@ -27,7 +27,7 @@
                     {% if club.categorie.id == id %}
                     <div class="col-lg-4 col-md-6 special-grid drinks">
                         <div class="gallery-single fix">
-                            <img src='/assets/images/{{ club.image }}' class="img-fluid" alt="Image">
+                            <img src="{{ asset(club.image | imagine_filter('my_thumb') ) }}" class="img-fluid">
                             <div class="why-text">
                                 <h4>{{ club.nom }}</h4>
                                 <p>{{ club.description }}</p>
