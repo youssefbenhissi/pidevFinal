@@ -14,17 +14,11 @@ use Knp\Bundle\PaginatorBundle\Definition\PaginatorAwareInterface;
 
 class clubController extends Controller
 {
-    public function afficherAction(Request $request)
+    public function afficherAction()
     {
         $listeCategories=$this->getDoctrine()->getRepository(categorieClub::class)->findAll();
-        $query=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h');
-        $paginator=$this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            1
-        );
-        return $this->render('@gererClub/club/list.html.twig',array("liste"=>$listeCategories,"pagination"=>$pagination));
+        $listeCl=$this->getDoctrine()->getRepository(Club::class)->findAll();
+        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$listeCl));
     }
     public function afficherClubSelonClubAction($id)
     {

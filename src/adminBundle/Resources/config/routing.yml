@@ -32,3 +32,6 @@ ajouterClub:
 ajouterCategorie:
     path:     /ajouterCategorie
     defaults: { _controller: adminBundle:DashboardController:ajouterCategorie }
+testerEmail:
+    path:     /testerEmail
+    defaults: { _controller: adminBundle:DashboardController:testerEmail }

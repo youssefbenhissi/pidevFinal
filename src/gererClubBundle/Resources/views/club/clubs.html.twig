@@ -19,7 +19,6 @@
                     <div class="button-group filter-button-group">
                         <a href="{{ path('club') }}"><button class="bouttonMenu" data-filter="*" >All</button></a>
                         {% for categorie in liste %}
-                           <!-- </a>-->
                             <a href="{{ path('afficherClubSelonClub',{'id':categorie.id}) }}"><button data-filter=".drinks" class="bouttonMenu">{{ categorie.nomCategorie }}</button></a>
                         {% endfor %}
                     </div>
