@@ -1,0 +1,11 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }
+
+Affiche_categorie_User:
+    path:     categorie/{id}
+    defaults: { _controller: BlogBundle:Default:ParCat }
+
+Single_Affiche_article_User:
+    path:     /{id}
+    defaults: { _controller: BlogBundle:Default:Single_Affiche }

@@ -4,9 +4,9 @@ namespace Gestion_BlogBundle\Controller;
 
 
 
-use Gestion_BlogBundle\Entity\Article;
+
 use Gestion_BlogBundle\Entity\Categorie;
-use Gestion_BlogBundle\Form\ArticleType;
+
 use Gestion_BlogBundle\Form\CategorieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -62,7 +62,11 @@ class Gestion_CategoriesController extends Controller
         $categorie=$em->getRepository(Categorie::class)
             ->find($id);
         $em->remove($categorie);
-        $em->flush();
+        try {
+            $em->flush();
+        }catch (\Exception $exception){
+            return $this->redirectToRoute('ERREURDESUPP');
+        }
         return $this->redirectToRoute('Gestion_Categorie_Admin');
 
     }

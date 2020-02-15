@@ -102,43 +102,7 @@ class Gestion_ArticlesController extends Controller
     }
 
 
-    // function display
-    function Single_AfficheAction($id)
-    {
-$tag1=null;
-$tag2=null;
-$tag3=null;
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository(Article::class)
-            ->find($id);
-        $categories = $this->getDoctrine()
-            ->getRepository(Categorie::class)
-            ->findAll();
-        $category =$article->getCategorie();
-        $categorie = $this->getDoctrine()
-            ->getRepository(Categorie::class)
-            ->find($category);
-        $alltags = $this->getDoctrine()
-            ->getRepository(tags::class)
-            ->findAll();
-        if($article->getTag1() != null) {
-            $tag1 = $this->getDoctrine()
-                ->getRepository(tags::class)
-                ->find($article->getTag1());
-        }
-        if($article->getTag2() != null){
-            $tag2 = $this->getDoctrine()
-                ->getRepository(tags::class)
-                ->find($article->getTag2());
-        }
-        if($article->getTag3() != null){
-            $tag3 = $this->getDoctrine()
-                ->getRepository(tags::class)
-                ->find($article->getTag3());
-        }
-        return $this->render('@Gestion_Blog/Gestion_Articles/affichage_single_article.twig',
-            array('articlex'=>$article , 'categories'=>$categories, 'categorie'=>$categorie, 'alltags'=>$alltags, 'tag1'=>$tag1, 'tag2'=>$tag2, 'tag3'=>$tag3));
-    }
+
 
 
     // function SEARCH POST

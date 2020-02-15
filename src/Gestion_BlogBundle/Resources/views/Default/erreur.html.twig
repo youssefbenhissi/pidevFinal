@@ -1,0 +1,110 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Erreur{% endblock %}
+{% block sidebaradmin %}
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li class="mt">
+                    <a  href="#">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li  class="mt">
+                    <a class="active" href="{{ path('gestion_blog_homepage_Admin') }}">
+                        <i class="fa fa-edit"></i>
+                        <span>Gestion de Blog</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+{% endblock %}
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+
+
+                <div class="col-sm-3">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <a href="{{ path('ajouter_categorie_Admin') }}" class="btn btn-compose">
+                                <i class="fa fa-plus"></i>  Ajouter une catégorie
+                            </a>
+                            <ul class="nav nav-pills nav-stacked mail-nav">
+                                <li ><a href="{{ path('gestion_blog_homepage_Admin') }}"> <i class="fa fa-file-text"></i> Liste des Articles </a></li>
+                                <li class="active" ><a href="{{ path('Gestion_Categorie_Admin') }}"> <i class="fa fa-certificate"></i> Catégories  </a></li>
+                                <li><a href="{{ path('Affiche_tags_admin') }}"> <i class="fa fa-tags"></i> Tags </a></li>
+                                <li ><a href="{{ path('Searche_article_Admin') }}"> <i class="fa fa-search"></i> Recherche Article </a></li>
+
+
+
+                            </ul>
+                        </div>
+                    </section>
+
+                </div>
+
+
+
+
+                <div class="col-sm-9">
+                    <section class="panel">
+                        <header class="panel-heading wht-bg">
+                            <h4 class="gen-case">
+                                Catégories :
+
+
+
+                                <a href="{{ path('Searche_article_Admin')}}" style="width: fit-content;float: right;" class="btn btn-compose">
+                                    <i class="fa fa-search"></i>  Rechercher
+                                </a>
+
+
+
+
+
+
+
+                            </h4>
+                        </header>
+
+
+<h1>Erreur de suppression</h1>
+                    </section>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </section>
+    </section>
+
+{% endblock %}
