@@ -2,8 +2,13 @@
 
 namespace Gestion_BlogBundle\Controller;
 
+
+
+
 use Gestion_BlogBundle\Entity\tags;
+use Gestion_BlogBundle\Form\tagsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class Gestion_tagsController extends Controller
@@ -15,5 +20,62 @@ class Gestion_tagsController extends Controller
 
         return $this->render('@Gestion_Blog/Gestion_tags/gestion_tags_blog.html.twig',
             array('tags'=>$tags));
+    }
+
+    function ajoutAction(Request $request){
+
+        $tag = new tags();
+        $Form=$this->createForm(tagsType::class,$tag)
+            ->add('Ajouter',SubmitType::class);
+        $Form->handleRequest($request);
+        if($Form->isSubmitted() && $Form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($tag);
+            $em->flush();
+            return $this->redirectToRoute('Affiche_tags_admin');
+        }
+        return $this->render('@Gestion_Blog/Gestion_tags/ajouter_tag.html.twig',
+            array('ajout_Form'=>$Form->createView()));
+
+    }
+
+    function UpdateAction($id,Request $request){
+
+        $em=$this->getDoctrine()->getManager();
+        $tag=$em->getRepository(tags::class)
+            ->find($id);
+        $Form=$this->createForm(tagsType::class,$tag)
+            ->add('Modifier',SubmitType::class);
+        $Form->handleRequest($request);
+        if($Form->isSubmitted()){
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('Affiche_tags_admin');
+        }
+        return $this->render('@Gestion_Blog/Gestion_tags/modifier_tag.html.twig',
+            array('form_edit'=>$Form->createView()));
+    }
+
+    function DeleteAction($id){
+        $em=$this->getDoctrine()->getManager();
+
+        $query = $em->createQuery('SELECT t FROM Gestion_BlogBundle:Article t WHERE  t.tag1=:id OR t.tag2=:id OR t.tag3=:id')
+            ->setParameter('id',$id);
+        $article = $query->getResult();
+        foreach ($article as $arti) {
+            $em->remove($arti);
+            $em->flush();
+        }
+
+        $tag=$em->getRepository(tags::class)
+            ->find($id);
+        $em->remove($tag);
+
+        $em->flush();
+
+
+
+        return $this->redirectToRoute('Affiche_tags_admin');
+
     }
 }

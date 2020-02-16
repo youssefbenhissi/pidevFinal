@@ -67,19 +67,19 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag1_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tag1_id", referencedColumnName="id",onDelete="CASCADE")
      */
     private $tag1;
 
     /**
      * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag2_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tag2_id", referencedColumnName="id",onDelete="CASCADE")
      */
     private $tag2;
 
     /**
      * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag3_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tag3_id", referencedColumnName="id",onDelete="CASCADE")
      */
     private $tag3;
 

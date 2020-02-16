@@ -5,6 +5,7 @@ namespace Gestion_BlogBundle\Controller;
 
 
 
+use Gestion_BlogBundle\Entity\Article;
 use Gestion_BlogBundle\Entity\Categorie;
 
 use Gestion_BlogBundle\Form\CategorieType;
@@ -59,14 +60,24 @@ class Gestion_CategoriesController extends Controller
 
     function DeleteAction($id){
         $em=$this->getDoctrine()->getManager();
+
+
+        $query = $em->createQuery('SELECT c FROM Gestion_BlogBundle:Article c WHERE  c.categorie=:id ')
+            ->setParameter('id',$id);
+        $article = $query->getResult();
+        foreach ($article as $arti) {
+            $em->remove($arti);
+            $em->flush();
+        }
+
         $categorie=$em->getRepository(Categorie::class)
             ->find($id);
         $em->remove($categorie);
-        try {
+
             $em->flush();
-        }catch (\Exception $exception){
-            return $this->redirectToRoute('ERREURDESUPP');
-        }
+
+
+
         return $this->redirectToRoute('Gestion_Categorie_Admin');
 
     }

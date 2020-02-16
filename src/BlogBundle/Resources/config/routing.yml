@@ -1,4 +1,4 @@
-blog_homepage:
+Blog_Homepage_User:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
 
@@ -9,3 +9,7 @@ Affiche_categorie_User:
 Single_Affiche_article_User:
     path:     /{id}
     defaults: { _controller: BlogBundle:Default:Single_Affiche }
+
+Affiche_tag_User:
+    path:     tag/{id}
+    defaults: { _controller: BlogBundle:Default:Partag }

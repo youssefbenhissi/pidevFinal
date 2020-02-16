@@ -1,5 +1,3 @@
-
-
 Blog_ADMIN:
     path:     /
     defaults: { _controller: Gestion_BlogBundle:Default:admin }
@@ -44,12 +42,18 @@ supprimer_categorie_Admin:
     path:     /gestion-blog/supprimer-categorie/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Delete }
 
-
-
 Affiche_tags_admin:
     path:     /gestion-blog/tags
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:index }
 
-ERREURDESUPP:
-    path:     /gestion-blog/tags/erreur
-    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Delete }
+ajouter_tag_Admin:
+    path:     /ajouter-tag
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:ajout }
+
+modifier_tag_Admin:
+    path:     /gestion-blog/modifier-tag/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Update }
+
+supprimer_tag_Admin:
+    path:     /gestion-blog/supprimer-tag/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Delete }
