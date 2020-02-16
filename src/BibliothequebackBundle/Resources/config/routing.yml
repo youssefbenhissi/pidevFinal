@@ -1,0 +1,24 @@
+bibliothequeback_homepage:
+    path:     /
+    defaults: { _controller: BibliothequebackBundle:Default:index }
+
+bibliothequeback_ajoutCat:
+    path:     /ajouterCat
+    defaults: { _controller: BibliothequebackBundle:Category:Ajouter }
+
+bibliothequeback_afficheCat:
+    path:     /afficheCat
+    defaults: { _controller: BibliothequebackBundle:Category:affiche }
+
+bibliothequeback_updatCat:
+    path:     /updateCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:update }
+
+bibliothequeback_deleteCat:
+    path:     /deleteCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:supprimer }
+
+bibliothequeback_detailsCat:
+    path:     /detailsCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:categoryDetails }
+

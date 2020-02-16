@@ -1,0 +1,7 @@
+bibliothequeback:
+    resource: "@BibliothequebackBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

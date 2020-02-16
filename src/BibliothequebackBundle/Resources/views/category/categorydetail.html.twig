@@ -1,0 +1,86 @@
+{% extends 'layout_back.html.twig' %}
+{% block container %}
+
+
+    {% set urlc= app.request.uri %}
+
+
+    {% set long = urlc|length %}
+
+    {% set res=  urlc|slice(50, long) %}
+
+    {% if category.id == res %}
+        <center>
+
+        <img src="{{ asset('images/') }}{{ category.nomImage }}"style="width: 1400px;height: 600px">
+
+        <h1>{{ category.libelle }}</h1>
+    {% endif %}
+    <br><br><br><br><br>
+
+
+
+
+
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <div class="example-wrapper">
+
+
+        {{form(form)}}
+    </div>
+
+    </center>
+    <br><br><br><br><br>
+
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> List Produits</h4>
+
+
+
+                <div class="row mb">
+                    <!-- page start-->
+                    <div class="content-panel">
+                        <div class="adv-table">
+                            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Category</th>
+                                    <th class="hidden-phone">Nom</th>
+                                    <th class="hidden-phone">Description</th>
+                                    <th class="hidden-phone">Auteur</th>
+                                    <th class="hidden-phone">Nombre De Page</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for livre in livres %}
+                                    {% if livre.category.id == res %}
+                                        <tr class="gradeU">
+                                            <td>{{ livre.id }}</td>
+                                            <td>{{ livre.category.libelle }}</td>
+                                            <td>{{ livre.nom }}</td>
+                                            <td class="hidden-phone">{{ livre.description }} </td>
+                                            <td class="center hidden-phone">{{ livre.auteur }} </td>
+                                            <td class="center hidden-phone">{{ livre.nombredepage }} </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- page end-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
