@@ -1,0 +1,31 @@
+evenement_homepage:
+    path:     /
+    defaults: { _controller: EvenementBundle:Default:index }
+
+afficher:
+    path:     /afficher/{id}
+    defaults: { _controller: EvenementBundle:Evenement:afficher }
+
+ajouter:
+    path:     /ajouter
+    defaults: { _controller: EvenementBundle:Evenement:ajouter }
+
+rechercher:
+    path:     /rechercher
+    defaults: { _controller: EvenementBundle:Evenement:rechercher }
+
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: EvenementBundle:Evenement:modifier }
+
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: EvenementBundle:Evenement:supprimer }
+
+affichercategorie:
+    path:     /affichercategorie
+    defaults: { _controller: EvenementBundle:Evenement:affichercategorie }
+
+ajouterReservation:
+    path:     /ajouterReservation/{id}
+    defaults: { _controller: EvenementBundle:Evenement:ajouterReservation }
