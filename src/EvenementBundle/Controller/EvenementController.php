@@ -18,7 +18,7 @@ class EvenementController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            3
+            2
         );
         $Categorie=$this->getDoctrine()->getRepository(categorieEvenement::class)->find($id);
         return $this->render('@Evenement/Evenement/afficher.html.twig',array('c'=>$pagination,"categorie"=>$Categorie));
@@ -98,10 +98,11 @@ class EvenementController extends Controller
 
     public function ajouterReservationAction(Request $request,$id)
     {
-        $R=$this->getDoctrine()->getRepository(Evenement::class)->find($id);
-        $nb=$R->getCapaciteE();
-        $R->setCapaciteE($nb-1);
-        $this->getDoctrine()->getManager()->persist($R);
+
+        $E=$this->getDoctrine()->getRepository(Evenement::class)->find($id);
+        $nb=$E->getCapaciteE();
+        $E->setCapaciteE($nb-1);
+        $this->getDoctrine()->getManager()->persist($E);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('affichercategorie');
     }

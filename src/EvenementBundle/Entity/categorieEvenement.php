@@ -3,6 +3,7 @@
 namespace EvenementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * categorieEvenement
@@ -22,6 +23,10 @@ class categorieEvenement
     private $id;
 
     /**
+     * @Assert\Regex(
+     *     pattern="/\W/",
+     *     message="Your name cannot contain a number"
+     * )
      * @var string
      *
      * @ORM\Column(name="nomCategorieEvenement", type="string", length=255)
@@ -29,6 +34,7 @@ class categorieEvenement
     private $nomCategorieEvenement;
 
     /**
+     *
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)

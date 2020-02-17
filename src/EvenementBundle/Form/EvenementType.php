@@ -23,7 +23,7 @@ class EvenementType extends AbstractType
             ->add('prixE')
             ->add('dateD')
             ->add('categorieEvenement',EntityType::class,array('class'=>'EvenementBundle:categorieEvenement','choice_label'=>'nomCategorieEvenement','multiple'=>false))
-            ->add('Modifier',SubmitType::class);    }/**
+            ->add('Valider',SubmitType::class);    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

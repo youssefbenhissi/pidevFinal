@@ -16,7 +16,7 @@ class categorieEvenementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nomCategorieEvenement')->add('image',FileType::class,
-            ['data_class' => null , 'required'=> false])->add('description')->add('Modifier',SubmitType::class);
+            ['data_class' => null , 'required'=> false])->add('description')->add('Valider',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

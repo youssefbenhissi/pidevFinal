@@ -3,6 +3,7 @@
 namespace EvenementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evenement
@@ -22,6 +23,10 @@ class Evenement
     private $id;
 
     /**
+     * @Assert\Regex(
+     *     pattern="/\W/",
+     *     message="Your name cannot contain a number"
+     * )
      * @var string
      *
      * @ORM\Column(name="nomE", type="string", length=255)
@@ -30,7 +35,6 @@ class Evenement
 
     /**
      * @var int
-     *
      * @ORM\Column(name="capaciteE", type="integer")
      */
     private $capaciteE;
@@ -51,7 +55,6 @@ class Evenement
 
     /**
      * @var int
-     *
      * @ORM\Column(name="prixE", type="integer")
      */
     private $prixE;
@@ -63,8 +66,17 @@ class Evenement
      */
     private $dateD;
 
+    /**
+     * Evenement constructor.
+     */
+    public function __construct()
+    {
+        $this->dateD = new \DateTime('now');
+    }
+
 
     /**
+     * @Assert\Date
      * Get id
      *
      * @return int
