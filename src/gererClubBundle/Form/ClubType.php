@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ClubType extends AbstractType
 {
@@ -24,9 +25,19 @@ class ClubType extends AbstractType
             ->add('questionDe')
             ->add('questionTr')
             ->add('image',FileType::class,
-                ['data_class' => null , 'required'=> false])
+                ['data_class' => null , 'required'=> false , 'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'SVP .JPG ou .JPEG ou PNG',
+                    ]),
+                ],
+                ])
             ->add('categorie',EntityType::class,array('class'=>'gererClubBundle:categorieClub','choice_label'=>'nomCategorie','multiple'=>false))
-            ->add('Modifier',SubmitType::class);
+            ->add('Valider',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

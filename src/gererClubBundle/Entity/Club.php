@@ -68,7 +68,7 @@ class Club
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
-     * @Assert\File(maxSize="1024",mimeTypes={"image/jpeg","image/jpg/","image/png/"})
+     * @Assert\File(maxSize="1024k",mimeTypes={"image/jpeg","image/jpg"})
      */
     private $image;
 

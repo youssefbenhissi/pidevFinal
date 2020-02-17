@@ -14,7 +14,7 @@ class categorieClubType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomCategorie')->add('Modifier',SubmitType::class);
+        $builder->add('nomCategorie')->add('Valider',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

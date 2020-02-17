@@ -111,6 +111,13 @@ class DashboardControllerController extends Controller
         if($form->isSubmitted())
         {
             $image = $club->getImage();
+            $image_data=$form->get('image')->getData();
+            if($image_data == null){
+                $club->setImage('none');
+                $this->getDoctrine()->getManager()->persist($club);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('afficher_ctegorie');
+            }
             $name_image=uniqid().'.'.$image->guessExtension();
             $image->move($this->getParameter('image_directory'), $name_image);
             $club->setImage($name_image);

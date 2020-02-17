@@ -24,31 +24,39 @@
                                 <div class="form-group ">
                                     <label for="curl" class="control-label col-lg-2">capacite du club</label>
                                     <div class="col-lg-10">
-                                        {{ form_row(form.capacite, {'attr': {'class': 'form-control'} }) }}
+                                        {{ form_row(form.capacite, {'attr': {'class': 'form-control capacite'} }) }}
+                                        <div id="capacite_err">
+                                            {{ form_errors(form.capacite) }}
+                                        </div>
                                     </div>
+
                                 </div>
+
 
                             <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">categorie du club (required)</label>
                                 <div class="col-lg-10">
-                                    {{ form_row(form.categorie, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
+                                    {{ form_row(form.categorie, {'attr': {'class': 'form-control categorie','label' : 'Ajouter'} }) }}
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">premiere question pour le formulaire</label>
+                                <label for="ccomment" class="control-label col-lg-2 questionPremiere">premiere question pour le formulaire</label>
                                 <div class="col-lg-10">
-                                    {{ form_row(form.questionPr, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
+                                    {{ form_row(form.questionPr, {'attr': {'class': 'form-control questionPremiere'} }) }}
+                                    <div id="questionPremiere_err">
+                                        {{ form_errors(form.questionPr) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">premiere question pour le formulaire</label>
+                                <label for="ccomment" class="control-label col-lg-2">deuxieme question pour le formulaire</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.questionDe, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
                                 </div>
                             </div>
 
                             <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">premiere question pour le formulaire</label>
+                                <label for="ccomment" class="control-label col-lg-2">deuxieme question pour le formulaire</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.questionTr, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
                                 </div>
@@ -61,7 +69,7 @@
                             </div>
                             <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        {{ form_row(form.Modifier, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
+                                        {{ form_row(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
                                         <a href="{{ path('afficher_ctegorie') }}" style="padding-left : 20px; float:left;"><button class="btn btn-theme04" type="button">Cancel</button></a>
                                     </div>
                                 </div>
@@ -77,4 +85,38 @@
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.capacite').on('keyup', function () {
+                var content = $('.capacite').val();
+                var numericReg = /^[+]?[1-9]+([.][0-9]+)?$/;
+                if (!numericReg.test(content) && content !== "") {
+                    $('#capacite_err').show();
+                    $('#capacite_err').text("Veuillez choisir un entier positif pour votre capacite").css({
+                        "font-size": "0.9em",
+                        "color": "#d85364"
+                    });
+                }
+                else {
+                    $('#capacite_err').hide();
+                }
+            });
+            $('#gererclubbundle_club_questionPr').on('keyup', function () {
+                var i = $('#gererclubbundle_club_questionPr').val().length;
+                if ($('#gererclubbundle_club_questionPr').val() !== "") {
+                    $('#questionPremiere_err').show();
+                    var j = 255 - i;
+                    var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                    $('#questionPremiere_err').text(msg).css({
+                        "font-size": "0.9em",
+                        "color": "#3851F7"
+                    });
+                }
+                else {
+                    $('#questionPremiere_err').hide();
+                }
+            });
+        });
+    </script>
 {% endblock %}

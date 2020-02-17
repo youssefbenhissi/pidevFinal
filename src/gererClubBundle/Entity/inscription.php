@@ -32,8 +32,8 @@ class inscription
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Club", cascade={"remove"})
-     * @ORM\JoinColumn(name="club_id",referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Club")
+     * @ORM\JoinColumn(name="club_id",referencedColumnName="id")
      */
     private $club;
 
