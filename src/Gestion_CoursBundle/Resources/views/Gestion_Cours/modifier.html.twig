@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Gestion de Blog - Ajouter TAG{% endblock %}
+{% block title %}Modifier un Cour{% endblock %}
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
@@ -13,13 +13,13 @@
                     </a>
                 </li>
                 <li class="mt">
-                    <a class="active"  href="{{ path('gestion_blog_homepage_Admin') }}">
+                    <a   href="{{ path('gestion_blog_homepage_Admin') }}">
                         <i class="fa fa-edit"></i>
                         <span>Gestion de Blog</span>
                     </a>
                 </li>
                 <li  class="mt">
-                    <a href="{{ path('gestion.cours_homepage') }}">
+                    <a class="active" href="{{ path('gestion.cours_homepage') }}">
                         <i class="fa fa-book"></i>
                         <span>Gestion Cours</span>
                     </a>
@@ -41,20 +41,29 @@
                     <div class="heading-section heading-section-white ftco-animate mb-5">
                         <!--<span class="subheading">Ajouter un article :</span>-->
 
-                        <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter TAG : </h4>
+                        <h4 class="mb"><i class="fa fa-angle-right"></i> Modifier Cour : </h4>
                     </div>
-                    {{ form_start(ajout_Form) }}
+                    {{ form_start(form_edit) }}
                     <div class="d-md-flex">
                         <div class="form-group">
-                            {{ form_row(ajout_Form.nom, {'attr': {'class': 'form-control'} }) }}
+                            {{ form_row(form_edit.nom, {'attr': {'class': 'form-control','required':'true'} }) }}
+                        </div>
+                        <div class="form-group ml-md-4">
+                            {{ form_row(form_edit.Description, {'attr': {'class': 'form-control','required':'true'} }) }}
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+
+                        <div class="form-group ml-md-4">
+                            {{ form_row(form_edit.pathPdf, {'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group ml-md-4">
-                            {{ form_row(ajout_Form.Ajouter, {'attr': {'class': 'btn btn-secondary costum  py-3 px-4','value':'Ajouter'},'style':{'color':'red'} }) }}
+                            {{ form_row(form_edit.Modifier, {'attr': {'class': 'btn btn-secondary costum  py-3 px-4','value':'Modifier'},'style':{'color':'red'} }) }}
                         </div>
                     </div>
-                    {{ form_end(ajout_Form) }}
+                    {{ form_end(form_edit) }}
                 </div>
             </div>
         </div>

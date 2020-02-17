@@ -4,6 +4,9 @@ imports:
     - { resource: services.yml }
     - { resource: "@Gestion_BlogBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@BlogBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@Gestion_CoursBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -11,6 +14,7 @@ imports:
 parameters:
     locale: fr
     images_articles_dossier: '%kernel.project_dir%/web/assets/images/'
+    pdf_dossier: '%kernel.project_dir%/web/pdf/'
 
 fos_user:
     db_driver: orm

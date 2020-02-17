@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Gestion de Blog{% endblock %}
+{% block title %}Gestion Cours {% endblock %}
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
@@ -13,13 +13,13 @@
                     </a>
                 </li>
                 <li  class="mt">
-                    <a class="active" href="{{ path('gestion_blog_homepage_Admin') }}">
+                    <a  href="{{ path('gestion_blog_homepage_Admin') }}">
                         <i class="fa fa-edit"></i>
                         <span>Gestion de Blog</span>
                     </a>
                 </li>
                 <li  class="mt">
-                    <a href="{{ path('gestion.cours_homepage') }}">
+                    <a class="active" href="{{ path('gestion.cours_homepage') }}">
                         <i class="fa fa-book"></i>
                         <span>Gestion Cours</span>
                     </a>
@@ -40,16 +40,11 @@
             <div class="col-sm-3">
                 <section class="panel">
                     <div class="panel-body">
-                        <a href="{{ path('ajouter_article_Admin') }}" class="btn btn-compose">
-                            <i class="fa fa-pencil"></i>  Ajouter un Article
+                        <a href="{{ path('gestion_cours_Ajout') }}" class="btn btn-compose">
+                            <i class="fa fa-plus"></i>  Ajouter Un Cour
                         </a>
                         <ul class="nav nav-pills nav-stacked mail-nav">
-                            <li class="active"><a href="{{ path('gestion_blog_homepage_Admin') }}"> <i class="fa fa-file-text"></i> Liste des Articles </a></li>
-                            <li ><a href="{{ path('Gestion_Categorie_Admin') }}"> <i class="fa fa-certificate"></i> Catégories  </a></li>
-                            <li><a href="{{ path('Affiche_tags_admin') }}"> <i class="fa fa-tags"></i> Tags </a></li>
-                            <li ><a href="{{ path('Searche_article_Admin') }}"> <i class="fa fa-search"></i> Recherche Article </a></li>
-
-
+                           <li><a href="{{ path('Searche_article_Admin') }}"> <i class="fa fa-search"></i> Recherche Cour </a></li>
 
                         </ul>
                     </div>
@@ -64,20 +59,7 @@
                 <section class="panel">
                     <header class="panel-heading wht-bg">
                         <h4 class="gen-case">
-                            Articles
-
-
-
-                            <a href="{{ path('Searche_article_Admin')}}" style="width: fit-content;float: right;" class="btn btn-compose">
-                                <i class="fa fa-search"></i>  Rechercher
-                            </a>
-
-
-
-
-
-
-
+                            Liste des Cours :
                         </h4>
                     </header>
 
@@ -86,6 +68,7 @@
                         <div class="table-inbox-wrap ">
                             <table class="table table-inbox table-hover">
                                 <tbody>
+
                                 <tr>
                                     <th>ID</th>
                                     <th>TYPE</th>
@@ -93,22 +76,22 @@
                                     <th>DESCRIPTION</th>
                                     <th>MODIFIER</th>
                                     <th>SUPPRIMER</th>
-                                    <th>DATE</th>
+                                    <td class="view-message text-right"></td>
                                 </tr>
 
 
 
-{% for articles in article %}
+{% for cate in cat %}
                                 <tr class="">
                                     <td class="inbox-small-cells">
-{{ articles.id }}
+{{ cate.id }}
                                     </td>
-                                    <td class="inbox-small-cells"><i class="fa fa-file-text-o"></i></td>
-                                    <td class="view-message dont-show"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" target="_blank">{{ articles.titre }}</a></td>
-                                    <td class="view-message"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" target="_blank">{{ articles.description }}</a></td>
-                                    <td class="view-message inbox-small-cells"><a href="{{ path('modifier_article_Admin',{'id':articles.id}) }}"><i style="color: #4b00ff; font-size: x-large;"  class="fa fa-edit"></i></a></td>
-                                    <td class="view-message inbox-small-cells"><a href="{{ path('supprimer_article_Admin',{'id':articles.id}) }}"><i style="color: #ff000c; font-size: x-large;" class="fa fa-remove"></i></a></td>
-                                    <td class="view-message text-right">{{ articles.date|date("d M Y") }}</td>
+                                    <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                                    <td class="view-message dont-show"><a href="{{ path('Affiche_categorie_User',{'id':cate.id})}}" target="_blank">{{ cate.nom }}</a></td>
+                                    <td class="view-message">{{ cate.Description }}</td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('modifier_cour_Admin',{'id':cate.id}) }}"><i style="color: #4b00ff; font-size: x-large;"  class="fa fa-edit"></i></a></td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('supprimer_cour_Admin',{'id':cate.id}) }}"><i style="color: #ff000c; font-size: x-large;" class="fa fa-remove"></i></a></td>
+                                    <td class="view-message text-right"></td>
                                 </tr>
 
 {% endfor %}

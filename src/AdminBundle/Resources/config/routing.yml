@@ -1,0 +1,4 @@
+Blog_ADMIN:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:admin }
+

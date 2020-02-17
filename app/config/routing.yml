@@ -1,3 +1,9 @@
+
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
     prefix:   /blog
@@ -6,9 +12,13 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
+Gestion_Cours:
+    resource: "@Gestion_CoursBundle/Resources/config/routing.yml"
+    prefix:   /admin/gestion-cour
+
 gestion_blog:
     resource: "@Gestion_BlogBundle/Resources/config/routing.yml"
-    prefix:   /admin
+    prefix:   /admin/gestion-blog
 
 
 app:

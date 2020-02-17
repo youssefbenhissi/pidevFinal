@@ -1,6 +1,6 @@
 <?php
 
-namespace Gestion_BlogBundle\Form;
+namespace Gestion_CoursBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -9,45 +9,40 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class ArticleType extends AbstractType
+class CoursType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')
-            ->add('description',TextareaType::class, [
+        $builder
+            ->add('nom')
+            ->add('Description',TextareaType::class, [
                 'attr' => ['rows' => '6'],'attr' =>[ 'cols' => '50']
             ])
-            ->add('image',FileType::class,[
-                'label' => "Miniature d'article",
+            ->add('pathPdf',FileType::class,[
+                'label' => "Fichier PDF",
                 'data_class' => null,
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',// 1MB
+                        'maxSize' => '5120k',// 5MB
                         'mimeTypes' => [ //types
-                            'image/jpeg',
-                            'image/jpg',
+                            'application/pdf',
                         ],
-                        'mimeTypesMessage' => 'SVP sélectionner une image JPEG',
+                        'mimeTypesMessage' => 'SVP sélectionner un PDF',
                     ]),
 
                 ],
-            ])
-            ->add('contenu')
-            ->add('categorie')
-            ->add('tag1')
-            ->add('tag2')
-            ->add('tag3');
+            ]);
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Gestion_BlogBundle\Entity\Article'
+            'data_class' => 'Gestion_CoursBundle\Entity\Cours'
         ));
     }
 
@@ -56,7 +51,7 @@ class ArticleType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'gestion_blogbundle_article';
+        return 'gestion_coursbundle_cours';
     }
 
 

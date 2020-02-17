@@ -18,6 +18,12 @@
                         <span>Gestion de Blog</span>
                     </a>
                 </li>
+                <li  class="mt">
+                    <a href="{{ path('gestion.cours_homepage') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Gestion Cours</span>
+                    </a>
+                </li>
             </ul>
             <!-- sidebar menu end-->
         </div>
@@ -74,7 +80,15 @@
                                 </div>
 
                                 {{ form_end(form_s) }}
-
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TYPE</th>
+                                    <th>NOM</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>MODIFIER</th>
+                                    <th>SUPPRIMER</th>
+                                    <th>DATE</th>
+                                </tr>
 
 
 {% for articles in article %}

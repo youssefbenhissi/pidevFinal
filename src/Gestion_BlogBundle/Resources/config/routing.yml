@@ -1,33 +1,31 @@
-Blog_ADMIN:
-    path:     /
-    defaults: { _controller: Gestion_BlogBundle:Default:admin }
+
 
 ajouter_article_Admin:
     path:     /ajouter-article
     defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:ajouter }
 
 gestion_blog_homepage_Admin:
-    path:     /gestion-blog
+    path:     /
     defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Affiche_list_article }
 
 modifier_article_Admin:
-    path:     /gestion-blog/modifier-article/{id}
+    path:     /modifier-article/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Update }
 
 supprimer_article_Admin:
-    path:     /gestion-blog/supprimer-article/{id}
+    path:     /supprimer-article/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Delete }
 
 
 
 Searche_article_Admin:
-    path:     /gestion-blog/rechercher
+    path:     /rechercher
     defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Recherche }
 
 
 
 Gestion_Categorie_Admin:
-    path:     /gestion-blog/categorie
+    path:     /categorie
     defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:index }
 
 ajouter_categorie_Admin:
@@ -35,15 +33,15 @@ ajouter_categorie_Admin:
     defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:ajout }
 
 modifier_categorie_Admin:
-    path:     /gestion-blog/modifier-categorie/{id}
+    path:     /modifier-categorie/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Update }
 
 supprimer_categorie_Admin:
-    path:     /gestion-blog/supprimer-categorie/{id}
+    path:     /supprimer-categorie/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Delete }
 
 Affiche_tags_admin:
-    path:     /gestion-blog/tags
+    path:     /tags
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:index }
 
 ajouter_tag_Admin:
@@ -51,9 +49,9 @@ ajouter_tag_Admin:
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:ajout }
 
 modifier_tag_Admin:
-    path:     /gestion-blog/modifier-tag/{id}
+    path:     /modifier-tag/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Update }
 
 supprimer_tag_Admin:
-    path:     /gestion-blog/supprimer-tag/{id}
+    path:     /supprimer-tag/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Delete }
