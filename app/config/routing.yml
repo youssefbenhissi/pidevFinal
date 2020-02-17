@@ -1,3 +1,7 @@
+cour.:
+    resource: "@Cour_Bundle/Resources/config/routing.yml"
+    prefix:   /cour
+
 
 
 admin:

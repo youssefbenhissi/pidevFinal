@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Cours {% endblock %}
+
+{% block activebar_menu %}
+<li class="nav-item"><a href="#" class="nav-link pl-0">Home</a></li>
+<li class="nav-item"><a href="#" class="nav-link">Clubs</a></li>
+<li class="nav-item active"><a href="#" class="nav-link">Blog</a></li>
+{% endblock %}
+
+
+{% block content %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{  asset('assets/images/bg_2.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <h1 class="mb-2 bread">Nos Cours</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+
+
+                {% for cour in cours %}
+                    <div class="col-md-6 course d-lg-flex ftco-animate fadeInUp ftco-animated">
+                        <div class="img" style="background-image: url({{  asset('assets/images/pdftype.png') }});"></div>
+                        <div class="text bg-light p-4">
+                            <h3>{{ cour.nom }}</h3>
+                            <p class="subheading"><span><a style="font-size: x-large;" target="_blank" href="{{  path('cour_read',{'id':cour.id}) }}">VOIR</a></span> <span style="float: right;font-size: x-large;"><a target="_blank" href="{{  path('cour_Download',{'id':cour.id}) }}">Télécharger</a></span></p>
+                            <p>{{ cour.Description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

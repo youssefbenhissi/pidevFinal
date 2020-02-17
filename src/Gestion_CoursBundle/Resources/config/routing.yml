@@ -2,6 +2,8 @@ gestion.cours_homepage:
     path:     /
     defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:index }
 
+
+
 gestion_cours_Ajout:
     path:     /ajouter
     defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:ajouter }

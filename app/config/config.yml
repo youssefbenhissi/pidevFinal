@@ -7,6 +7,7 @@ imports:
     - { resource: "@BlogBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@Gestion_CoursBundle/Resources/config/services.yml" }
+    - { resource: "@Cour_Bundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
