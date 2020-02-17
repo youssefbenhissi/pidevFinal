@@ -58,23 +58,10 @@ class Gestion_tagsController extends Controller
 
     function DeleteAction($id){
         $em=$this->getDoctrine()->getManager();
-
-        $query = $em->createQuery('SELECT t FROM Gestion_BlogBundle:Article t WHERE  t.tag1=:id OR t.tag2=:id OR t.tag3=:id')
-            ->setParameter('id',$id);
-        $article = $query->getResult();
-        foreach ($article as $arti) {
-            $em->remove($arti);
-            $em->flush();
-        }
-
         $tag=$em->getRepository(tags::class)
             ->find($id);
         $em->remove($tag);
-
         $em->flush();
-
-
-
         return $this->redirectToRoute('Affiche_tags_admin');
 
     }

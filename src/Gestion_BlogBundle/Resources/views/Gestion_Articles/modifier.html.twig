@@ -43,13 +43,10 @@
 
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Modifier l'article : </h4>
                     </div>
-                    {{ form_start(form_edit) }}
+                    {{ form_start(form_edit,{attr: {'novalidate': 'novalidate'}}) }}
                     <div class="d-md-flex">
                         <div class="form-group">
                             {{ form_row(form_edit.titre, {'attr': {'class': 'form-control','required':'true'} }) }}
-                        </div>
-                        <div class="form-group ml-md-4">
-                            {{ form_row(form_edit.description, {'attr': {'class': 'form-control','required':'true'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">
@@ -73,21 +70,11 @@
                     <div class="d-md-flex">
 
                         <div class="form-group ml-md-4">
-                            {{ form_row(form_edit.tag1, {'attr': {'class': 'form-control','required':'true'} }) }}
+                            {{ form_row(form_edit.tags, {'attr': {'class': 'form-control','required':'true'} }) }}
                         </div>
                     </div>
-                    <div class="d-md-flex">
 
-                        <div class="form-group ml-md-4">
-                            {{ form_row(form_edit.tag2, {'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
 
-                        <div class="form-group ml-md-4">
-                            {{ form_row(form_edit.tag3, {'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
                     <div class="d-md-flex">
                         <div class="form-group ml-md-4">
                             {{ form_row(form_edit.Modifier, {'attr': {'class': 'btn btn-secondary costum  py-3 px-4','value':'Modifier'},'style':{'color':'red'} }) }}

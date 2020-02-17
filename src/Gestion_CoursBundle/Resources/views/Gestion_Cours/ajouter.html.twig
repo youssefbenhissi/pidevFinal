@@ -43,7 +43,7 @@
 
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un Cour : </h4>
                     </div>
-                    {{ form_start(ajout_Form) }}
+                    {{ form_start(ajout_Form,{attr: {'novalidate': 'novalidate'}}) }}
                     <div class="d-md-flex">
                         <div class="form-group">
                             {{ form_row(ajout_Form.nom, {'attr': {'class': 'form-control'} }) }}

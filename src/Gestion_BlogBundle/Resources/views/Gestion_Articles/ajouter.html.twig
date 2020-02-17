@@ -43,13 +43,12 @@
 
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un article : </h4>
                     </div>
-                    {{ form_start(ajout_Form) }}
+                    {{ form_start(ajout_Form,{attr: {'novalidate': 'novalidate'}}) }}
                     <div class="d-md-flex">
+
                         <div class="form-group">
                             {{ form_row(ajout_Form.titre, {'attr': {'class': 'form-control'} }) }}
-                        </div>
-                        <div class="form-group ml-md-4">
-                            {{ form_row(ajout_Form.description, {'attr': {'class': 'form-control'} }) }}
+
                         </div>
                     </div>
                     <div class="d-md-flex">
@@ -73,19 +72,7 @@
                     <div class="d-md-flex">
 
                         <div class="form-group ml-md-4">
-                            {{ form_row(ajout_Form.tag1, {'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-
-                        <div class="form-group ml-md-4">
-                            {{ form_row(ajout_Form.tag2, {'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-
-                        <div class="form-group ml-md-4">
-                            {{ form_row(ajout_Form.tag3, {'attr': {'class': 'form-control'} }) }}
+                            {{ form_row(ajout_Form.tags, {'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">

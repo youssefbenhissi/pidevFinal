@@ -28,6 +28,11 @@ class tags
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Article", mappedBy="tags")
+     */
+
+    private $articles;
 
 
     /**
@@ -70,6 +75,24 @@ class tags
     {
        return $this->nom;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param mixed $articles
+     */
+    public function setArticles($articles)
+    {
+        $this->articles = $articles;
+    }
+
+
 
 
 }

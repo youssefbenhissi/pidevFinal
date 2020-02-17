@@ -43,7 +43,7 @@
 
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Modifier Cour : </h4>
                     </div>
-                    {{ form_start(form_edit) }}
+                    {{ form_start(form_edit,{attr: {'novalidate': 'novalidate'}}) }}
                     <div class="d-md-flex">
                         <div class="form-group">
                             {{ form_row(form_edit.nom, {'attr': {'class': 'form-control','required':'true'} }) }}

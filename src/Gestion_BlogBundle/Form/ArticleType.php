@@ -5,6 +5,7 @@ namespace Gestion_BlogBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -17,9 +18,6 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titre')
-            ->add('description',TextareaType::class, [
-                'attr' => ['rows' => '6'],'attr' =>[ 'cols' => '50']
-            ])
             ->add('image',FileType::class,[
                 'label' => "Miniature d'article",
                 'data_class' => null,
@@ -36,11 +34,11 @@ class ArticleType extends AbstractType
 
                 ],
             ])
-            ->add('contenu')
+            ->add('contenu',TextareaType::class, [
+                'attr' => ['rows' => '6'],'attr' =>[ 'cols' => '50'],'attr' =>[ 'style' => 'max-width: 555px;']
+            ])
             ->add('categorie')
-            ->add('tag1')
-            ->add('tag2')
-            ->add('tag3');
+            ->add('tags');
     }/**
      * {@inheritdoc}
      */

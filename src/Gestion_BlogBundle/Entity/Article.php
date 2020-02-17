@@ -26,6 +26,14 @@ class Article
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * @Assert\NotBlank(message="Titre ne doit pas être vide")
+     * @Assert\Length(
+     *     min="12",
+     *     max="26",
+     *    minMessage="Il faut au min 12 carractères",
+     *    maxMessage="Max 26 carractères"
+     * )
+     *
      */
     private $titre;
 
@@ -33,6 +41,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     * @Assert\NotBlank(message="Description ne doit pas être vide")
      */
     private $description;
 
@@ -56,32 +65,37 @@ class Article
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotBlank(message="Contenu ne doit pas être vide")
+     * @Assert\Length(
+     *     min="300",
+     *     max="5000",
+     *     minMessage="Il faut au min 300 carractères"
+     * )
+     *
      */
     private $contenu;
 
     /**
      * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     * @Assert\NotBlank(message="Catégorie ne doit pas être vide")
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag1_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\ManyToMany(targetEntity="tags", inversedBy="articles", cascade={"persist"})
+     * @ORM\JoinTable(
+     *     name="cattag",
+     *     joinColumns={
+     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *     }
+     * )
+     * @Assert\NotBlank(message="TAG ne doit pas être vide")
      */
-    private $tag1;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag2_id", referencedColumnName="id",onDelete="CASCADE")
-     */
-    private $tag2;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="tags")
-     * @ORM\JoinColumn(name="tag3_id", referencedColumnName="id",onDelete="CASCADE")
-     */
-    private $tag3;
+    private $tags;
 
     /**
      * Get id
@@ -236,50 +250,21 @@ class Article
     /**
      * @return mixed
      */
-    public function getTag1()
+    public function getTags()
     {
-        return $this->tag1;
+        return $this->tags;
     }
 
     /**
-     * @param mixed $tag1
+     * @param mixed $tags
      */
-    public function setTag1($tag1)
+    public function setTags($tags)
     {
-        $this->tag1 = $tag1;
+        $this->tags = $tags;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTag2()
-    {
-        return $this->tag2;
-    }
 
-    /**
-     * @param mixed $tag2
-     */
-    public function setTag2($tag2)
-    {
-        $this->tag2 = $tag2;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getTag3()
-    {
-        return $this->tag3;
-    }
-
-    /**
-     * @param mixed $tag3
-     */
-    public function setTag3($tag3)
-    {
-        $this->tag3 = $tag3;
-    }
 
 
 }
