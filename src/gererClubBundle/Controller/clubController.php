@@ -37,7 +37,9 @@ class clubController extends Controller
         $inscription->setQuestionDe($question2);
         $inscription->setQuestionTr($question3);
         $form=$this->createForm(inscriptionType::class,$inscription);
-        $eleve=$this->getDoctrine()->getRepository(\gererClubBundle\Entity\eleve::class)->find("31");
+        $user=$this->container->get('security.token_storage')->getToken()->getUser();
+        $id=$user->getId();
+        $eleve=$this->getDoctrine()->getRepository(eleve::class)->find($id);
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
@@ -48,5 +50,13 @@ class clubController extends Controller
             return $this->redirectToRoute("club");
         }
         return $this->render('@gererClub/club/inscription.html.twig',array("form"=>$form->createView(),"club"=>$club,"inscription"=>$inscription));
+    }
+    public function sendNotificationAction(Request $request)
+    {
+        $manager = $this->get('mgilet.notification');
+        $notif = $manager->createNotification('Hello world !');
+        $notif->setMessage('This a notification.');
+        $notif->setLink('http://symfony.com/');
+        return $this->redirectToRoute('afficher_ctegorie');
     }
 }

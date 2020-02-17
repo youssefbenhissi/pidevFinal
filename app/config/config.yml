@@ -5,6 +5,7 @@ imports:
     - { resource: "@gererClubBundle/Resources/config/services.yml" }
     - { resource: "@adminBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@MgiletNotificationBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -57,7 +58,19 @@ framework:
     assets: ~
     php_errors:
         log: true
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:
+            no-outline: true
+            page-size: LETTER
+            encoding: UTF-8
 
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'

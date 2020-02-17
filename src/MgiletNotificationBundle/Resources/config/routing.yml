@@ -1,0 +1,6 @@
+notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    type: annotation
+send_notification:
+    path:     /sendNotification
+    defaults: { _controller: MgiletNotificationBundle:Controller:sendNotification }

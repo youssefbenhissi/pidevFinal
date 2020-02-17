@@ -3,12 +3,14 @@
 namespace gererClubBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 /**
  * inscription
  *
  * @ORM\Table(name="inscription")
  * @ORM\Entity(repositoryClass="gererClubBundle\Repository\inscriptionRepository")
+ * @Notifiable(name="inscription")
  */
 class inscription
 {

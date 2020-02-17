@@ -1,0 +1,35 @@
+<table class="table table-striped table-advance table-hover">
+    <h4><i class="fa fa-angle-right"></i>Table des inscriptions</h4>
+    <hr>
+    <thead>
+    <tr>
+        <th class="hidden-phone">Nom de l'eleve</th>
+        <th class="hidden-phone">Prenom de l'eleve</th>
+        <th class="hidden-phone">Nom du club</th>
+        <th class="hidden-phone">question 1</th>
+        <th class="hidden-phone">reponse 1</th>
+        <th class="hidden-phone">question 2</th>
+        <th class="hidden-phone">reponse 2</th>
+        <th class="hidden-phone">question 3</th>
+        <th class="hidden-phone">reponse 3</th>
+        <th><i class=" fa fa-edit"></i> Status</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for inscription in listeInscription %}
+        <tr>
+            <td class="hidden-phone">{{ inscription.eleve.nom }}</td>
+            <td class="hidden-phone">{{ inscription.eleve.prenom }}</td>
+            <td class="hidden-phone">{{ inscription.Club.nom }}</td>
+            <td class="hidden-phone">{{ inscription.questionPr }}</td>
+            <td class="hidden-phone">{{ inscription.reponsePr }}</td>
+            <td class="hidden-phone">{{ inscription.questionDe }}</td>
+            <td class="hidden-phone">{{ inscription.reponseDe }}</td>
+            <td class="hidden-phone">{{ inscription.questionTr }}</td>
+            <td class="hidden-phone">{{ inscription.reponseTr }}</td>
+            <td><span class="label label-info label-mini">{{ inscription.status }}</span></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

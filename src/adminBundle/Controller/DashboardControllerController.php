@@ -14,6 +14,7 @@ use gererClubBundle\Form\inscriptionType;
 use Proxies\__CG__\gererClubBundle\Entity\categorieClub;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DashboardControllerController extends Controller
 {
@@ -59,13 +60,13 @@ class DashboardControllerController extends Controller
         if($form->isSubmitted())
         {
             $verif=$form->get('image')->getData();
-if($verif == null){
-
-    $categorie->setImage($nom_initial);
-    $this->getDoctrine()->getManager()->persist($categorie);
-    $this->getDoctrine()->getManager()->flush();
-    return $this->redirectToRoute('afficher_ctegorie');
-}
+                if($verif == null)
+                {
+                    $categorie->setImage($nom_initial);
+                    $this->getDoctrine()->getManager()->persist($categorie);
+                    $this->getDoctrine()->getManager()->flush();
+                    return $this->redirectToRoute('afficher_ctegorie');
+                }
             $image = $categorie->getImage();
             $name_image=uniqid().'.'.$image->guessExtension();
             $image->move($this->getParameter('image_directory'), $name_image);
@@ -134,24 +135,18 @@ if($verif == null){
     }
     public function testerEmailAction(Request $request)
     {
-        $mail=new Mail();
-        $form=$this->createForm(MailType::class,$mail);
-        $form->handleRequest($request);
-        if($form->isSubmitted())
-        {
-            $subject=$mail->getSubject();
-            $mail=$mail->getMail();
-            $obejct=$request->get('form')['objet'];
-            $username='youssef.benhissi@esprit.tn';
-            $message=\Swift_Message::newInstance()
-                ->setSubject($subject)
-                ->setFrom($username)
-                ->setTo($mail)
-                ->setBody("3assba lik yal mus");
-            $this->get('mailer')->send($message);
-            $this->get('session')->getFlashBag()->add('notice','Message Envoye avec succes');
-        }
-        return $this->render('@admin/DashboardController/test.html.twig',array('f'=>$form->createView()));
+        $listeAbonne=$this->getDoctrine()->getRepository(inscription::class)->findAll();
+        $snappy=$this->get('knp_snappy.pdf');
+        $file_name="les inscription";
+        $web="http://127.0.0.1:8000/afficherAbonne";
+        return new Response(
+            $snappy->getOutputFromHtml($this->renderView('@admin/DashboardController/afficherInscriptionPdf.html.twig',array("listeInscription"=>$listeAbonne))),
+            200,
+            array(
+                'Content-Type'=>'application/pdf',
+                'Content-Disposition'=>'attachement; filename="'.$file_name.'.pdf'
+            )
+        );
     }
     public function galerieAction(Request $request)
     {
@@ -165,4 +160,5 @@ if($verif == null){
         }
         return $this->render('@admin/DashboardController/gelerie.html.twig', array("form"=>$form->createView()));
     }
+
 }
