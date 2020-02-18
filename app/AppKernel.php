@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Gestion_CoursBundle\Gestion_CoursBundle(),
             new Nzo\FileDownloaderBundle\NzoFileDownloaderBundle(),
             new Cour_Bundle\Cour_Bundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -2,6 +2,7 @@
 
 namespace Gestion_BlogBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,9 +35,13 @@ class ArticleType extends AbstractType
 
                 ],
             ])
-            ->add('contenu',TextareaType::class, [
-                'attr' => ['rows' => '6'],'attr' =>[ 'cols' => '50'],'attr' =>[ 'style' => 'max-width: 555px;']
-            ])
+            ->add('contenu',CKEditorType::class, array (
+                'label'             => 'Contenu',
+                'config_name'       => 'my_custom_config',
+                'config' => array(
+                    'language'    => 'fr'
+                ),
+            ))
             ->add('categorie')
             ->add('tags');
     }/**

@@ -29,7 +29,7 @@ class Article
      * @Assert\NotBlank(message="Titre ne doit pas être vide")
      * @Assert\Length(
      *     min="12",
-     *     max="26",
+     *     max="65",
      *    minMessage="Il faut au min 12 carractères",
      *    maxMessage="Max 26 carractères"
      * )
@@ -41,7 +41,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
-     * @Assert\NotBlank(message="Description ne doit pas être vide")
      */
     private $description;
 

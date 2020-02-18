@@ -26,6 +26,10 @@ class Gestion_ArticlesController extends Controller
 
                 $article->setImage('none');
                 $article->setDate(new \DateTime('now'));
+                $description1 = strip_tags($article->getContenu());
+                $description_final = substr($description1,0,190);
+                $article->setDescription($description_final);
+
                 $em->persist($article);
                 $em->flush();
                 return $this->redirectToRoute('gestion_blog_homepage_Admin');
@@ -37,6 +41,9 @@ class Gestion_ArticlesController extends Controller
 
             $article->setImage($nom_image);
             $article->setDate(new \DateTime('now'));
+            $description1 = strip_tags($article->getContenu());
+            $description_final = substr($description1,0,190);
+            $article->setDescription($description_final);
             $em->persist($article);
             $em->flush();
             return $this->redirectToRoute('gestion_blog_homepage_Admin');

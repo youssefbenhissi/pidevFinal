@@ -3,9 +3,10 @@
 {% block title %}BLOG DE l'ecole x{% endblock %}
 
 {% block activebar_menu %}
-<li class="nav-item"><a href="#" class="nav-link pl-0">Home</a></li>
-<li class="nav-item"><a href="#" class="nav-link">Clubs</a></li>
-<li class="nav-item active"><a href="#" class="nav-link">Blog</a></li>
+    <li class="nav-item"><a href="#" class="nav-link pl-0">Home</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Clubs</a></li>
+    <li class="nav-item active"><a href="{{path('Blog_Homepage_User')}}" class="nav-link">Blog</a></li>
+    <li class="nav-item"><a href="{{path('cour._homepage')}}" class="nav-link">Cours</a></li>
 {% endblock %}
 
 
@@ -44,7 +45,7 @@
                         </a>
                         <div class="text bg-white p-4">
                             <h3 class="heading"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}">{{ articles.titre }}</a></h3>
-                            <p>{{ articles.description }}</p>
+                            <p>{{ articles.description|raw }}</p>
                             <div class="d-flex align-items-center mt-4">
                                 <p class="mb-0"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" class="btn btn-secondary">Lire la suite<span class="ion-ios-arrow-round-forward"></span></a></p>
 
