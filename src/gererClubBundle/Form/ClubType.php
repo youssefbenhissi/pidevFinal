@@ -6,6 +6,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -19,7 +20,6 @@ class ClubType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description')
             ->add('capacite')
             ->add('questionPr')
             ->add('questionDe')
@@ -37,6 +37,7 @@ class ClubType extends AbstractType
                 ],
                 ])
             ->add('categorie',EntityType::class,array('class'=>'gererClubBundle:categorieClub','choice_label'=>'nomCategorie','multiple'=>false))
+            ->add('description',TextareaType::class,['attr'=>['maxlength'=>255]])
             ->add('Valider',SubmitType::class);
     }/**
      * {@inheritdoc}

@@ -946,16 +946,13 @@
             <div class="col-lg-12 d-block">
                 <div class="row d-flex">
                     <div class="col-md-5 pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                        <span class="text">Ariana City</span>
+
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                        <span class="text">youremail@email.com</span>
+
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                        <span class="text">+ 1235 2355 98</span>
+
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-user"></span></div>
@@ -964,7 +961,7 @@
                                 {{  app.user.username }}
                             </a>
                             <a href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                             </a>
                         {% else %}
                             <a href="{{ path('fos_user_security_login') }}">

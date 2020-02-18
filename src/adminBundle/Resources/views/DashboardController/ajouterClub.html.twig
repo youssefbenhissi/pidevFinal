@@ -13,14 +13,12 @@
                                     <label for="cname" class="control-label col-lg-2">Nom du club (required)</label>
                                     <div class="col-lg-10">
                                         {{ form_row(form.nom, {'attr': {'class': 'form-control'} }) }}
+                                        <div id="nom_err">
+                                            {{ form_errors(form.nom) }}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="cemail" class="control-label col-lg-2">Description (required)</label>
-                                    <div class="col-lg-10">
-                                        {{ form_row(form.description, {'attr': {'class': 'form-control'} }) }}
-                                    </div>
-                                </div>
+
                                 <div class="form-group ">
                                     <label for="curl" class="control-label col-lg-2">capacite du club</label>
                                     <div class="col-lg-10">
@@ -29,10 +27,7 @@
                                             {{ form_errors(form.capacite) }}
                                         </div>
                                     </div>
-
                                 </div>
-
-
                             <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">categorie du club (required)</label>
                                 <div class="col-lg-10">
@@ -52,6 +47,9 @@
                                 <label for="ccomment" class="control-label col-lg-2">deuxieme question pour le formulaire</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.questionDe, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
+                                    <div id="questionDeuxieme_err">
+                                        {{ form_errors(form.questionDe) }}
+                                    </div>
                                 </div>
                             </div>
 
@@ -59,12 +57,24 @@
                                 <label for="ccomment" class="control-label col-lg-2">deuxieme question pour le formulaire</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.questionTr, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
+                                    <div id="questionTroisieme_err">
+                                        {{ form_errors(form.questionDe) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="ccomment" class="control-label col-lg-2">image du club (required)</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.image, {'attr': {'class': 'form-control'} }) }}
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="cemail" class="control-label col-lg-2">Description (required)</label>
+                                <div class="col-lg-10">
+                                    {{ form_row(form.description, {'attr': {'class': 'form-control'} }) }}
+                                    <div id="description_err">
+                                        {{ form_errors(form.questionPr) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -102,6 +112,36 @@
                     $('#capacite_err').hide();
                 }
             });
+            $('#gererclubbundle_club_nom').on('keyup', function () {
+                var content = $('#gererclubbundle_club_nom').val();
+                var numericReg = /^[+]?[A-Z]+([a-z]+)?$/;
+                if (!numericReg.test(content) && content !== "") {
+                    $('#nom_err').show();
+                    $('#nom_err').text("Veuillez choisir un nom qui commence avec une lettre en majuscule et ne contient que des lettres").css({
+                        "font-size": "0.9em",
+                        "color": "#d85364"
+                    });
+                }
+                else {
+                    $('#nom_err').hide();
+                }
+            });
+            $('#gererclubbundle_club_description').on('keyup', function () {
+                var i = $('#gererclubbundle_club_description').val().length;
+                if ($('#gererclubbundle_club_description').val() !== "") {
+                    $('#description_err').show();
+                    var j = 255 - i;
+                    var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                    $('#description_err').text(msg).css({
+                        "font-size": "0.9em",
+                        "color": "#3851F7"
+                    });
+                }
+                else {
+                    $('#description_err').hide();
+                }
+            });
+
             $('#gererclubbundle_club_questionPr').on('keyup', function () {
                 var i = $('#gererclubbundle_club_questionPr').val().length;
                 if ($('#gererclubbundle_club_questionPr').val() !== "") {
@@ -115,6 +155,37 @@
                 }
                 else {
                     $('#questionPremiere_err').hide();
+                }
+            });
+
+            $('#gererclubbundle_club_questionDe').on('keyup', function () {
+                var i = $('#gererclubbundle_club_questionDe').val().length;
+                if ($('#gererclubbundle_club_questionDe').val() !== "") {
+                    $('#questionDeuxieme_err').show();
+                    var j = 255 - i;
+                    var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                    $('#questionDeuxieme_err').text(msg).css({
+                        "font-size": "0.9em",
+                        "color": "#3851F7"
+                    });
+                }
+                else {
+                    $('#questionDeuxieme_err').hide();
+                }
+            });
+            $('#gererclubbundle_club_questionTr').on('keyup', function () {
+                var i = $('#gererclubbundle_club_questionTr').val().length;
+                if ($('#gererclubbundle_club_questionTr').val() !== "") {
+                    $('#questionTroisieme_err').show();
+                    var j = 255 - i;
+                    var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                    $('#questionTroisieme_err').text(msg).css({
+                        "font-size": "0.9em",
+                        "color": "#3851F7"
+                    });
+                }
+                else {
+                    $('#questionTroisieme_err').hide();
                 }
             });
         });

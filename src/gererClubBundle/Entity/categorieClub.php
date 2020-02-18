@@ -3,7 +3,7 @@
 namespace gererClubBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * categorieClub
  *
@@ -23,7 +23,12 @@ class categorieClub
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "le nom  de la categorie doit etre suprieure a {{ limit }} charcateres",
+     *      maxMessage = "le nom  de la categorie doit etre inferieur a {{ limit }} charcateres"
+     * )
      * @ORM\Column(name="nomCategorie", type="string", length=255)
      */
     private $nomCategorie;

@@ -13,6 +13,9 @@
                                 <label for="cname" class="control-label col-lg-2">Nom du club (required)</label>
                                 <div class="col-lg-10">
                                     {{ form_row(form.nomCategorie, {'attr': {'class': 'form-control'} }) }}
+                                    <div id="nom_err">
+                                        {{ form_errors(form.nomCategorie) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -33,4 +36,23 @@
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#gererclubbundle_categorieclub_nomCategorie').on('keyup', function () {
+                var content = $('#gererclubbundle_categorieclub_nomCategorie').val();
+                var numericReg = /^[+]?[A-Z]+([a-z]+)?$/;
+                if (!numericReg.test(content) && content !== "") {
+                    $('#nom_err').show();
+                    $('#nom_err').text("Veuillez choisir un nom que sa longuer est suprieur a 2 et inferieur a 50").css({
+                        "font-size": "0.9em",
+                        "color": "#d85364"
+                    });
+                }
+                else {
+                    $('#nom_err').hide();
+                }
+            });
+        });
+    </script>
 {% endblock %}

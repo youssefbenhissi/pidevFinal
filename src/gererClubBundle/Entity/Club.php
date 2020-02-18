@@ -50,10 +50,12 @@ class Club
     {
         $this->categorie = $categorie;
     }
-
     /**
      * @var int
-     *
+     ** @Assert\GreaterThanOrEqual(
+     *     value = "1",
+     *     message = "Veuillez choisir un entier valide."
+     * )
      * @ORM\Column(name="capacite", type="integer")
      */
     private $capacite;
@@ -216,6 +218,7 @@ class Club
     {
         return $this->description;
     }
+
 
     /**
      * Set capacite

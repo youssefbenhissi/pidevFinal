@@ -108,7 +108,7 @@ class DashboardControllerController extends Controller
         $club=new Club();
         $form=$this->createForm(ClubType::class,$club);
         $form->handleRequest($request);
-        if($form->isSubmitted())
+        if($form->isSubmitted() && $form->isValid())
         {
             $image = $club->getImage();
             $image_data=$form->get('image')->getData();
@@ -132,7 +132,7 @@ class DashboardControllerController extends Controller
         $categorie=new \gererClubBundle\Entity\categorieClub();
         $form=$this->createForm(categorieClubType::class,$categorie);
         $form->handleRequest($request);
-        if($form->isSubmitted())
+        if($form->isSubmitted()&&$form->isValid())
         {
             $this->getDoctrine()->getManager()->persist($categorie);
             $this->getDoctrine()->getManager()->flush();

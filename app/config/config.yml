@@ -98,11 +98,13 @@ liip_imagine :
                 # to crop the image when the size ratio of the input differs
                 thumbnail: { size: [300, 300], mode: outbound }
 vich_uploader:
-    db_driver: orm # or mongodb or phpcr
+    db_driver: orm
+
     mappings:
-        product_image:
-            uri_prefix: /assets/club
-            upload_destination: '%kernel.project_dir%/public/assets/club'
+        event_affiche:
+            uri_prefix: /web/assets/images
+            upload_destination: '%kernel.project_dir%/web/assets/images'
+
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
