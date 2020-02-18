@@ -29,7 +29,7 @@ class galerie
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="event_affiche", fileNameProperty="imageName")
      *
      * @var File|null
      */

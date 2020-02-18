@@ -32,7 +32,7 @@ class ClubType extends AbstractType
                             'image/jpeg',
                             'image/jpg',
                         ],
-                        'mimeTypesMessage' => 'SVP .JPG ou .JPEG ou PNG',
+                        'mimeTypesMessage' => 'SVP .JPG ou .JPEG',
                     ]),
                 ],
                 ])

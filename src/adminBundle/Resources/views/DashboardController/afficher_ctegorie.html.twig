@@ -31,6 +31,17 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <div class="row mt" style=" display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center; align-items: center;">
+                <div class="col-sm-3">
+                    <section class="panel">
+                        <div class="panel-body" >
+                            <a href="{{ path('ajouterCategorie') }}" class="btn btn-compose">
+                                <i class="fa fa-pencil"></i> Ajouter une categorie
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
             <table class="table table-striped table-advance table-hover">
                 <h4><i class="fa fa-angle-right"></i> Table des clubs</h4>
                 <hr>
@@ -64,7 +75,19 @@
                 {% endfor %}
                 </tbody>
             </table>
+
+        <div class="row mt" style=" display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center; align-items: center;">
+            <div class="col-sm-3">
+                <section class="panel">
+                    <div class="panel-body">
+                        <a href="{{ path('ajouterClub') }}" class="btn btn-compose" >
+                            <i class="fa fa-pencil"></i> Ajouter un club
+                        </a>
+                    </div>
+                </section>
+            </div>
         </div>
+
         <!-- /content-panel -->
     </div>
     <!-- /col-md-12 -->

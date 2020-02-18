@@ -91,6 +91,7 @@ class DashboardControllerController extends Controller
     }
     public function modifierInscriptionAction($id)
     {
+        $inscription=$this->getDoctrine()->getRepository(inscription::class)->find($id);
         $message=\Swift_Message::newInstance()
                 ->setSubject("Acceptation de votre inscription")
                 ->setFrom('youssef.benhissi@esprit.tn')
