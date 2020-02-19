@@ -37,9 +37,10 @@ class ArticleType extends AbstractType
             ])
             ->add('contenu',CKEditorType::class, array (
                 'label'             => 'Contenu',
-                'config_name'       => 'my_custom_config',
+                'config_name'       => 'my_custom_alaa',
                 'config' => array(
-                    'language'    => 'fr'
+                    'language'    => 'fr',
+                    'skin'        => 'office2013',
                 ),
             ))
             ->add('categorie')

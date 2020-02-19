@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset ('assetsDashio/css/style.css ') }}" >
     <link rel="stylesheet" href="{{ asset ('assetsDashio/css/style-responsive.css ') }}" >
     <script src="{{ asset ('assetsDashio/lib/chart-master/Chart.js ') }}"></script>
+	{% block adminscript %}{% endblock %}
 </head>
 
 <body>
@@ -36,7 +37,8 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="#" class="logo"><b><span>My</span>School - école X</b></a>
+        <a href="#" class="logo"><b><span>My</span>School - école X</b> </a>
+
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
@@ -228,6 +230,12 @@
             <!--  notification end -->
         </div>
         <div class="top-menu">
+            <span style="
+    float: right;
+    margin-top: 18px;
+    color: white;
+">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}     {% endif %}</span>
             <ul class="nav pull-right top-menu">
                 <li><a class="logout" href="{{ path('fos_user_security_logout') }} ">Logout</a></li>
             </ul>
@@ -245,7 +253,7 @@
 </section>
 <!-- js placed at the end of the document so the pages load faster -->
 <link rel="stylesheet" href="{{ asset ('assetsDashio/lib/bootstrap/css/bootstrap.min.css ') }}" >
-<script src="{{ asset ('assetsDashio/lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset ('assetsDashio/lib/jquery/jquery.js') }}"></script>
 
 <script src="{{ asset('assetsDashio/lib/bootstrap/js/bootstrap.min.js') }}"></script>
 <script class="include" type="text/javascript" src="{{ asset ('assetsDashio/lib/jquery.dcjqaccordion.2.7.js') }}"></script>

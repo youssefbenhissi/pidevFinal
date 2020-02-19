@@ -29,9 +29,9 @@ class Categorie
      * @Assert\NotBlank(message="Nom ne doit pas être vide")
      * @Assert\Length(
      *     min="4",
-     *     max="13",
+     *     max="20",
      *    minMessage="Il faut au min 4 carractères",
-     *    maxMessage="Max 13 carractères"
+     *    maxMessage="Max 20 carractères"
      * )
      *
      */
@@ -41,6 +41,14 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     *  @Assert\NotBlank(message="Description ne doit pas être vide")
+     * @Assert\Length(
+     *     min="20",
+     *     max="30",
+     *    minMessage="Il faut au min 20 carractères",
+     *    maxMessage="Max 30 carractères"
+     * )
+     *
      */
     private $description;
 

@@ -31,7 +31,7 @@ class Article
      *     min="12",
      *     max="65",
      *    minMessage="Il faut au min 12 carractères",
-     *    maxMessage="Max 26 carractères"
+     *    maxMessage="Max 65 carractères"
      * )
      *
      */
@@ -67,7 +67,7 @@ class Article
      * @Assert\NotBlank(message="Contenu ne doit pas être vide")
      * @Assert\Length(
      *     min="300",
-     *     max="5000",
+     *     max="90000",
      *     minMessage="Il faut au min 300 carractères"
      * )
      *

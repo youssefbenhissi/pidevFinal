@@ -3,6 +3,7 @@
 namespace Gestion_BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * tags
@@ -25,6 +26,13 @@ class tags
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     *  @Assert\NotBlank(message="Nom ne doit pas être vide")
+     * @Assert\Length(
+     *     min="3",
+     *     max="10",
+     *    minMessage="Il faut au min 3 carractères",
+     *    maxMessage="Max 10 carractères"
+     * )
      */
     private $nom;
 

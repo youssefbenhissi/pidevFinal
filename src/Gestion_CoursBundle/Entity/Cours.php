@@ -26,6 +26,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     *  @Assert\NotBlank(message="Nom ne doit pas être vide")
+     * @Assert\Length(
+     *     min="4",
+     *     max="20",
+     *    minMessage="Il faut au min 4 carractères",
+     *    maxMessage="Max 20 carractères"
+     * )
      */
     private $nom;
 
@@ -41,6 +48,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="Description", type="string", length=255)
+     *  @Assert\NotBlank(message="Nom ne doit pas être vide")
+     * @Assert\Length(
+     *     min="70",
+     *     max="250",
+     *    minMessage="Il faut au min 70 carractères",
+     *    maxMessage="Max 250 carractères"
+     * )
      */
     private $Description;
 

@@ -1,5 +1,94 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Gestion de Blog - Modifier une catégorie{% endblock %}
+
+{% block adminscript %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("[for='gestion_blogbundle_categorie_nom']").append('<span style="color:red;" id="alert"></span>');
+            $("[for='gestion_blogbundle_categorie_description']").append('<span style="color:red;" id="alert2"></span>');
+            $('#gestion_blogbundle_categorie_nom').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert').show();
+                    $('#alert').html('<span style="color:red;" id="alert"> (Nom ne doit pas être vide) </span>');
+                    $('#gestion_blogbundle_categorie_nom').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_blogbundle_categorie_nom" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert').hide();
+                    $('#gestion_blogbundle_categorie_nom').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+
+
+
+
+                if($('#gestion_blogbundle_categorie_nom').val().replace(/ /g,'').length < 4){
+                    $('#alert').show();
+                    $('#alert').html('<span style="color:red;" id="alert"> (Il faut au min 4 carractères) </span>');
+                    $('#gestion_blogbundle_categorie_nom').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                }
+
+
+
+
+
+
+            });
+
+
+
+
+            $('#gestion_blogbundle_categorie_description').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert2').show();
+                    $('#alert2').html('<span style="color:red;" id="alert2"> (Description ne doit pas être vide) </span>');
+                    $('#gestion_blogbundle_categorie_description').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_blogbundle_categorie_description" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert2').hide();
+                    $('#gestion_blogbundle_categorie_description').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+                if($('#gestion_blogbundle_categorie_description').val().replace(/ /g,'').length < 20){
+                    $('#alert2').show();
+                    $('#alert2').html('<span style="color:red;" id="alert2"> (Il faut au min 20 carractères) </span>');
+                    $('#gestion_blogbundle_categorie_description').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                }
+
+            });
+
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}
+
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
