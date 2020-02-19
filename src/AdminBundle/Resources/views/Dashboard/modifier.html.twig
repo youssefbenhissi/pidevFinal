@@ -12,6 +12,9 @@
                     {{   form_start(form) }}
                     <div class="form-group">
                         {{ form_row(form.nomCategorieEvenement, {'attr': {'class': 'form-control'} }) }}
+                        <div id="nome_err">
+                            {{ form_errors(form.nomCategorieEvenement) }}
+                        </div>
                         <div class="validate"></div>
                     </div>
                     <div class="form-group">
@@ -20,6 +23,9 @@
                     </div>
                     <div class="form-group">
                         {{ form_row(form.description, {'attr': {'class': 'form-control'} }) }}
+                        <div id="Description_err">
+                            {{ form_errors(form.description) }}
+                        </div>
                         <div class="validate"></div>
                     </div>
                     <div class="form-send">
@@ -30,4 +36,41 @@
             </div>
         </section>
     </section>
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+
+        $('#evenementbundle_categorieevenement_nomCategorieEvenement').on('keyup', function () {
+            var content = $('#evenementbundle_categorieevenement_nomCategorieEvenement').val();
+            var numericReg = /^[+]?[A-Z ]+([a-z ]+)?$/;
+            if (!numericReg.test(content) && content !== "") {
+                $('#nome_err').show();
+                $('#nome_err').text("Veuillez choisir un nom qui commence avec une lettre majuscule et ne contient que des lettres").css({
+                    "font-size": "0.9em",
+                    "color": "#d85364"
+                });
+            }
+            else {
+                $('#nome_err').hide();
+            }
+        });
+
+
+        $('#evenementbundle_categorieevenement_description').on('keyup', function () {
+            var i = $('#evenementbundle_categorieevenement_description').val().length;
+            if ($('#evenementbundle_categorieevenement_description').val() !== "") {
+                $('#Description_err').show();
+                var j = 255 - i;
+                var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                $('#Description_err').text(msg).css({
+                    "font-size": "0.9em",
+                    "color": "#3851F7"
+                });
+            }
+            else {
+                $('#Description_err').hide();
+            }
+        });
+
+
+    </script>
 {% endblock %}

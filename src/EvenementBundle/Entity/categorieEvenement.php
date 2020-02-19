@@ -23,20 +23,21 @@ class categorieEvenement
     private $id;
 
     /**
-     * @Assert\Regex(
-     *     pattern="/\W/",
-     *     message="Your name cannot contain a number"
-     * )
      * @var string
      *
      * @ORM\Column(name="nomCategorieEvenement", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zA-Z ]+$/",
+     *     match=true,
+     *     message="Veuillez un choisir un nom valide."
+     * )
      */
     private $nomCategorieEvenement;
 
     /**
      *
      * @var string
-     *
+     * @Assert\File(maxSize="1024k",mimeTypes={"image/jpeg","image/jpg"})
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;

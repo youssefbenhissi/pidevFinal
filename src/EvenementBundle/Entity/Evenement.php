@@ -23,19 +23,25 @@ class Evenement
     private $id;
 
     /**
-     * @Assert\Regex(
-     *     pattern="/\W/",
-     *     message="Your name cannot contain a number"
-     * )
+     *
      * @var string
      *
      * @ORM\Column(name="nomE", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zA-Z ]+$/",
+     *     match=true,
+     *     message="Veuillez un choisir un nom valide."
+     * )
      */
     private $nomE;
 
     /**
      * @var int
      * @ORM\Column(name="capaciteE", type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *     value = "0",
+     *     message = "Veuillez choisir une capacite valide "
+     * )
      */
     private $capaciteE;
 
@@ -48,6 +54,7 @@ class Evenement
 
     /**
      * @var string
+     * @Assert\File(maxSize="1024k",mimeTypes={"image/jpeg","image/jpg"})
      *
      * @ORM\Column(name="imgE", type="string", length=255)
      */
@@ -55,14 +62,22 @@ class Evenement
 
     /**
      * @var int
+     * @Assert\GreaterThanOrEqual(
+     *     value = "0",
+     *     message = "Veuillez choisir un prix valide."
+     * )
      * @ORM\Column(name="prixE", type="integer")
      */
     private $prixE;
 
     /**
      * @var \DateTime
+     * @Assert\GreaterThanOrEqual(
+     *     value = "now",
+     *     message = "Veuillez choisir une date valide."
+     * )
      *
-     * @ORM\Column(name="dateD", type="date")
+     * @ORM\Column(name="dateD", type="datetime")
      */
     private $dateD;
 

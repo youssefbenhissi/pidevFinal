@@ -1,29 +1,29 @@
 admin_homepage:
-    path:     /admin
+    path:     /
     defaults: { _controller: AdminBundle:Default:index }
 
 afficherCat:
-    path:     /afficherCat
+    path:     /admin/afficherCat
     defaults: { _controller: AdminBundle:Dashboard:afficher }
 
 
 supprimerCategorie:
-    path:     /supprimerCategorie/{id}
+    path:     /admin/supprimerCategorie/{id}
     defaults: { _controller: AdminBundle:Dashboard:supprimerCategorie }
 
 supprimerEvenement:
-    path:     /supprimerEvenement/{id}
+    path:     /admin/supprimerEvenement/{id}
     defaults: { _controller: AdminBundle:Dashboard:supprimerEvenement }
 
 modifiercategorie:
-    path:     /modifiercategorie/{id}
+    path:     admin//modifiercategorie/{id}
     defaults: { _controller: AdminBundle:Dashboard:modifiercategorie }
 modifierEvenement:
-    path:     /modifierEvenement/{id}
+    path:     /admin/modifierEvenement/{id}
     defaults: { _controller: AdminBundle:Dashboard:modifierEvenement }
 ajouterEvenement:
-    path:     /ajouterEvenement
+    path:     /admin/ajouterEvenement
     defaults: { _controller: AdminBundle:Dashboard:ajouterEvenement }
 ajouterCategorie:
-    path:     /ajouterCategorie
+    path:     /admin/ajouterCategorie
     defaults: { _controller: AdminBundle:Dashboard:ajouterCategorie }

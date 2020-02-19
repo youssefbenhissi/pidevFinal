@@ -86,6 +86,29 @@ class Reservation
         $this->Evenement = $Evenement;
     }
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"remove"})
+     * @ORM\JoinColumn(name="eleve_id",referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
 
 
 }

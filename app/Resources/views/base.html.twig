@@ -42,8 +42,13 @@
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center"><span class="icon-user"></span></div>
-                        <a href="login"><span class="text">login</span></a>
+                        {% if app.user %}
+                            <a href="{{ path('fos_user_security_logout') }}"><span class="text">logout</span></a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}"><span class="text">login</span></a>
+                        {% endif %}
                     </div>
+
                 </div>
             </div>
         </div>

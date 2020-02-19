@@ -18,7 +18,7 @@ class EvenementController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            2
+            3
         );
         $Categorie=$this->getDoctrine()->getRepository(categorieEvenement::class)->find($id);
         return $this->render('@Evenement/Evenement/afficher.html.twig',array('c'=>$pagination,"categorie"=>$Categorie));
@@ -106,5 +106,6 @@ class EvenementController extends Controller
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('affichercategorie');
     }
+
 
 }

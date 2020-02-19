@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use EvenementBundle\Entity\categorieEvenement;
 use EvenementBundle\Entity\Evenement;
+use EvenementBundle\Entity\Reservation;
 use EvenementBundle\Form\categorieEvenementType;
 use EvenementBundle\Form\EvenementType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -42,7 +43,7 @@ class DashboardController extends Controller
         $nom_initial = $categorie->getImage();
         $Form->handleRequest($request);
 
-        if($Form->isSubmitted())
+        if($Form->isSubmitted() && $Form->isValid())
         {
             $verif=$Form->get('image')->getData();
             if($verif == null){
@@ -102,7 +103,7 @@ class DashboardController extends Controller
 
         $nom_initial = $Categorie->getImage();
         $Form->handleRequest($request);
-        if($Form->isSubmitted())
+        if($Form->isSubmitted()&&$Form->isValid())
         {
             $verif=$Form->get('image')->getData();
             if($verif == null){
@@ -133,8 +134,9 @@ class DashboardController extends Controller
         $nom_initial = $Evenement->getImgE();
         $form=$this->createForm(EvenementType::class,$Evenement);
         $form->handleRequest($request);
-        if($form->isSubmitted()){$verif=$form->get('imgE')->getData();
-            if($verif == null){
+        if($form->isSubmitted()&& $form->isValid())
+            {$verif=$form->get('imgE')->getData();
+           if($verif == null){
 
                 $Evenement->setImgE($nom_initial);
                 $this->getDoctrine()->getManager()->persist($Evenement);
@@ -155,5 +157,17 @@ class DashboardController extends Controller
             "form"=>$form->createView()
         ));
     }
+    public function ajouterReservationAction(Request $request,$id)
+    {
 
+        $E=$this->getDoctrine()->getRepository(Reservation::class)->find($id);
+        $Evenement=$E->getEvenement();
+        $nb=$Evenement->getCapaciteE();
+        $Evenement->setCapaciteE($nb-1);
+        $this->getDoctrine()->getManager()->persist($E);
+        $this->getDoctrine()->getManager()->persist($Evenement);
+
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('affichercategorie');
+    }
 }
