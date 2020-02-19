@@ -1,1 +1,28 @@
-{{ form(form) }}
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <script type="text/javascript" src="/assetsDropZone/jquery-filedrop/jquery.filedrop.js"></script>
+    <script type="text/javascript" src="/assetsDropZone/dropzone/js/upload.js"></script>
+
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+
+            <h3><i class="fa fa-angle-right"></i> Dropzone File Upload</h3>
+            <div class="row">
+                {{   form_start(form, {'attr': {'class': 'dropzone'} }) }}
+                <div class="span12" id="main">
+                    <div class="well" id="dropzone">
+                        <h1>Drag your files here!</h1>
+                        <h2>(or choose them via the ol' way)</h2>
+                        <hr>
+                        {{ form_row(form.imageFile) }}
+                    </div>
+                    {{ form_row(form.club) }}
+                    {{ form_row(form.Ajouter) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </section>
+        <!-- /wrapper -->
+    </section>
+
+{% endblock %}

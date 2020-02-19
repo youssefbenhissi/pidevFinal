@@ -2,6 +2,7 @@
 
 namespace adminBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,7 +20,7 @@ class galerieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('imageFile',VichFileType::class)->add('Ajouter',SubmitType::class);
+        $builder->add('imageFile',VichFileType::class)->add('club',EntityType::class,array('class'=>'gererClubBundle:Club','choice_label'=>'nom'))->add('Ajouter',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

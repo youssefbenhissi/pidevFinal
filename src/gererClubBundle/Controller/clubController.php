@@ -44,13 +44,19 @@ class clubController extends Controller
         if($form->isSubmitted())
         {
             $inscription->setClub($club);
-            $inscription->setEleve($eleve);
+            $inscription->setEleve($user);
             $this->getDoctrine()->getManager()->persist($inscription);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute("club");
         }
         return $this->render('@gererClub/club/inscription.html.twig',array("form"=>$form->createView(),"club"=>$club,"inscription"=>$inscription));
     }
+    public function galerieAction()
+    {
+        $clubs=$this->getDoctrine()->getRepository(Club::class)->findAll();
+        $photos=$this->getDoctrine()->getRepository('adminBundle:galerie')->findAll();
+        return $this->render('@gererClub/club/galerie.html.twig',array("clubs"=>$clubs,"photos"=>$photos));
+    }    
     public function sendNotificationAction(Request $request)
     {
         $manager = $this->get('mgilet.notification');
@@ -59,4 +65,7 @@ class clubController extends Controller
         $notif->setLink('http://symfony.com/');
         return $this->redirectToRoute('afficher_ctegorie');
     }
+
+
+
 }

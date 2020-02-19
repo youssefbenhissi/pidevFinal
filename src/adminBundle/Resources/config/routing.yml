@@ -1,40 +1,44 @@
 admin_homepage:
-    path:     /admin
+    path:     /
     defaults: { _controller: adminBundle:Default:index }
 
 afficher_ctegorie:
-    path:     /afficherCtegorie
+    path:     /admin/afficherCtegorie
     defaults: { _controller: adminBundle:DashboardController:afficherCtegorie }
 supprimerCategorie:
-    path:     /supprimerCategorie/{id}
+    path:     /admin/supprimerCategorie/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerCategorie }
 supprimerClub:
-    path:     /supprimerClub/{id}
+    path:     /admin/supprimerClub/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerClub }
 modifierClub:
-    path:     /modifierClub/{id}
+    path:     /admin/modifierClub/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierClub }
 modifierCategorie:
-    path:     /modifierCategorie/{id}
+    path:     /admin/modifierCategorie/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierCategorie }
 afficherAbonne:
-    path:     /afficherAbonne
+    path:     /admin/afficherAbonne
     defaults: { _controller: adminBundle:DashboardController:afficherAbonne }
 supprimerInscription:
-    path:     /supprimerInscription/{id}
+    path:     /admin/supprimerInscription/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerInscription }
 modifierInscription:
-    path:     /modifierInscription/{id}
+    path:     /admin/modifierInscription/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierInscription }
 ajouterClub:
-    path:     /ajouterClub
+    path:     /admin/ajouterClub
     defaults: { _controller: adminBundle:DashboardController:ajouterClub }
 ajouterCategorie:
-    path:     /ajouterCategorie
+    path:     /admin/ajouterCategorie
     defaults: { _controller: adminBundle:DashboardController:ajouterCategorie }
 testerEmail:
-    path:     /testerEmail
+    path:     /admin/testerEmail
     defaults: { _controller: adminBundle:DashboardController:testerEmail }
 galerie:
-    path:     /galerie
+    path:     /admin/galerie
     defaults: { _controller: adminBundle:DashboardController:galerie }
+
+export:
+    path:     /admin/export
+    defaults: { _controller: adminBundle:DashboardController:export }

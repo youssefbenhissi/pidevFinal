@@ -37,6 +37,7 @@ class inscription
      */
     private $club;
 
+
     /**
      * @return mixed
      */
@@ -54,8 +55,8 @@ class inscription
     }
 
     /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="eleve", cascade={"remove"})
+     * @var 
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"remove"})
      * @ORM\JoinColumn(name="eleve_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $eleve;
@@ -66,7 +67,6 @@ class inscription
     {
         return $this->club;
     }
-
     /**
      * @param mixed $club
      */

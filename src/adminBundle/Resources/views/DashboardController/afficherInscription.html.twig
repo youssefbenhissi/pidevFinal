@@ -1,6 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
     <!-- row -->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <section id="main-content">
         <section class="wrapper">
             <div class="row mt">
@@ -27,8 +33,8 @@
                             <tbody>
                             {% for inscription in listeInscription %}
                                 <tr>
-                                    <td class="hidden-phone">{{ inscription.eleve.nom }}</td>
-                                    <td class="hidden-phone">{{ inscription.eleve.prenom }}</td>
+                                    <td class="hidden-phone">{{ inscription.eleve.username }}</td>
+                                    <td class="hidden-phone">{{ inscription.eleve.email }}</td>
                                     <td class="hidden-phone">{{ inscription.Club.nom }}</td>
                                     <td class="hidden-phone">{{ inscription.questionPr }}</td>
                                     <td class="hidden-phone">{{ inscription.reponsePr }}</td>
@@ -55,6 +61,5 @@
 
         </section>
         <center><a href="{{ path('testerEmail') }}"><button class="btn btn-xs" style=""><i class="fa fa-download" aria-hidden="true">Telecharger en version pdf</i></button></a></center>
-
     </section>
 {% endblock %}

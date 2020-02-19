@@ -34,7 +34,28 @@ class galerie
      * @var File|null
      */
     private $imageFile;
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="gererClubBundle\Entity\Club", cascade={"remove"})
+     * @ORM\JoinColumn(name="club_id",referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $club;
 
+    /**
+     * @return mixed
+     */
+    public function getClub()
+    {
+        return $this->club;
+    }
+
+    /**
+     * @param mixed $club
+     */
+    public function setClub($club)
+    {
+        $this->club = $club;
+    }
     /**
      * @ORM\Column(type="string")
      *

@@ -19,8 +19,8 @@
     <tbody>
     {% for inscription in listeInscription %}
         <tr>
-            <td class="hidden-phone">{{ inscription.eleve.nom }}</td>
-            <td class="hidden-phone">{{ inscription.eleve.prenom }}</td>
+            <td class="hidden-phone">{{ inscription.eleve.username }}</td>
+            <td class="hidden-phone">{{ inscription.eleve.email }}</td>
             <td class="hidden-phone">{{ inscription.Club.nom }}</td>
             <td class="hidden-phone">{{ inscription.questionPr }}</td>
             <td class="hidden-phone">{{ inscription.reponsePr }}</td>

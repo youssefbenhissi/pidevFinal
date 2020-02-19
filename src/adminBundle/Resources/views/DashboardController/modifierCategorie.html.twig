@@ -10,7 +10,9 @@
                 {{   form_start(form) }}
                     <div class="form-group">
                         {{ form_row(form.nomCategorie, {'attr': {'class': 'form-control'} }) }}
-                        <div class="validate"></div>
+                        <div id="nom_err">
+                            {{ form_errors(form.nomCategorie) }}
+                        </div>
                     </div>
                     <div class="form-send">
                         {{ form_row(form.Valider, {'attr': {'class': 'btn btn-large btn-primary'} }) }}
@@ -20,4 +22,23 @@
         </div>
     </section>
 </section>
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#gererclubbundle_categorieclub_nomCategorie').on('keyup', function () {
+                var content = $('#gererclubbundle_categorieclub_nomCategorie').val();
+                var numericReg = /^[+]?[a-z]+([a-z]+)?$/;
+                if (!numericReg.test(content) && content !== "") {
+                    $('#nom_err').show();
+                    $('#nom_err').text("Veuillez choisir un nom que sa longuer est suprieur a 2 et inferieur a 50 et ne conteint que des lettres").css({
+                        "font-size": "0.9em",
+                        "color": "#d85364"
+                    });
+                }
+                else {
+                    $('#nom_err').hide();
+                }
+            });
+        });
+    </script>
 {% endblock %}

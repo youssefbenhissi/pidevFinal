@@ -23,7 +23,17 @@ class Club
 
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "le nom  de la categorie doit etre suprieure a {{ limit }} charcateres",
+     *      maxMessage = "le nom  de la categorie doit etre inferieur a {{ limit }} charcateres"
+     * )
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zA-Z ]+$/",
+     *     match=true,
+     *     message="Veuillez un choisir un nom valide."
+     * )
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;

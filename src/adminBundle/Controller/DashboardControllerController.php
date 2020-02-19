@@ -92,16 +92,37 @@ class DashboardControllerController extends Controller
     public function modifierInscriptionAction($id)
     {
         $inscription=$this->getDoctrine()->getRepository(inscription::class)->find($id);
-        $message=\Swift_Message::newInstance()
-                ->setSubject("Acceptation de votre inscription")
-                ->setFrom('youssef.benhissi@esprit.tn')
-                ->setTo('youssef.benhissi@esprit.tn')
-                ->setBody("on a approuvé votre inscription");
-        $this->get('mailer')->send($message);
+        $user=$inscription->getEleve();
+        $club=$inscription->getClub();
+        $nom=$club->getNom();
+        $email=$user->getEmail();
         $categorie=$this->getDoctrine()->getRepository(inscription::class)->find($id);
-        $categorie->setStatus("Approuvée");
-        $this->getDoctrine()->getManager()->persist($categorie);
-        $this->getDoctrine()->getManager()->flush();
+        $club=$categorie->getClub();
+        $nb=$club->getCapacite();
+        if($nb>1)
+        {
+            $club->setCapacite($nb-1);
+            $message=\Swift_Message::newInstance()
+                ->setSubject($nom)
+                ->setFrom('youssef.benhissi@esprit.tn')
+                ->setTo($email)
+                ->setBody("on a approuvé votre inscription dans le club");
+            $this->get('mailer')->send($message);
+
+            $categorie->setStatus("Approuvée");
+            $this->getDoctrine()->getManager()->persist($categorie);
+            $this->getDoctrine()->getManager()->persist($club);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        else
+        {
+            $message=\Swift_Message::newInstance()
+                ->setSubject($nom)
+                ->setFrom('youssef.benhissi@esprit.tn')
+                ->setTo($email)
+                ->setBody("Nous sommes desoles. on a atteint la capacite maximale. Nous vous verrons tres prochainement");
+            $this->get('mailer')->send($message);
+        }
         return $this->redirectToRoute('afficherAbonne');
     }
     public function ajouterClubAction(Request $request)
@@ -117,6 +138,7 @@ class DashboardControllerController extends Controller
                 $club->setImage('none');
                 $this->getDoctrine()->getManager()->persist($club);
                 $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('success', 'Article Created! Knowledge is power!');
                 return $this->redirectToRoute('afficher_ctegorie');
             }
             $name_image=uniqid().'.'.$image->guessExtension();
@@ -168,5 +190,18 @@ class DashboardControllerController extends Controller
         }
         return $this->render('@admin/DashboardController/gelerie.html.twig', array("form"=>$form->createView()));
     }
-
+    public function exportAction()
+    {
+        $em= $this->getDoctrine()->getManager();
+        $menus = $em->getRepository('gererClubBundle:inscription')->findAll();
+        #Writer
+        $writer = $this->container->get('egyg33k.csv.writer');
+        $csv = $writer::createFromFileObject(new \SplTempFileObject());
+        $csv->insertOne(["questionPr",  "club",  "eleve" , "reponsePr"]);
+        foreach ($menus as $menu) {
+            $csv->insertOne([$menu->getQuestionPr(), $menu->getClub(), $menu->getEleve(), $menu->getReponsePr()]);
+        }
+        $csv->output('liste.csv');
+        die();
+    }
 }
