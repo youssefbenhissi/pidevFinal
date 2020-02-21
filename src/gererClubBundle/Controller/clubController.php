@@ -12,13 +12,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Bundle\PaginatorBundle\Definition\PaginatorAwareInterface;
 
+
 class clubController extends Controller
 {
-    public function afficherAction()
+    public function afficherAction(Request $request)
     {
         $listeCategories=$this->getDoctrine()->getRepository(categorieClub::class)->findAll();
-        $listeCl=$this->getDoctrine()->getRepository(Club::class)->findAll();
-        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$listeCl));
+
+        $query=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h');
+        $paginator=$this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3
+        );
+        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination));
     }
     public function afficherClubSelonClubAction($id)
     {
@@ -65,7 +73,30 @@ class clubController extends Controller
         $notif->setLink('http://symfony.com/');
         return $this->redirectToRoute('afficher_ctegorie');
     }
+    public function ajouterUneEtoileAction($id,$nombre,Request $request){
+        $club=$this->getDoctrine()->getRepository(Club::class)->find($id);
+        $nbrLike=$club->getNbrLike();
+        $nbrFoisLike=$club->getNbrFoisLike();
+        $nbrLike=$nbrLike+$nombre;
+        $nbrFoisLike=$nbrFoisLike+1;
+        $moyenne=$nbrLike/$nbrFoisLike;
+        $club->setMoyenneLike($moyenne);
+        $club->setNbrLike($nbrLike);
+        $club->setNbrFoisLike($nbrFoisLike);
+        $this->getDoctrine()->getManager()->persist($club);
+        $this->getDoctrine()->getManager()->flush();
+        $listeCategories=$this->getDoctrine()->getRepository(categorieClub::class)->findAll();
+        $pagination=$this->getDoctrine()->getRepository(Club::class)->findAll();
+        $query=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h');
+        $paginator=$this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            3
+        );
+        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination));
 
+    }
 
-
+    
 }

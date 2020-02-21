@@ -13,3 +13,6 @@ inscription:
 galerie:
     path:     /user/galerie
     defaults: { _controller: gererClubBundle:club:galerie }
+ajouterUneEtoile:
+    path:     /user/ajouterUneEtoile/{id}/{nombre}
+    defaults: { _controller: gererClubBundle:club:ajouterUneEtoile }

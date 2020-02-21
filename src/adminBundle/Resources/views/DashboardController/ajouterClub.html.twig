@@ -114,7 +114,7 @@
             });
             $('#gererclubbundle_club_nom').on('keyup', function () {
                 var content = $('#gererclubbundle_club_nom').val();
-                var numericReg = /^[+]?[A-Z]+([a-z]+)?$/;
+                var numericReg = /^[+]?[a-z]+([a-z]+)?$/;
                 if (!numericReg.test(content) && content !== "") {
                     $('#nom_err').show();
                     $('#nom_err').text("Veuillez choisir un nom qui commence avec une lettre en majuscule et ne contient que des lettres").css({

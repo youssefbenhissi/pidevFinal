@@ -98,7 +98,16 @@ class DashboardControllerController extends Controller
         $email=$user->getEmail();
         $categorie=$this->getDoctrine()->getRepository(inscription::class)->find($id);
         $club=$categorie->getClub();
+        $statut=$inscription->getStatus();
         $nb=$club->getCapacite();
+        if($statut=="Approuvée")
+        {
+            $inscription->setStatus("non traitée");
+            $club->setCapacite($nb+1);
+            $this->getDoctrine()->getManager()->persist($inscription);
+            $this->getDoctrine()->getManager()->persist($club);
+            $this->getDoctrine()->getManager()->flush();
+        }
         if($nb>1)
         {
             $club->setCapacite($nb-1);
@@ -107,8 +116,7 @@ class DashboardControllerController extends Controller
                 ->setFrom('youssef.benhissi@esprit.tn')
                 ->setTo($email)
                 ->setBody("on a approuvé votre inscription dans le club");
-            $this->get('mailer')->send($message);
-
+               $this->get('mailer')->send($message);
             $categorie->setStatus("Approuvée");
             $this->getDoctrine()->getManager()->persist($categorie);
             $this->getDoctrine()->getManager()->persist($club);
@@ -190,6 +198,7 @@ class DashboardControllerController extends Controller
         }
         return $this->render('@admin/DashboardController/gelerie.html.twig', array("form"=>$form->createView()));
     }
+    
     public function exportAction()
     {
         $em= $this->getDoctrine()->getManager();
@@ -204,4 +213,5 @@ class DashboardControllerController extends Controller
         $csv->output('liste.csv');
         die();
     }
+
 }

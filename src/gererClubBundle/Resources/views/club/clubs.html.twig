@@ -33,26 +33,96 @@
                     <div class="why-text">
                         <h4>{{ club.nom }}</h4>
                         <p>{{ club.description }}</p>
+                        <a href="{{ path('ajouterUneEtoile',{'id':club.id,'nombre':1}) }}"><img src="{{ asset('/assets/images/etoile vide.svg') }}" width="25px" height="25px" class="etoileVide1"></a>
+                        <a href="{{ path('ajouterUneEtoile',{'id':club.id,'nombre':2}) }}"><img src="{{ asset('/assets/images/etoile vide.svg') }}" width="25px" height="25px" class="etoileVide2"></a>
+                        <a href="{{ path('ajouterUneEtoile',{'id':club.id,'nombre':3}) }}"><img src="{{ asset('/assets/images/etoile vide.svg') }}" width="25px" height="25px" class="etoileVide3"></a>
+                        <a href="{{ path('ajouterUneEtoile',{'id':club.id,'nombre':4}) }}"><img src="{{ asset('/assets/images/etoile vide.svg') }}" width="25px" height="25px" class="etoileVide4"></a>
+                        <a href="{{ path('ajouterUneEtoile',{'id':club.id,'nombre':5}) }}"><img src="{{ asset('/assets/images/etoile vide.svg') }}" width="25px" height="25px" class="etoileVide5"></a>
+                        <br>
                         <a href="{{ path('inscription',{'id':club.id}) }}"><button class="btn btn-secondary px-4 py-3 mt-3">s'inscrire</button></a>
                     </div>
                 </div>
             </div>
             {% endfor %}
+
+
+        </div>
+        <div class="navigation container" style="position: absolute; left: 50%; ">
+            {{ knp_pagination_render(listeCl) }}
         </div>
     </div>
 </div>
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".bouttonMenu").mouseenter(function(){
+                $(this).addClass("active");
+            });
+            $(".bouttonMenu").mouseleave(function(){
+                $(this).attr("class","");
+            })
+            $(".etoileVide1").mouseenter(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile pleine.svg');
+            })  ;
+            $(".etoileVide1").mouseleave(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile vide.svg');
+            })  ;
+            $(".etoileVide2").mouseenter(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide2").attr('src','/assets/images/etoile pleine.svg');
+            })  ;
+            $(".etoileVide2").mouseleave(function(){
+                $(".etoileVide2").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide1").attr('src','/assets/images/etoile vide.svg');
+            })  ;
+            $(".etoileVide3").mouseenter(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide2").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile pleine.svg');
+            })  ;
+            $(".etoileVide3").mouseleave(function(){
+                $(".etoileVide2").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide1").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile vide.svg');
+            })  ;
+            $(".etoileVide4").mouseenter(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide2").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide4").attr('src','/assets/images/etoile pleine.svg');
+            })  ;
+            $(".etoileVide4").mouseleave(function(){
+                $(".etoileVide2").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide1").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide4").attr('src','/assets/images/etoile vide.svg');
+            })  ;
+            $(".etoileVide5").mouseenter(function(){
+                $(".etoileVide1").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide2").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide4").attr('src','/assets/images/etoile pleine.svg');
+                $(".etoileVide5").attr('src','/assets/images/etoile pleine.svg');
+            })  ;
+            $(".etoileVide5").mouseleave(function(){
+                $(".etoileVide2").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide1").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide3").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide4").attr('src','/assets/images/etoile vide.svg');
+                $(".etoileVide5").attr('src','/assets/images/etoile vide.svg');
+            })  ;
+        })
+
+    </script>
 {% endblock %}
 {%  block javascripts %}
 
     <script src="{{ asset ('assets/js/main1.js') }}"></script>
 <script>
     $(document).ready(function(){
-        $(".bouttonMenu").mouseenter(function(){
-            $(this).addClass("active");
-        });
-        $(".bouttonMenu").mouseleave(function(){
-            $(this).attr("class","");
-        })
+
+
     });
+
 </script>
 {% endblock %}

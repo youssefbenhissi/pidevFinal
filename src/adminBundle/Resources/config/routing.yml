@@ -38,7 +38,6 @@ testerEmail:
 galerie:
     path:     /admin/galerie
     defaults: { _controller: adminBundle:DashboardController:galerie }
-
 export:
     path:     /admin/export
     defaults: { _controller: adminBundle:DashboardController:export }
