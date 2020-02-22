@@ -5,6 +5,7 @@ namespace gererClubBundle\Controller;
 use gererClubBundle\Entity\categorieClub;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
+use gererClubBundle\Entity\commantaire;
 use gererClubBundle\Form\inscriptionType;
 use Knp\Component\Pager\PaginatorInterface;
 use Proxies\__CG__\gererClubBundle\Entity\eleve;
@@ -17,6 +18,8 @@ class clubController extends Controller
 {
     public function afficherAction(Request $request)
     {
+        $queryTop=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h ORDER BY h.moyenneLike DESC')->setMaxResults(3);
+        $top3=$queryTop->execute();
         $listeCategories=$this->getDoctrine()->getRepository(categorieClub::class)->findAll();
 
         $query=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h');
@@ -26,7 +29,7 @@ class clubController extends Controller
             $request->query->getInt('page', 1), /*page number*/
             3
         );
-        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination));
+        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination,"top3"=>$top3));
     }
     public function afficherClubSelonClubAction($id)
     {
@@ -74,6 +77,8 @@ class clubController extends Controller
         return $this->redirectToRoute('afficher_ctegorie');
     }
     public function ajouterUneEtoileAction($id,$nombre,Request $request){
+        $queryTop=$this->getDoctrine()->getManager()->createQuery('SELECT h FROM gererClubBundle:Club h ORDER BY h.moyenneLike DESC')->setMaxResults(3);
+        $top3=$queryTop->execute();
         $club=$this->getDoctrine()->getRepository(Club::class)->find($id);
         $nbrLike=$club->getNbrLike();
         $nbrFoisLike=$club->getNbrFoisLike();
@@ -94,9 +99,13 @@ class clubController extends Controller
             $request->query->getInt('page', 1),
             3
         );
-        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination));
+        return $this->render('@gererClub/club/clubs.html.twig',array("liste"=>$listeCategories,"listeCl"=>$pagination,'top3'=>$top3));
 
     }
+    public function ajouterCommantaireAction($id){
+        $commantaire=new commantaire();
+        $club=$this->getDoctrine()->getRepository(Club::class)->find($id);
 
+    }
     
 }
