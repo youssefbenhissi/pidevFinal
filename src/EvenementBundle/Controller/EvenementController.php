@@ -126,12 +126,12 @@ class EvenementController extends Controller
             ));
     }
 
-    public function accueilEvenementAction(Request $request)
+    public function accueilEvenementAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository("EvenementBundle:Evenement")->findAll();
-
-        return $this->render('@Evenement/Evenement/accueilEvenementView.html.twig',['evenements' => $evenements ]);
+        $categorie=$this->getDoctrine()->getRepository(categorieEvenement::class)->find($id);
+        return $this->render('@Evenement/Evenement/accueilEvenementView.html.twig',['evenements' => $evenements,'categorie'=>$categorie ]);
     }
 
     public function detailsEvenementAction(Request $request)

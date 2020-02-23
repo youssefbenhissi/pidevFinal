@@ -982,14 +982,26 @@
             <span class="oi oi-menu"></span> Menu
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
+        <div class="dropdown">
+            <a href="" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Evenements
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="{{ path('affichercategorie') }}" class="nav-link pl-10 dropdown-item">categories des evenements</a>
+                <a href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-10 dropdown-item">Mes Reservations</a>
+                </div>
+        </div>
+        </div>
+
+         {#<div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{ path('gerer_club_homepage') }}" class="nav-link pl-0">Home</a></li>
                 <li class="nav-item"><a href="{{ path('club') }}" class="nav-link">Clubs</a></li>
-                </li><li class="nav-item active"><a href="{{ path('affichercategorie') }}" class="nav-link pl-0">Evenement</a></li>
-                </li><li class="nav-item active"><a href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-0">Mes Reservations </a></li>
-                </li><li class="nav-item active"><a href="{{ path('accueilEvenementRouting') }}" class="nav-link pl-0">Accueil d'evenements </a></li>
+                <li class="nav-item active"><a href="{{ path('affichercategorie') }}" class="nav-link pl-0">Evenement</a></li>
+                <li class="nav-item active"><a href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-0">Mes Reservations </a></li>
+                <li class="nav-item active"><a href="{{ path('accueilEvenementRouting') }}" class="nav-link pl-0">Accueil d'evenements </a></li>
             </ul>
-        </div>
+        </div>#}
     </div>
 </nav>
 {% block content %}{% endblock %}

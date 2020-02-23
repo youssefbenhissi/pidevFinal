@@ -6,7 +6,7 @@ affichercategorie:
     defaults: { _controller: EvenementBundle:Evenement:affichercategorie }
 
 accueilEvenementRouting:
-    path:     /user/accueilEvenement
+    path:     /user/accueilEvenement/{id}
     defaults: { _controller: EvenementBundle:Evenement:accueilEvenement }
 envoyerTicketRouting:
     path:     /user/envoyer_ticket

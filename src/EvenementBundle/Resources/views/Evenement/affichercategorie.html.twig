@@ -10,7 +10,7 @@
                     <div class="col-md-6 course d-lg-flex ftco-animate">
                         <div class="img" style="background-image: url('{{asset('/assets/images/' ~ cc.image)}}')"></div>
                         <div class="text bg-light p-4">
-                            <h3><a href="">{{ cc.nomCategorieEvenement }}</a></h3>
+                            <h3><a href="{{ path('accueilEvenementRouting',{'id':cc.id}) }}">{{ cc.nomCategorieEvenement }}</a></h3>
                             <p>{{ cc.description }}</p>
                         </div>
                     </div>
