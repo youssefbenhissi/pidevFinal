@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+    <div class="container">
+        <div class="row d-flex align-items-stretch no-gutters">
+            <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
+                {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_row(form.message, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+                <div class="form-group ml-md-4">
+                    {{ form_row(form.ajouter, {'attr': {'class': 'btn btn-secondary py-3 px-4','value':'S incrire'} }) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

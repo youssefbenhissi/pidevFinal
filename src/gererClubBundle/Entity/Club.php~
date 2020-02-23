@@ -350,3 +350,4 @@ class Club
         return $this->moyenneLike;
     }
 }
+

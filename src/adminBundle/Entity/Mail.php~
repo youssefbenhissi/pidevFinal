@@ -125,3 +125,4 @@ class Mail
         return $this->objet;
     }
 }
+

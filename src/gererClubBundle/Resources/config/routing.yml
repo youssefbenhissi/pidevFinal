@@ -16,3 +16,6 @@ galerie:
 ajouterUneEtoile:
     path:     /user/ajouterUneEtoile/{id}/{nombre}
     defaults: { _controller: gererClubBundle:club:ajouterUneEtoile }
+ajouterCommantaire:
+    path:     /user/ajouterCommantaire/{id}
+    defaults: { _controller: gererClubBundle:club:ajouterCommantaire }
