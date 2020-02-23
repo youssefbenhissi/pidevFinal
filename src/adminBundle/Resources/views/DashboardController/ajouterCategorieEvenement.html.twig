@@ -1,0 +1,89 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <section id="main-content">
+        <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i> Form Validation</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-angle-right"></i>Ajouter Categorie </h4>
+                    <div class="form-panel">
+                        <div class=" form">
+                            {{   form_start(form, {'attr': {'class': 'cmxform form-horizontal style-form'} }) }}
+
+
+                                    {{ form_label(form.nomCategorieEvenement,'Nom du catégorie',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                                    {{ form_widget(form.nomCategorieEvenement,{'attr': {'class' : 'form-control'}}) }}
+                                    <div id="nome_err">
+                                        {{ form_errors(form.nomCategorieEvenement,{'label_attr':{'class' : 'nom_err1'}}) }}
+                                    </div>
+                            {{ form_label(form.description,'Description',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.description,{'attr': {'class' : 'form-control'}}) }}
+                            <div id="Description_err">
+                                {{ form_errors(form.description) }}
+                            </div>
+
+                            {{ form_label(form.image,'Nom du catégorie',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.image,{'attr': {'class' : 'form-control'}}) }}
+                            <div id="Description_err">
+                                {{ form_errors(form.image) }}
+                            </div>
+                            <br>
+
+                            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
+
+                            <button class="btn btn-theme04" type="button">Annuler</button>
+
+
+
+
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <!-- /form-panel -->
+                </div>
+                <!-- /col-lg-12 -->
+            </div>
+        </section>
+
+        <!-- /wrapper -->
+    </section>
+    <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
+    <script>
+
+        $('#evenementbundle_categorieevenement_description').on('keyup', function () {
+            var i = $('#evenementbundle_categorieevenement_description').val().length;
+            if ($('#evenementbundle_categorieevenement_description').val() !== "") {
+                $('#Description_err').show();
+                var j = 255 - i;
+                var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                $('#Description_err').text(msg).css({
+                    "font-size": "0.9em",
+                    "color": "#3851F7"
+                });
+            }
+            else {
+                $('#Description_err').hide();
+            }
+        });
+
+        $('#evenementbundle_categorieevenement_nomCategorieEvenement').on('keyup', function () {
+            var content = $('#evenementbundle_categorieevenement_nomCategorieEvenement').val();
+            var numericReg = /^[+]?[A-Z ]+([a-z ]+)?$/;
+            if (!numericReg.test(content) && content !== "") {
+                $('#nome_err').show();
+                $('#nome_err').text("Veuillez choisir un nom qui commence par une lettre majuscule et ne contient que des lettres").css({
+                    "font-size": "0.9em",
+                    "color": "#d85364"
+                });
+            }
+            else {
+                $('#nome_err').hide();
+            }
+        });
+
+
+
+    </script>
+
+    <!-- /MAIN CONTENT -->
+{% endblock %}

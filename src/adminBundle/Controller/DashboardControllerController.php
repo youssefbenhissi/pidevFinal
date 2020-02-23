@@ -6,6 +6,9 @@ use adminBundle\Entity\galerie;
 use adminBundle\Entity\Mail;
 use adminBundle\Form\galerieType;
 use adminBundle\Form\MailType;
+use EvenementBundle\Entity\categorieEvenement;
+use EvenementBundle\Entity\Evenement;
+use EvenementBundle\Form\categorieEvenementType;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
 use gererClubBundle\Form\categorieClubType;
@@ -15,6 +18,9 @@ use Proxies\__CG__\gererClubBundle\Entity\categorieClub;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
+use EvenementBundle\Entity\Reservation;
+use EvenementBundle\Form\EvenementType;
 
 class DashboardControllerController extends Controller
 {
@@ -212,6 +218,159 @@ class DashboardControllerController extends Controller
         }
         $csv->output('liste.csv');
         die();
+    }
+//partie Iheb
+
+    public function afficherCategorieEvenementAction()
+    {
+        $E=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
+        $Categorie=$this->getDoctrine()->getRepository(categorieEvenement::class)->findAll();
+        return $this->render('@admin/DashboardController/afficherCategorieEvenement.html.twig',array('c'=>$E,"categorie"=>$Categorie));
+    }
+    public function supprimerCategorieEvenementAction($id)
+    {
+        $categorie = $this->getDoctrine()->getRepository(categorieEvenement::class)->find($id);
+        $this->getDoctrine()->getManager()->remove($categorie);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('afficherCategorieEvenement');
+    }
+
+    public function supprimerEvenementAction($id)
+    {
+        $E = $this->getDoctrine()->getRepository(Evenement::class)->find($id);
+        $this->getDoctrine()->getManager()->remove($E);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('afficherCategorieEvenement');
+    }
+//erreur belik
+    function modifiercategorieEvenementAction($id,Request $request){
+
+
+
+        $e=$this->getDoctrine()->getManager();
+        $categorie=$e->getRepository(categorieEvenement::class)
+            ->find($id);
+        $Form=$this->createForm(categorieEvenementType::class,$categorie);
+        $nom_initial = $categorie->getImage();
+        $Form->handleRequest($request);
+
+        if($Form->isSubmitted() && $Form->isValid())
+        {
+            $verif=$Form->get('image')->getData();
+            if($verif == null){
+
+                $categorie->setImage($nom_initial);
+                $this->getDoctrine()->getManager()->persist($categorie);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('afficherCategorieEvenement');
+            }
+            $image = $categorie->getImage();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $categorie->setImage($name_image);
+            $e=$this->getDoctrine()->getManager();
+            $e->flush();
+            return $this->redirectToRoute('afficherCategorieEvenement');
+
+        }
+        return $this->render('@admin/DashboardController/modifierCategorieEvenement.html.twig',
+            array('form'=>$Form->createView()));
+    }
+    function modifierEvenementAction($id,Request $request){
+
+        $e=$this->getDoctrine()->getManager();
+        $Evenement=$e->getRepository(Evenement::class)
+            ->find($id);
+        $Form=$this->createForm(EvenementType::class,$Evenement);
+        $nom_initial = $Evenement->getImgE();
+        $Form->handleRequest($request);
+        if($Form->isSubmitted())
+        {
+            $verif=$Form->get('imgE')->getData();
+            if($verif == null){
+
+                $Evenement->setImgE($nom_initial);
+                $this->getDoctrine()->getManager()->persist($Evenement);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('afficherCategorieEvenement');
+            }
+            $image = $Evenement->getImgE();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $Evenement->setImgE($name_image);
+            $e=$this->getDoctrine()->getManager();
+            $e->persist($Evenement);
+            $e->flush();
+            return $this->redirectToRoute('afficherCategorieEvenement');
+
+        }
+        return $this->render('@admin/DashboardController/modifierEvenement.html.twig',
+            array('form'=>$Form->createView()));
+    }
+    public function ajouterCategorieEvenementAction(Request $request)
+    {
+        $Categorie=new categorieEvenement();
+        $Form=$this->createForm(categorieEvenementType::class,$Categorie);
+
+        $nom_initial = $Categorie->getImage();
+        $Form->handleRequest($request);
+        if($Form->isSubmitted()&&$Form->isValid())
+        {
+            $verif=$Form->get('image')->getData();
+            if($verif == null){
+
+                $Categorie->setImage($nom_initial);
+                $this->getDoctrine()->getManager()->persist($Categorie);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('afficherCategorieEvenement');
+            }
+            $image = $Categorie->getImage();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $Categorie->setImage($name_image);
+            $e=$this->getDoctrine()->getManager();
+            $e->persist($Categorie);
+            $e->flush();
+            return $this->redirectToRoute('afficherCategorieEvenement');
+
+        }
+        return $this->render('@admin/DashboardController/ajouterCategorieEvenement.html.twig', array(
+            "form"=>$Form->createView()
+        ));
+    }
+    public function ajouterEvenementAction(Request $request)
+    {
+        $user = $this->getUser();
+        $em=$this->getDoctrine()->getManager();
+        $Evenement=new Evenement();
+        $nom_initial = $Evenement->getImgE();
+        $form=$this->createForm(EvenementType::class,$Evenement);
+        $form->handleRequest($request);
+        if($form->isValid())
+        {
+            $verif=$form->get('imgE')->getData();
+            if($verif == null){
+                $Evenement->setIdUser($user);
+                $Evenement->setImgE($nom_initial);
+                $this->getDoctrine()->getManager()->persist($Evenement);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('afficherCategorieEvenement');
+            }
+
+            $Evenement->setIdUser($user);
+            $image = $Evenement->getImgE();
+            $name_image=uniqid().'.'.$image->guessExtension();
+            $image->move($this->getParameter('image_directory'), $name_image);
+            $Evenement->setImgE($name_image);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($Evenement);
+            $em->flush();
+            return $this->redirectToRoute('afficherCategorieEvenement');
+
+        }
+        return $this->render('@admin/DashboardController/ajouterEvenement.html.twig', array(
+            "form"=>$form->createView()
+        ));
     }
 
 }

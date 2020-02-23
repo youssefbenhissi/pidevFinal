@@ -41,3 +41,28 @@ galerie:
 export:
     path:     /admin/export
     defaults: { _controller: adminBundle:DashboardController:export }
+#PARITE IHEB
+
+afficherCategorieEvenement:
+    path:     /admin/afficherCategorieEvenement
+    defaults: { _controller: adminBundle:DashboardController:afficherCategorieEvenement }
+supprimerCategorieEvenement:
+    path:     /admin/supprimerCategorieEvenement/{id}
+    defaults: { _controller: adminBundle:DashboardController:supprimerCategorieEvenement }
+
+supprimerEvenement:
+    path:     /admin/supprimerEvenement/{id}
+    defaults: { _controller: adminBundle:DashboardController:supprimerEvenement }
+
+modifiercategorieEvenement:
+    path:     admin//modifiercategorie/{id}
+    defaults: { _controller: adminBundle:DashboardController:modifiercategorieEvenement }
+modifierEvenement:
+    path:     /admin/modifierEvenement/{id}
+    defaults: { _controller: adminBundle:DashboardController:modifierEvenement }
+ajouterEvenement:
+    path:     /admin/ajouterEvenement
+    defaults: { _controller: adminBundle:DashboardController:ajouterEvenement }
+ajouterCategorieEvenement:
+    path:     /admin/ajouterCategorieEvenement
+    defaults: { _controller: adminBundle:DashboardController:ajouterCategorieEvenement }
