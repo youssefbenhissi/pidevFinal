@@ -23,6 +23,14 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 
     /**
      * Get id

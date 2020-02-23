@@ -1,0 +1,31 @@
+{{ form(f,{'attr':{'novalidate':'novalidate'}}) }}
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Nom de l'évenement</td>
+        <td>Capacité</td>
+        <td>Description</td>
+        <td>Image</td>
+        <td>Prix</td>
+        <td>Date début</td>
+        <td>Date fin</td>
+        <td>Modifier</td>
+        <td>Supprimer</td>
+    </tr>
+    {% for cc in c %}
+        <tr>
+
+            <td>{{ cc.id }}</td>
+            <td>{{ cc.nomE }}</td>
+            <td>{{ cc.capaciteE }}</td>
+            <td>{{ cc.description }}</td>
+            <td>{{ cc.imgE }}</td>
+            <td>{{ cc.prixE }}</td>
+            <td>{{ cc.dateD|date }}</td>
+            <td>{{ cc.dateF|date }}</td>
+            <td><a href="{{ path('modifier',{'id':cc.id}) }}">Modifier</a></td>
+            <td><a href="{{ path('supprimer',{'id':cc.id}) }}">Supprimer</a></td>
+
+        </tr>
+    {% endfor %}
+</table>

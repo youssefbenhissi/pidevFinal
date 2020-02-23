@@ -26,6 +26,8 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new Egyg33k\CsvBundle\Egyg33kCsvBundle(),
+            new EvenementBundle\EvenementBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -64,6 +66,6 @@ class AppKernel extends Kernel
 
             $container->addObjectResource($this);
         });
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');
     }
 }
