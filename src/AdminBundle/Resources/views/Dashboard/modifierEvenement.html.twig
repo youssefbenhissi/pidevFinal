@@ -1,104 +1,131 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
     <section id="main-content">
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Form Validation</h3>
             <div class="row mt">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-angle-right"></i>Modifier Evenement</h4>
+                    <h4><i class="fa fa-angle-right"></i>Modifier Evenement </h4>
                     <div class="form-panel">
                         <div class=" form">
-                            {{   form_start(form, {'attr': {'class': 'cmxform form-horizontal style-form'} }) }}
-                            <div class="form-group ">
-                                <label for="cname" class="control-label col-lg-2">Nom du l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.nomE, {'attr': {'class': 'form-control'} }) }}
-                                    <div id="nome_err">
-                                        {{ form_errors(form.nomE) }}
-                                    </div>
-                                </div>
+                            {{ form_start(form , {'attr': {'class': 'cmxform form-horizontal style-form'} }) }}
+
+                            {{ form_label(form.nomE,'Nom d\'evenement',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.nomE,{'attr': {'class' : 'nom form-control'}}) }}
+                            <div id="nome_err">
+                                {{ form_errors(form.nomE,{'label_attr':{'class' : 'nom_err1'}}) }}
                             </div>
-                            <div class="form-group ">
-                                <label for="cemail" class="control-label col-lg-2">Description </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.description, {'attr': {'class': 'form-control description'} }) }}
-                                    <div id="Description_err">
-                                        {{ form_errors(form.description) }}
-                                    </div>
-                                </div>
+
+                            {{ form_label(form.description,'Description',  {'label_attr':{'class' : 'desclab'}}) }}
+                            {{ form_widget(form.description,{'attr': {'class' : 'description form-control'}}) }}
+                            <div id="Description_err">
+                                {{ form_errors(form.description) }}
                             </div>
-                            <div class="form-group ">
-                                <label for="curl" class="control-label col-lg-2">capacite</label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.capaciteE, {'attr': {'class': 'form-control capacite'} }) }}
-                                    <div id="capacite_err">
-                                        {{ form_errors(form.capaciteE) }}
-                                    </div>
-                                </div>
+
+                            {{ form_label(form.capaciteE,'Capacite d\'evenement',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.capaciteE,{'attr': {'class' : 'capacite form-control'}}) }}
+                            <div id="capacite_err">
+                                {{ form_errors(form.capaciteE) }}
                             </div>
-                            <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">categorie du l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.categorieEvenement, {'attr': {'class': 'form-control','label' : 'Ajouter'} }) }}
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">image du l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.imgE, {'attr': {'class': 'form-control'} }) }}
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">Prix Evenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.prixE, {'attr': {'class': 'form-control prix'} }) }}
-                                    <div id="prix_err">
-                                        {{ form_errors(form.prixE) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">Date de l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.dateD, {'attr': {'class': 'form-control'} }) }}
-                                    <div id="date_d_err">
-                                        {{ form_errors(form.dateD) }}
-                                    </div>
-                                </div>
+
+                            {{ form_label(form.categorieEvenement,'catégorie d\'evenement',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.categorieEvenement,{'attr': {'class' : 'form-control'}}) }}
+
+
+                            {{ form_label(form.prixE,'Prix d\'evenement',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.prixE,{'attr': {'novalidate': 'novalidate', 'class' : 'prix form-control'}}) }}
+                            <div id="prix_err">
+                                {{ form_errors(form.prixE) }}
                             </div>
 
 
-                            <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    {{ form_row(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
-                                    <a href="{{ path('afficherCat') }}" style="padding-left : 20px; float:left;"><button class="btn btn-theme04" type="button">Annuler</button></a>
-                                </div>
+                            {{ form_label(form.dateD,'Date debut d\'evenement',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.dateD ,{'attr': {'class' : 'js-datepicker form-control'}}) }}
+                            <div id="date_d_err">
+                                {{ form_errors(form.dateD) }}
                             </div>
 
-                            {{ form_end(form) }}
+                            {{ form_label(form.imgE,'Affiche',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.imgE,{'attr': {'class' : 'affiche form-control'}}) }}
+
                         </div>
                     </div>
-                    <!-- /form-panel -->
+
+
+                    <br>
+                    {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
+
+                    <button class="btn btn-theme04" type="button">Annuler</button>
+
                 </div>
-                <!-- /col-lg-12 -->
             </div>
+
+            {{ form_end(form) }}
+            <!-- /form-panel -->
+
         </section>
     </section>
-    <!-- /wrapper -->
 
-    <!-- /MAIN CONTENT -->
-    <!-- /MAIN CONTENT -->
+
     <script src="{{ asset ('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
     <script>
+
+        $('.nom').on('keyup', function () {
+            var content = $('.nom').val();
+            var numericReg = /^[+]?[A-Z ]+([a-z ]+)?$/;
+            if (!numericReg.test(content) && content !== "") {
+                $('#nome_err').show();
+                $('#nome_err').text("Veuillez choisir un nom qui commence avec une lettre majuscule et ne contient que des lettres").css({
+                    "font-size": "0.9em",
+                    "color": "#d85364"
+                });
+            }
+            else {
+                $('#nome_err').hide();
+            }
+        });
+
+        $('#evenementbundle_evenement_description').on('keyup', function () {
+            var i = $('#evenementbundle_evenement_description').val().length;
+            if ($('#evenementbundle_evenement_description').val() !== "") {
+                $('#Description_err').show();
+                var j = 255 - i;
+                var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
+                $('#Description_err').text(msg).css({
+                    "font-size": "0.9em",
+                    "color": "#3851F7"
+                });
+            }
+            else {
+                $('#Description_err').hide();
+            }
+        });
+
+        $(document).ready(function () {
+            $('.js-datepicker').dateTime().on('changeDate', function (ev) {
+                var d = new Date();
+                if (ev.date.valueOf() < d.valueOf()) {
+                    $('#date_d_err').show();
+                    var msg1 = "Veuillez entrer une date valide pour le début d'évenement";
+                    $('#date_d_err').text(msg1).css({
+                        "font-size": "0.9em",
+                        "color": "#d85364"
+                    });
+                }
+                else {
+                    $('#date_d_err').hide();
+                }
+            });
+        });
         $(document).ready(function () {
             $('.capacite').on('keyup', function () {
                 var content = $('.capacite').val();
-                var numericReg = /^[+]?[1-9]+([.][0-9]+)?$/;
+                var numericReg = /^[+]?\d+([.]\d+)?$/;
                 if (!numericReg.test(content) && content !== "") {
                     $('#capacite_err').show();
-                    $('#capacite_err').text("L'entier est négatif ").css({
+                    $('#capacite_err').text("Veuillez choisir un entier positif pour votre capacite").css({
                         "font-size": "0.9em",
                         "color": "#d85364"
                     });
@@ -108,15 +135,14 @@
                 }
             });
         });
-    </script>
-    <script>
+
         $(document).ready(function () {
             $('.prix').on('keyup', function () {
                 var content = $('.prix').val();
-                var numericReg = /^[+]?[1-9]+([.][0-9]+)?$/;
+                var numericReg = /^[+]?\d+([.]\d+)?$/;
                 if (!numericReg.test(content) && content !== "") {
                     $('#prix_err').show();
-                    $('#prix_err').text("Veuillez choisir un prix valide ").css({
+                    $('#prix_err').text("Veuillez choisir un prix valide").css({
                         "font-size": "0.9em",
                         "color": "#d85364"
                     });
@@ -125,40 +151,7 @@
                     $('#prix_err').hide();
                 }
             });
-            $('#evenementbundle_evenement_description').on('keyup', function () {
-
-                var i = $(this).val().length;
-
-                if ($(this).val() !== "") {
-                    $('#Description_err').show();
-                    var j = 255 - i;
-                    var msg = "Nombre de caractères atteint " + i + " , il vous reste " + j + " caractères sur 255";
-                    $('#Description_err').text(msg).css({
-                        "font-size": "0.9em",
-                        "color": "#3851F7"
-                    });
-                }
-                else {
-                    $('#Description_err').hide();
-                }
-            });
-            $('#evenementbundle_evenement_nomE').on('keyup', function () {
-                var content = $('#evenementbundle_evenement_nomE').val();
-                var numericReg = /^[+]?[A-Z ]+([a-z ]+)?$/;
-                if (!numericReg.test(content) && content !== "") {
-                    $('#nome_err').show();
-                    $('#nome_err').text("Veuillez choisir un nom qui commence avec une lettre majuscule et ne contient que des lettres").css({
-                        "font-size": "0.9em",
-                        "color": "#d85364"
-                    });
-                }
-                else {
-                    $('#nome_err').hide();
-                }
-            });
-
         });
 
     </script>
-
 {% endblock %}

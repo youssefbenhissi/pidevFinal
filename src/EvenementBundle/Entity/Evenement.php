@@ -195,6 +195,7 @@ class Evenement
     public function getImgE()
     {
         return $this->imgE;
+        return $this->imgE;
     }
 
     /**
@@ -269,7 +270,66 @@ class Evenement
         $this->categorieEvenement = $categorieEvenement;
     }
 
+    /**
+     * Add reservation
+     *
+     * @param \EvenementBundle\Entity\Reservation $reservation
+     *
+     * @return Evenement
+     */
+    public function addReservation(\EvenementBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
 
+        return $this;
+    }
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne (targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $idUser;
+
+
+    /**
+     * Set idUser
+     *
+     * @param \UserBundle\Entity\User $idUser
+     *
+     * @return Evenement
+     */
+    public function setIdUser(\UserBundle\Entity\User $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * @ORM\OneToMany (targetEntity="EvenementBundle\Entity\Reservation", mappedBy="Evenement")
+     */
+    private $reservations;
 
 }
-

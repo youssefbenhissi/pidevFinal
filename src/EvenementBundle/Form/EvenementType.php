@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class EvenementType extends AbstractType
 {
     /**
@@ -22,7 +22,9 @@ class EvenementType extends AbstractType
             ->add('description',TextareaType::class,['attr'=>['maxlength'=>255]])
             ->add('imgE',FileType::class, ['data_class' => null , 'required'=> false])
             ->add('prixE')
-            ->add('dateD')
+            ->add('dateD',DateType::class, ['data' => new \DateTime('now'),
+                'widget' => 'single_text',
+            ])
             ->add('categorieEvenement',EntityType::class,array('class'=>'EvenementBundle:categorieEvenement','choice_label'=>'nomCategorieEvenement','multiple'=>false))
             ->add('Valider',SubmitType::class);    }/**
      * {@inheritdoc}

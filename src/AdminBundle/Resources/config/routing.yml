@@ -27,3 +27,9 @@ ajouterEvenement:
 ajouterCategorie:
     path:     /admin/ajouterCategorie
     defaults: { _controller: AdminBundle:Dashboard:ajouterCategorie }
+AfficherReservation:
+    path:     /admin/AfficherReservation
+    defaults: { _controller: AdminBundle:Dashboard:AfficherReservation }
+modifierInscription:
+    path:     /admin/modifierInscription/{id}
+    defaults: { _controller: AdminBundle:Dashboard:modifierInscription }

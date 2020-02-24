@@ -26,6 +26,33 @@ affichercategorie:
     path:     /user/affichercategorie
     defaults: { _controller: EvenementBundle:Evenement:affichercategorie }
 
+accueilEvenementRouting:
+    path:     /user/accueilEvenement
+    defaults: { _controller: EvenementBundle:Evenement:accueilEvenement }
+
+envoyerTicketRouting:
+    path:     /user/envoyer_ticket
+    defaults: { _controller: EvenementBundle:Evenement:envoyerTicket }
+
+detailsEvenementRouting:
+    path:     /user/details_evenement
+    defaults: { _controller: EvenementBundle:Evenement:detailsEvenement }
+
 ajouterReservation:
     path:     /user/ajouterReservation/{id}
     defaults: { _controller: EvenementBundle:Evenement:ajouterReservation }
+
+#mes reservations
+mes_reservations_donnees:
+    path:     /user/mes_reservations_donnees
+    defaults: { _controller: EvenementBundle:Evenement:mesReservationsDonnees }
+afficher_mes_reservations:
+    path:     /user/mes_reservations
+    defaults: { _controller: EvenementBundle:Evenement:mesReservations }
+annuler_reservation:
+    path:     /annuler_reservation
+    defaults: { _controller: EvenementBundle:Evenement:annulerReservation }
+reconfirmer_reservation:
+    path:     /reconfirmer_reservation
+    defaults: { _controller: EvenementBundle:Evenement:reconfirmerReservation }
+

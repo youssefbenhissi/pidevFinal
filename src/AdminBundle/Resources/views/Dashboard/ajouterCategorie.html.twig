@@ -9,37 +9,32 @@
                     <div class="form-panel">
                         <div class=" form">
                             {{   form_start(form, {'attr': {'class': 'cmxform form-horizontal style-form'} }) }}
-                            <div class="form-group ">
-                                <label for="cname" class="control-label col-lg-2">Nom Categorie du l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.nomCategorieEvenement, {'attr': {'class': 'form-control'} }) }}
+
+
+                                    {{ form_label(form.nomCategorieEvenement,'Nom du catégorie',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                                    {{ form_widget(form.nomCategorieEvenement,{'attr': {'class' : 'form-control'}}) }}
                                     <div id="nome_err">
-                                        {{ form_errors(form.nomCategorieEvenement) }}
+                                        {{ form_errors(form.nomCategorieEvenement,{'label_attr':{'class' : 'nom_err1'}}) }}
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group ">
-                                <label for="cemail" class="control-label col-lg-2">Description </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.description, {'attr': {'class': 'form-control description ' } }) }}
-                                    <div id="Description_err">
-                                        {{ form_errors(form.description) }}
-                                    </div>
-                                </div>
+                            {{ form_label(form.description,'Description',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.description,{'attr': {'class' : 'form-control'}}) }}
+                            <div id="Description_err">
+                                {{ form_errors(form.description) }}
                             </div>
 
-                            <div class="form-group ">
-                                <label for="ccomment" class="control-label col-lg-2">image du l'évenement </label>
-                                <div class="col-lg-10">
-                                    {{ form_row(form.image, {'attr': {'class': 'form-control'} }) }}
-                                </div>
+                            {{ form_label(form.image,'Nom du catégorie',  {'attr': {'class': 'cmxform form-horizontal style-form'}} ) }}
+                            {{ form_widget(form.image,{'attr': {'class' : 'form-control'}}) }}
+                            <div id="Description_err">
+                                {{ form_errors(form.image) }}
                             </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    {{ form_row(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
-                                    <a href="{{ path('afficherCat') }}" style="padding-left : 20px; float:left;"><button class="btn btn-theme04" type="button">Annuler</button></a>
-                                </div>
-                            </div>
+                            <br>
+
+                            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-theme','style':'float:left;'} }) }}
+
+                            <button class="btn btn-theme04" type="button">Annuler</button>
+
+
+
 
                             {{ form_end(form) }}
                         </div>
@@ -76,7 +71,7 @@
             var numericReg = /^[+]?[A-Z ]+([a-z ]+)?$/;
             if (!numericReg.test(content) && content !== "") {
                 $('#nome_err').show();
-                $('#nome_err').text("Veuillez choisir un nom qui commence avec une lettre majuscule et ne contient que des lettres").css({
+                $('#nome_err').text("Veuillez choisir un nom qui commence par une lettre majuscule et ne contient que des lettres").css({
                     "font-size": "0.9em",
                     "color": "#d85364"
                 });

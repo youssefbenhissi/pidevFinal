@@ -87,28 +87,37 @@ class Reservation
     }
 
     /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"remove"})
-     * @ORM\JoinColumn(name="eleve_id",referencedColumnName="id",onDelete="CASCADE")
+     * @var int
+     *
+     * @ORM\ManyToOne (targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
-    private $user;
+    private $idUser;
+
 
     /**
-     * @return mixed
+     * Set idUser
+     *
+     * @param \UserBundle\Entity\User $idUser
+     *
+     * @return Evenement
      */
-    public function getUser()
+    public function setIdUser(\UserBundle\Entity\User $idUser = null)
     {
-        return $this->user;
+        $this->idUser = $idUser;
+
+        return $this;
     }
 
     /**
-     * @param mixed $user
+     * Get idUser
+     *
+     * @return \UserBundle\Entity\User
      */
-    public function setUser($user)
+    public function getIdUser()
     {
-        $this->user = $user;
+        return $this->idUser;
     }
-
 
 
 }

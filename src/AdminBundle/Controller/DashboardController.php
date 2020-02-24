@@ -129,27 +129,31 @@ class DashboardController extends Controller
     }
     public function ajouterEvenementAction(Request $request)
     {
-        $e=$this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $em=$this->getDoctrine()->getManager();
         $Evenement=new Evenement();
         $nom_initial = $Evenement->getImgE();
         $form=$this->createForm(EvenementType::class,$Evenement);
         $form->handleRequest($request);
-        if($form->isSubmitted()&& $form->isValid())
-            {$verif=$form->get('imgE')->getData();
+        if($form->isValid())
+            {
+                $verif=$form->get('imgE')->getData();
            if($verif == null){
-
+                $Evenement->setIdUser($user);
                 $Evenement->setImgE($nom_initial);
                 $this->getDoctrine()->getManager()->persist($Evenement);
                 $this->getDoctrine()->getManager()->flush();
                 return $this->redirectToRoute('afficherCat');
             }
+
+            $Evenement->setIdUser($user);
             $image = $Evenement->getImgE();
             $name_image=uniqid().'.'.$image->guessExtension();
             $image->move($this->getParameter('image_directory'), $name_image);
             $Evenement->setImgE($name_image);
-            $e=$this->getDoctrine()->getManager();
-            $e->persist($Evenement);
-            $e->flush();
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($Evenement);
+            $em->flush();
             return $this->redirectToRoute('afficherCat');
 
         }
@@ -157,17 +161,29 @@ class DashboardController extends Controller
             "form"=>$form->createView()
         ));
     }
-    public function ajouterReservationAction(Request $request,$id)
+    function AfficherReservationAction(){
+        $R=$this->getDoctrine()
+            ->getRepository(Reservation::class)
+            ->findAll();
+        return $this->render('@Admin/Dashboard/AfficherReservation.html.twig',
+            array('c'=>$R));
+    }
+
+    public function modifierInscriptionAction($id)
     {
+        $reservation=$this->getDoctrine()->getRepository(Reservation::class)->find($id);
 
-        $E=$this->getDoctrine()->getRepository(Reservation::class)->find($id);
-        $Evenement=$E->getEvenement();
-        $nb=$Evenement->getCapaciteE();
-        $Evenement->setCapaciteE($nb-1);
-        $this->getDoctrine()->getManager()->persist($E);
-        $this->getDoctrine()->getManager()->persist($Evenement);
+        $evenement=$reservation->getEvenement();
+        $nb=$evenement->getCapaciteE();
 
-        $this->getDoctrine()->getManager()->flush();
-        return $this->redirectToRoute('affichercategorie');
+
+            $evenement->setCapaciteE($nb-1);
+            $reservation->setStatut("Approuvée");
+            $this->getDoctrine()->getManager()->persist($evenement);
+            $this->getDoctrine()->getManager()->persist($reservation);
+            $this->getDoctrine()->getManager()->flush();
+
+
+        return $this->redirectToRoute('AfficherReservation');
     }
 }

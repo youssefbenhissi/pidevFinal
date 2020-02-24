@@ -3,17 +3,18 @@
 namespace EvenementBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReservationType extends AbstractType
+class ReservationForm extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('statut')->add('Evenement')->add('User');
+        $builder->add('valider',SubmitType::class, ['label' => 'Reserver ma place', 'attr' => ['class' => 'btn btn-danger']]);
     }/**
      * {@inheritdoc}
      */
