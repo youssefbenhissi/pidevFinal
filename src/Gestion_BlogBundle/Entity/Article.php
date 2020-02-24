@@ -55,7 +55,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
-     * @Assert\File(maxSize="1024k",mimeTypes={"image/jpeg","image/jpg"})
+     * @Assert\File(maxSize="5120k",mimeTypes={"image/jpeg","image/jpg"})
      */
     private $image;
 
@@ -95,6 +95,21 @@ class Article
      * @Assert\NotBlank(message="TAG ne doit pas être vide")
      */
     private $tags;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vues", type="integer")
+     */
+    private $vues;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="type", type="integer", length=255)
+     */
+    private $type;
+
 
     /**
      * Get id
@@ -261,6 +276,39 @@ class Article
     {
         $this->tags = $tags;
     }
+
+    /**
+     * @return int
+     */
+    public function getVues()
+    {
+        return $this->vues;
+    }
+
+    /**
+     * @param int $vues
+     */
+    public function setVues($vues)
+    {
+        $this->vues = $vues;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 
 
 

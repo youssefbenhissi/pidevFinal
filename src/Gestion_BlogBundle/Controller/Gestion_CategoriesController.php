@@ -5,9 +5,8 @@ namespace Gestion_BlogBundle\Controller;
 
 
 
-use Gestion_BlogBundle\Entity\Article;
-use Gestion_BlogBundle\Entity\Categorie;
 
+use Gestion_BlogBundle\Entity\Categorie;
 use Gestion_BlogBundle\Form\CategorieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -79,6 +78,21 @@ class Gestion_CategoriesController extends Controller
 
 
         return $this->redirectToRoute('Gestion_Categorie_Admin');
+
+    }
+
+    function RechercheACtion(Request $request){
+
+        $terme = $request->get('terme');
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            'SELECT c
+    FROM Gestion_BlogBundle:Categorie c
+    WHERE c.nom LIKE :terme
+    ORDER BY c.id DESC')->setParameter('terme', '%'.$terme.'%');
+        $categorie = $query->getResult();
+
+        return $this->render('@Gestion_Blog/Gestion_Categories/recherche.html.twig',
+            array('categorie'=>$categorie));
 
     }
 

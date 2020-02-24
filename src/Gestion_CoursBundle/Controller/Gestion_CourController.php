@@ -27,6 +27,8 @@ class Gestion_CourController extends Controller
             ->add('Ajouter',SubmitType::class);
         $Form->handleRequest($request);
         if($Form->isSubmitted() && $Form->isValid()){
+            $cour->setVues(0);
+            $cour->setTelenbr(0);
             $em=$this->getDoctrine()->getManager();
             $pdf=$cour->getPathPdf();
             $pdfData = $Form->get('pathPdf')->getData();
@@ -36,7 +38,7 @@ class Gestion_CourController extends Controller
                 $cour->setPathPdf('none');
                 $em->persist($cour);
                 $em->flush();
-                return $this->redirectToRoute('gestion_blog_homepage_Admin');
+                return $this->redirectToRoute('gestion.cours_homepage');
             }
             $nom_pdf = md5(uniqid()) . '.' . $pdf->guessExtension();
             $pdf->move(
@@ -63,6 +65,7 @@ class Gestion_CourController extends Controller
             ->add('Modifier',SubmitType::class);
         $Form->handleRequest($request);
         if($Form->isSubmitted()){
+
             $pdf = $cour->getPathPdf();
             $pdfData = $Form->get('pathPdf')->getData();
             if($pdfData == null){
@@ -96,6 +99,21 @@ class Gestion_CourController extends Controller
         $em->remove($cour);
         $em->flush();
         return $this->redirectToRoute('gestion.cours_homepage');
+
+    }
+
+    function RechercheACtion(Request $request){
+
+        $terme = $request->get('terme');
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            'SELECT cour
+    FROM Gestion_CoursBundle:Cours cour
+    WHERE cour.nom LIKE :terme
+    ORDER BY cour.id DESC')->setParameter('terme', '%'.$terme.'%');
+        $cours = $query->getResult();
+
+        return $this->render('@Gestion_Cours/Gestion_Cours/recherche.html.twig',
+            array('cours'=>$cours));
 
     }
 }

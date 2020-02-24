@@ -1,5 +1,39 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Gestion de Blog - Categories {% endblock %}
+{% block adminscript %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.form-control').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0){
+                    $(this).val('');
+                    $(this).css('border-color','red');
+                    $("[value='Rechercher']").attr("disabled", true);
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $(this).css('border-color','');
+                    $("[value='Rechercher']").attr("disabled", false);
+
+                }
+            });
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
@@ -33,7 +67,7 @@
 {% block content %}
 
     <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="height: 559px;">
         <div class="row mt">
 
 
@@ -47,7 +81,6 @@
                             <li ><a href="{{ path('gestion_blog_homepage_Admin') }}"> <i class="fa fa-file-text"></i> Liste des Articles </a></li>
                             <li class="active"><a href="{{ path('Gestion_Categorie_Admin') }}"> <i class="fa fa-certificate"></i> Catégories  </a></li>
                             <li><a href="{{ path('Affiche_tags_admin') }}"> <i class="fa fa-tags"></i> Tags </a></li>
-                            <li ><a href="{{ path('Searche_article_Admin') }}"> <i class="fa fa-search"></i> Recherche Article </a></li>
 
 
 
@@ -65,6 +98,13 @@
                     <header class="panel-heading wht-bg">
                         <h4 class="gen-case">
                             Liste des catégories :
+
+                            <div style="width: fit-content;float: right;">
+                                <form action="{{ path('Searche_cate_Admin') }}" method="get" >
+                                    <input type="text" name="terme" class="form-control" style="width: 119px;height: 27px;float: left;margin-right: 5px;padding: 7px !important;">
+                                    <input type="submit" class="btn btn-compose" value="Rechercher" style="width: 69px;height: 27px;font-size: 12px;color: white;padding: 0px 0px;float: left;padding-left: 2px;" >
+                                </form>
+                            </div>
                         </h4>
                     </header>
 

@@ -3,12 +3,12 @@
 namespace Gestion_BlogBundle\Controller;
 
 use Gestion_BlogBundle\Entity\Article;
-use Gestion_BlogBundle\Entity\Categorie;
-use Gestion_BlogBundle\Entity\tags;
 use Gestion_BlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+
+
 class Gestion_ArticlesController extends Controller
 {
     public function ajouterAction(Request $request)
@@ -23,6 +23,7 @@ class Gestion_ArticlesController extends Controller
             $imageData = $Form->get('image')->getData();
             if($imageData == null) {
 
+$article ->setVues(0);
 
                 $article->setImage('none');
                 $article->setDate(new \DateTime('now'));
@@ -38,7 +39,7 @@ class Gestion_ArticlesController extends Controller
             $image->move(
                 $this->getParameter('images_articles_dossier'),
                 $nom_image);
-
+            $article ->setVues(0);
             $article->setImage($nom_image);
             $article->setDate(new \DateTime('now'));
             $description1 = strip_tags($article->getContenu());
@@ -54,13 +55,99 @@ class Gestion_ArticlesController extends Controller
     }
 
     function Affiche_list_articleAction(Request $request){
-    $article=$this->getDoctrine()
-        ->getRepository(Article::class)
-        ->findBy(array(), array('id' => 'desc'));
+        $ordrnom = null;
+        $orddate = null;
+        $ordvue = null;
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.id DESC '
+        );
+
+        $article = $query->setMaxResults(10)->getResult();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(Article.id)');
+        $qb->from('Gestion_BlogBundle:Article','Article');
+
+        $count = $qb->getQuery()->getSingleScalarResult();
+$nbr = 10;
+
 
     return $this->render('@Gestion_Blog/Gestion_Articles/gestion_blog.html.twig',
-        array('article'=>$article));
+        array('article'=>$article , 'nbrtotal'=>$count ,'nbr'=>$nbr,'ornom'=>$ordrnom,'ordate'=>$orddate,'ordvue'=>$ordvue ));
 }
+
+    function Affiche_list_articlenbrAction(Request $request){
+        $nbr     = $request->get('nbr');
+        $ordrnom = $request->get('ornom');
+        $orddate = $request->get('ordate');
+        $ordvue  = $request->get('ordvue');
+
+        if($nbr =='all') {
+            $nbr = null;
+        }
+        if($ordrnom != null && $ordrnom == 'desc') {
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.titre DESC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+        }elseif ($ordrnom != null && $ordrnom == 'asc'){
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.titre ASC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+
+        }elseif ($orddate != null && $orddate == 'desc'){
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.date DESC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+
+        }elseif ($orddate != null && $orddate == 'asc'){
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.date ASC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+        }elseif ($ordvue != null && $ordvue == 'asc'){
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.vues ASC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+        }else{
+            $query = $this->getDoctrine()->getManager()->createQuery(
+                'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    ORDER BY a.id DESC'
+            );
+            $article = $query->setMaxResults($nbr)->getResult();
+
+        }
+
+
+
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(Article.id)');
+        $qb->from('Gestion_BlogBundle:Article','Article');
+
+        $count = $qb->getQuery()->getSingleScalarResult();
+
+
+
+        return $this->render('@Gestion_Blog/Gestion_Articles/gestion_blog.html.twig',
+            array('article'=>$article ,'nbr'=>$nbr , 'nbrtotal'=>$count , 'ornom'=>$ordrnom,'ordate'=>$orddate,'ordvue'=>$ordvue));
+    }
 
     function UpdateAction($id,Request $request){
 
@@ -114,20 +201,23 @@ class Gestion_ArticlesController extends Controller
 
     // function SEARCH POST
     function RechercheACtion(Request $request){
-        $article=new Article();
-        $Form=$this->createFormBuilder($article)
-            ->add('titre')
-            ->add('Rechercher',SubmitType::class,
-                ['attr'=>['class'=>'btn btn-compose']])
-            ->getForm();
-        $Form->handleRequest($request);
-        if($Form->isSubmitted()){
-            $article=$this->getDoctrine()
+
+        $terme = $request->get('terme');
+            /*$article=$this->getDoctrine()
                 ->getRepository(Article::class)
-                ->findBy(array('titre'=>$article->getTitre()));
-        }
+                ->findBy(array('titre'=>$terme));*/
+
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            'SELECT a
+    FROM Gestion_BlogBundle:Article a
+    WHERE a.titre LIKE :terme
+    ORDER BY a.id DESC')->setParameter('terme', '%'.$terme.'%');
+        $article = $query->getResult();
+
         return $this->render('@Gestion_Blog/Gestion_Articles/recherche.html.twig',
-            array('form_s'=>$Form->createView(),'article'=>$article));
+            array('article'=>$article));
 
     }
+
+
 }

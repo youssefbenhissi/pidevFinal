@@ -32,7 +32,7 @@
                         <div class="img" style="background-image: url({{  asset('assets/images/pdftype.png') }});"></div>
                         <div class="text bg-light p-4">
                             <h3>{{ cour.nom }}</h3>
-                            <p class="subheading"><span><a style="font-size: x-large;" target="_blank" href="{{  path('cour_read',{'id':cour.id}) }}">VOIR</a></span> </p>
+                            <p class="subheading"><span><a style="font-size: x-large;" target="_blank" href="{{  path('cour_read',{'id':cour.id}) }}">VOIR({{ cour.vues }} vues)</a></span> <span style="float: right;"><a style="font-size: x-large;" target="_blank" href="{{  path('cour_dowload',{'id':cour.id}) }}">Télécharger({{ cour.telenbr }})</a></span></p>
                             <p>{{ cour.Description }}</p>
                         </div>
                     </div>

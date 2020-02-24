@@ -10,7 +10,16 @@ namespace Gestion_BlogBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEntitiesByString($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                FROM Gestion_BlogBundle:Article a
+                WHERE a.titre LIKE :terme')
+            ->setParameter('terme', '%'.$str.'%')
+            ->setMaxResults(5)->getResult();
 
+    }
 
 
 }

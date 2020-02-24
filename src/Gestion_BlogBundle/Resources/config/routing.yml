@@ -55,3 +55,18 @@ modifier_tag_Admin:
 supprimer_tag_Admin:
     path:     /supprimer-tag/{id}
     defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Delete }
+
+
+Searche_cate_Admin:
+    path:     /rechercher-categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Recherche }
+
+Searche_tags_Admin:
+    path:     /rechercher-tag
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Recherche }
+
+
+Affiche_Article_NBR:
+    path:     /nbr
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Affiche_list_articlenbr }
+

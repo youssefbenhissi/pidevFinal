@@ -1,51 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Gestion de Blog - Modifier un article{% endblock %}
-{% block adminscript %}
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"></script>
 
-    <script
-            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-            crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("[for='gestion_blogbundle_article_titre']").append('<span style="color:red;" id="alert"></span>');
-            $('#gestion_blogbundle_article_titre').on('keyup',function(){
-
-                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
-                    $(this).val('');
-                    $('#alert').show();
-                    $('#alert').html('<span style="color:red;" id="alert"> (Titre ne doit pas être vide) </span>');
-                    $('#gestion_blogbundle_article_titre').css('border-color','red');
-                    $('.btn').attr("disabled", true);
-                    $( "#gestion_blogbundle_article_titre" ).effect( "shake" );
-                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
-                    $('#alert').hide();
-                    $('#gestion_blogbundle_article_titre').css('border-color','');
-                    $('.btn').attr("disabled", false);
-
-                }
-
-                if($('#gestion_blogbundle_article_titre').val().replace(/ /g,'').length < 12){
-                    $('#alert').show();
-                    $('#alert').html('<span style="color:red;" id="alert"> (Il faut au min 12 carractères) </span>');
-                    $('#gestion_blogbundle_article_titre').css('border-color','red');
-                    $('.btn').attr("disabled", true);
-                }
-            });
-
-
-        });
-
-
-
-
-    </script>
-{% endblock %}
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
@@ -78,7 +33,7 @@
 {% endblock %}
 {% block content %}
     <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="height: fit-content;">
     <h3><i class="fa fa-angle-right"></i> ADMIN :</h3>
     <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" data-stellar-background-ratio="0.5">
         <div class="container">
@@ -119,7 +74,12 @@
                             {{ form_row(form_edit.tags, {'attr': {'class': 'form-control','required':'true'} }) }}
                         </div>
                     </div>
+                    <div class="d-md-flex">
 
+                        <div class="form-group ml-md-4">
+                            {{ form_row(form_edit.type, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
 
                     <div class="d-md-flex">
                         <div class="form-group ml-md-4">

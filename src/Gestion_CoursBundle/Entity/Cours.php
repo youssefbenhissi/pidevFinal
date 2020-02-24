@@ -58,6 +58,20 @@ class Cours
      */
     private $Description;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vues", type="integer")
+     */
+    private $vues;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="telenbr", type="integer")
+     */
+    private $telenbr;
+
 
     /**
      * Get id
@@ -131,6 +145,38 @@ class Cours
     public function setDescription($Description)
     {
         $this->Description = $Description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVues()
+    {
+        return $this->vues;
+    }
+
+    /**
+     * @param int $vues
+     */
+    public function setVues($vues)
+    {
+        $this->vues = $vues;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTelenbr()
+    {
+        return $this->telenbr;
+    }
+
+    /**
+     * @param int $telenbr
+     */
+    public function setTelenbr($telenbr)
+    {
+        $this->telenbr = $telenbr;
     }
 
 

@@ -4,9 +4,8 @@ namespace Gestion_BlogBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -25,7 +24,7 @@ class ArticleType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',// 1MB
+                        'maxSize' => '5120k',// 5MB
                         'mimeTypes' => [ //types
                             'image/jpeg',
                             'image/jpg',
@@ -44,7 +43,13 @@ class ArticleType extends AbstractType
                 ),
             ))
             ->add('categorie')
-            ->add('tags');
+            ->add('tags')
+            ->add('type',ChoiceType::class, [
+                'choices' => [
+                    'A Publier' => true,
+                    'Brouillon' => false,
+                ],
+            ]);
     }/**
      * {@inheritdoc}
      */

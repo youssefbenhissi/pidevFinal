@@ -1,5 +1,65 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Ajouter un Cour{% endblock %}
+{% block adminscript %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("[for='gestion_coursbundle_cours_nom']").append('<span style="color:red;" id="alert"></span>');
+            $("[for='gestion_coursbundle_cours_Description']").append('<span style="color:red;" id="alert2"></span>');
+            $('#gestion_coursbundle_cours_nom').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert').show();
+                    $('#alert').html('<span style="color:red;" id="alert"> (Nom ne doit pas être vide) </span>');
+                    $('#gestion_coursbundle_cours_nom').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_coursbundle_cours_nom" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert').hide();
+                    $('#gestion_coursbundle_cours_nom').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+
+
+            });
+            $('#gestion_coursbundle_cours_Description').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert2').show();
+                    $('#alert2').html('<span style="color:red;" id="alert2"> (Description ne doit pas être vide) </span>');
+                    $('#gestion_coursbundle_cours_Description').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_coursbundle_cours_Description" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert2').hide();
+                    $('#gestion_coursbundle_cours_Description').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+
+
+            });
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}
 {% block sidebaradmin %}
     <!--sidebar start-->
     <aside>
@@ -32,7 +92,7 @@
 {% endblock %}
 {% block content %}
     <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="height: 559px;">
     <h3><i class="fa fa-angle-right"></i> ADMIN :</h3>
     <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" data-stellar-background-ratio="0.5">
         <div class="container">

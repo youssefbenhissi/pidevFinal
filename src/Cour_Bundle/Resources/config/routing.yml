@@ -6,3 +6,7 @@ cour._homepage:
 cour_read:
     path:     /Lire/{id}
     defaults: { _controller: Cour_Bundle:Default:read }
+
+cour_dowload:
+    path:     /download/{id}
+    defaults: { _controller: Cour_Bundle:Default:download }

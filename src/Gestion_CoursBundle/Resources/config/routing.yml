@@ -16,3 +16,7 @@ supprimer_cour_Admin:
     path:     /supprimer-cour/{id}
     defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:Delete }
 
+Searche_cours_Admin:
+    path:     /rechercher-cours
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:Recherche }
+

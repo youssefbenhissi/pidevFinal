@@ -73,7 +73,7 @@
 {% endblock %}
 {% block content %}
     <section id="main-content">
-    <section class="wrapper">
+    <section class="wrapper" style="height: fit-content;">
     <h3><i class="fa fa-angle-right"></i> ADMIN :</h3>
     <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" data-stellar-background-ratio="0.5">
         <div class="container">
@@ -114,6 +114,12 @@
 
                         <div class="form-group ml-md-4">
                             {{ form_row(ajout_Form.tags, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+
+                        <div class="form-group ml-md-4">
+                            {{ form_row(ajout_Form.type, {'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="d-md-flex">

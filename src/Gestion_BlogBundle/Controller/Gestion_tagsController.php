@@ -65,4 +65,18 @@ class Gestion_tagsController extends Controller
         return $this->redirectToRoute('Affiche_tags_admin');
 
     }
+    function RechercheACtion(Request $request){
+
+        $terme = $request->get('terme');
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            'SELECT tag
+    FROM Gestion_BlogBundle:tags tag
+    WHERE tag.nom LIKE :terme
+    ORDER BY tag.id DESC')->setParameter('terme', '%'.$terme.'%');
+        $tags = $query->getResult();
+
+        return $this->render('@Gestion_Blog/Gestion_tags/recherche.html.twig',
+            array('tags'=>$tags));
+
+    }
 }
