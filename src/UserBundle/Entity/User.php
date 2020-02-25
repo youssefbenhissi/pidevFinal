@@ -63,5 +63,12 @@ class User extends BaseUser
     {
         // TODO: Implement isEqualTo() method.
     }
+
+    public function __toString()
+    {
+        return $this->id;
+    }
+
+
 }
 

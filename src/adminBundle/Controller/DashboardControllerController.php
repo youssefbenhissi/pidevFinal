@@ -6,14 +6,19 @@ use adminBundle\Entity\galerie;
 use adminBundle\Entity\Mail;
 use adminBundle\Form\galerieType;
 use adminBundle\Form\MailType;
+use EtablissementBundle\Entity\Etablissement;
+use EtablissementBundle\Form\EtablissementType;
 use EvenementBundle\Entity\categorieEvenement;
 use EvenementBundle\Entity\Evenement;
+use EvenementBundle\Entity\inscriptionEmail;
 use EvenementBundle\Form\categorieEvenementType;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
+use gererClubBundle\Entity\news;
 use gererClubBundle\Form\categorieClubType;
 use gererClubBundle\Form\ClubType;
 use gererClubBundle\Form\inscriptionType;
+use gererClubBundle\Form\newsType;
 use Proxies\__CG__\gererClubBundle\Entity\categorieClub;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -371,6 +376,90 @@ class DashboardControllerController extends Controller
         return $this->render('@admin/DashboardController/ajouterEvenement.html.twig', array(
             "form"=>$form->createView()
         ));
+    }
+    public function envoyernewsletterAction(Request $request)
+    {
+        $new=new news();
+        $formNews=$this->createForm(newsType::class,$new);
+        $formNews->handleRequest($request);
+        $listeEmail=$this->getDoctrine()->getRepository(inscriptionEmail::class)->findAll();
+        if($formNews->isSubmitted())
+        {
+
+            foreach ($listeEmail as $Inc) {
+                $email=$Inc->getEmail();
+                $messge=$formNews->get('newsContenu')->getData();
+                $message=\Swift_Message::newInstance()
+                    ->setSubject("votre newsletter")
+                    ->setFrom('youssef.benhissi@esprit.tn')
+                    ->setTo($email)
+                    ->setBody($messge);
+                $this->get('mailer')->send($message);
+            }
+        }
+        return $this->render('@admin/DashboardController/contact.html.twig', array(
+            "form"=>$formNews->createView()
+        ));
+    }
+    public function addEtablissementAction(Request $request)
+    {
+        $etablissement=new Etablissement();
+        $form= $this->createForm(EtablissementType::class, $etablissement);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em= $this->getDoctrine()->getManager();
+            $file=$etablissement->getImage();
+            $filename= md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('image_directory'), $filename);
+            $etablissement->setImage($filename);
+            $em->persist($etablissement);
+            $em->flush();
+
+
+        }
+        return $this->render('@admin/Admin/addE.html.twig',array(
+            "Form"=>$form->createView()
+        ));
+    }
+    public function BacklistEtablissementAction(Request $request)
+    {
+
+        $em=$this->getDoctrine()->getManager();
+        $Etablissement=$em->getRepository('EtablissementBundle:Etablissement')->findAll();
+        return $this->render('@admin/Admin/BacklistE.html.twig',array(
+            "Etablissement"=>$Etablissement
+        ));
+    }
+    public function updateEtablissementAction(Request $request,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $E=$em->getRepository('EtablissementBundle:Etablissement')->find($id);
+        $form=$this->createForm(EtablissementType::class,$E);
+        $form->handleRequest($request);
+        if($form->isSubmitted())
+        {
+            $file=$E->getImage();
+            $filename= md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('image_directory'), $filename);
+            $E->setImage($filename);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($E);
+            $em->flush();
+            return $this->redirectToRoute('Backlist_Etablissement');
+        }
+        return $this->render('@admin/Admin/updateE.html.twig',array(
+            "form"=>$form->createView()
+        ));
+    }
+    public function deleteEtablissementAction(Request $request)
+    {
+        $id = $request->get('id');
+        $em=$this->getDoctrine()->getManager();
+        $Etablissement=$em->getRepository('EtablissementBundle:Etablissement')->find($id);
+        $em->remove($Etablissement);
+        $em->flush();
+        return $this->redirectToRoute('Backlist_Etablissement');
     }
 
 }

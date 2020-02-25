@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Kiddos - Free Bootstrap 4 Template by Colorlib</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -936,7 +936,7 @@
             font-size: 30px;
         }
     </style>
-
+    {% block script_front %}{% endblock %}
 </head>
 <body>
 
@@ -982,26 +982,28 @@
             <span class="oi oi-menu"></span> Menu
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
-        <div class="dropdown">
-            <a href="" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item"><a href="{{ path('club') }}" class="nav-link" style="float: left;">Nos clubs</a></li>
+           {# <li class="nav-item"><a href="{{ path('afficherP') }}" class="nav-link" style="float: left;">Compte Parent</a></li>#}
+        <div class="dropdown" style="float: left;">
+            <a style="float: left;margin-top: 5px;" href="" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Evenements
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a href="{{ path('affichercategorie') }}" class="nav-link pl-10 dropdown-item">categories des evenements</a>
-                <a href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-10 dropdown-item">Mes Reservations</a>
-                </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="float: left;">
+                <a style="float: left;" href="{{ path('affichercategorie') }}" class="nav-link pl-10 dropdown-item">categories des evenements</a>
+                <a style="float: left;" href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-10 dropdown-item">Mes Reservations</a>
+            </div>
         </div>
+            <li class="nav-item" style="float: left;"><a href="{{ path('newsletterInscription') }}" class="nav-link">NewsLetters</a></li>
+            <li class="nav-item" style="float: left;"><a href="{{ path('Blog_Homepage_User') }}" class="nav-link">BLOG</a></li>
+            <li class="nav-item" style="float: left;"><a href="{{ path('cour._homepage') }}" class="nav-link">COURS</a></li>
         </div>
 
-         {#<div class="collapse navbar-collapse" id="ftco-nav">
+        <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{{ path('gerer_club_homepage') }}" class="nav-link pl-0">Home</a></li>
-                <li class="nav-item"><a href="{{ path('club') }}" class="nav-link">Clubs</a></li>
-                <li class="nav-item active"><a href="{{ path('affichercategorie') }}" class="nav-link pl-0">Evenement</a></li>
-                <li class="nav-item active"><a href="{{ path('afficher_mes_reservations') }}" class="nav-link pl-0">Mes Reservations </a></li>
-                <li class="nav-item active"><a href="{{ path('accueilEvenementRouting') }}" class="nav-link pl-0">Accueil d'evenements </a></li>
+                {% block activebar_menu %}{% endblock %}
             </ul>
-        </div>#}
+        </div>
+
     </div>
 </nav>
 {% block content %}{% endblock %}
@@ -1110,4 +1112,4 @@
 <script src="{{ asset ('assets/js/main.js') }}"></script>
 
 </body>
-</html>
+</html>                                                                                                                                                       

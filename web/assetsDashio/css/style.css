@@ -233,6 +233,7 @@ ul.top-menu > li > .logout {
 
 #sidebar ul li {
     position: relative;
+    margin-top: 7px;
 }
 
 #sidebar .sub-menu > .sub li  {

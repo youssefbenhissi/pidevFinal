@@ -19,3 +19,6 @@ ajouterUneEtoile:
 ajouterCommantaire:
     path:     /user/ajouterCommantaire/{id}
     defaults: { _controller: gererClubBundle:club:ajouterCommantaire }
+newsletterInscription:
+    path:     /user/newsletterInscription
+    defaults: { _controller: gererClubBundle:club:newsletterInscription }

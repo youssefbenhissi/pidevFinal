@@ -1,0 +1,47 @@
+projet_homepage:
+    path:     /
+    defaults: { _controller: projetBundle:Default:index }
+
+
+
+mesdemandes:
+    path:     /parent/mesdemandes
+    defaults: { _controller: projetBundle:gestion:mesdemande }
+afficherEleve:
+    path:     /eleve/compte
+    defaults: { _controller: projetBundle:eleve:afficherEleve }
+ajouterParents:
+    path:     /parent/ajouterParents
+    defaults: { _controller: projetBundle:gestion:ajouterParents }
+modifierEleve:
+    path:     /eleve/modifierEleve/{id}
+    defaults: { _controller: projetBundle:eleve:modifierEleve }
+afficherP:
+    path:     /parent/compte
+    defaults: { _controller: projetBundle:gestion:afficherP }
+supprimerEleve:
+    path:     /user/supprimerEleve/{id}
+    defaults: { _controller: projetBundle:eleve:supprimerEleve }
+supprimerParents:
+    path:     /user/supprimerParents/{id}
+    defaults: { _controller: projetBundle:gestion:supprimerParents }
+modifierParents:
+    path:     /parent/modifierParents/{id}
+    defaults: { _controller: projetBundle:gestion:modifierParents }
+afficherPersonnel:
+    path:     /user/afficherEnseignant
+    defaults: { _controller: projetBundle:personnel:afficherPersonnel }
+RechercherE:
+    path:     /user/RechercherE
+    defaults: { _controller: projetBundle:personnel:RechercherE }
+
+
+ajouter_demande_parent:
+    path:     /parent/ajouter-demande/
+    defaults: { _controller: projetBundle:gestion:demande }
+
+
+
+call:
+    path:     /user/call
+    defaults: { _controller: projetBundle:eleve:call }

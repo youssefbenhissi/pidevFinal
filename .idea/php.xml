@@ -92,6 +92,15 @@
       <path value="$PROJECT_DIR$/vendor/khanamiryan/qrcode-detector-decoder" />
       <path value="$PROJECT_DIR$/vendor/endroid/qr-code" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/vendor/artgris/filemanager-bundle" />
+      <path value="$PROJECT_DIR$/vendor/oomphinc/composer-installers-extender" />
+      <path value="$PROJECT_DIR$/vendor/nzo/file-downloader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/ckeditor-bundle" />
+      <path value="$PROJECT_DIR$/vendor/egeloen/ckeditor-bundle" />
+      <path value="$PROJECT_DIR$/vendor/egeloen/json-builder" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />

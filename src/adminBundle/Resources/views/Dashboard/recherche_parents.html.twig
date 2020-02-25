@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <!-- row -->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row mt">
+                <div class="col-md-12">
+                    <div class="content-panel">
+                        <div style="width: fit-content;float: right;">
+                            <form action="{{ path('recherche_parent_admin') }}" method="get" style="margin-right: 32px;">
+                                <input type="text" name="rech" class="form-control" style="float: left;width: 166px;">
+                                <input type="submit" class="btn btn-compose" style="width: fit-content;margin-left: 10px;" value="Rechercher" >
+                            </form>
+                        </div>
+
+                        <table class="table table-striped table-advance table-hover">
+                            <h4><i class="fa fa-angle-right"></i> Recherche des Parents</h4>
+                            <hr>
+                            <thead>
+                            <tr>
+                                <th><i class="fa fa-bullhorn"></i> ID </th>
+                                <th class="hidden-phone">Nom</th>
+                                <th class="hidden-phone">Prenom</th>
+                                <th class="hidden-phone">NumTelephone</th>
+                                <th class="hidden-phone">AdresseMail</th>
+
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pa in pa %}
+                                <tr>
+                                    <td>
+                                        <a>{{ pa.id }}</a>
+                                    </td>
+                                    <td class="hidden-phone">{{ pa.nom }}</td>
+                                    <td class="hidden-phone">{{ pa.prenom }}</td>
+                                    <td class="hidden-phone">{{ pa.numTelephone}}</td>
+                                    <td class="hidden-phone">{{ pa.adressMail}}</td>
+
+                                    <td><span class="label label-info label-mini"></span></td>
+                                    <td>
+                                        <a href="{{ path('modifierP',{'id':pa.id}) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                        <a href="{{ path('supprimerP',{'id':pa.id}) }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /content-panel -->
+                </div>
+                <!-- /col-md-12 -->
+            </div>
+            <!-- /row -->
+        </section>
+    </section>
+{% endblock %}

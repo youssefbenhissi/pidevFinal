@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> Statistique</h3>
+            <!-- page start-->
+            <div id="morris">
+                <div class="row mt">
+
+                    <div class="col-lg-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> Statistique des eleves par rapport leur age </h4>
+                            <div class="panel-body">
+                                <div id="hero-bar" class="graph"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt">
+
+
+                </div>
+            </div>
+
+
+            <!-- page end-->
+        </section>
+    </section>
+
+
+
+{% endblock %}
+
+{% block stat %}
+Morris.Bar({
+element: 'hero-bar',
+data: [
+    {% for s in stat %}
+{age: 'Age :{{ s.age }}', nombre: {{ s.nombre }}},
+
+    {% endfor %}
+
+],
+xkey: 'age',
+ykeys: ['nombre'],
+labels: ['nombre'],
+barRatio: 0.4,
+xLabelAngle: 35,
+hideHover: 'auto',
+barColors: ['#ac92ec']
+});
+{% endblock %}

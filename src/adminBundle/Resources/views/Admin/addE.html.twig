@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <section id="main-content">
+    <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+            <h1>Create your School</h1>
+    {{ form_start(Form) }}
+                <tr>
+                    <td>Adresse</td>
+            {{ form_widget(Form.adresse,{'attr':{'type':'text','required pattern':'[a-zA-Z-\.]{3,12}','class':'form-control','placeholder':'Adresse...'}}) }}
+                </tr>
+                <tr>
+                    <td>Nom</td>
+                    {{ form_widget(Form.nom,{'attr':{'type':'text','required pattern':'[a-zA-Z-\.]{3,12}','class':'form-control','placeholder':'Nom...'}}) }}
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    {{ form_widget(Form.image,{'attr':{'type':'file','class':'form-control','placeholder':'images...'}}) }}
+                </tr>
+                <tr>
+                    <td>Num Tel</td>
+                    {{ form_widget(Form.numTel,{'attr':{'type':'number','required pattern':'[0-9]','class':'form-control','placeholder':'NUM DE TEL...'}}) }}
+                </tr>
+    {{ form_end(Form) }}
+    </div>
+    </div>
+    </section>
+    </section>
+{% endblock %}

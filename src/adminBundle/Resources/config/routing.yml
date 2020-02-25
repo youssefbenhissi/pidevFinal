@@ -1,68 +1,159 @@
 admin_homepage:
     path:     /
     defaults: { _controller: adminBundle:Default:index }
-
+add_Etablissement:
+    path:     /addEtablissement
+    defaults: { _controller: adminBundle:DashboardController:addEtablissement}
+Backlist_Etablissement:
+    path:     /BacklistEtablissement
+    defaults: { _controller: adminBundle:DashboardController:BacklistEtablissement}
+Modify_Etablissement:
+    path:     /updateEtablissement/{id}
+    defaults: { _controller: adminBundle:DashboardController:updateEtablissement}
+delete_Etablissement:
+    path:     /deleteEtablissement/{id}
+    defaults: { _controller: adminBundle:DashboardController:deleteEtablissement }
 afficher_ctegorie:
-    path:     /admin/afficherCtegorie
+    path:     /afficherCtegorie
     defaults: { _controller: adminBundle:DashboardController:afficherCtegorie }
 supprimerCategorie:
-    path:     /admin/supprimerCategorie/{id}
+    path:     /supprimerCategorie/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerCategorie }
 supprimerClub:
-    path:     /admin/supprimerClub/{id}
+    path:     /supprimerClub/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerClub }
 modifierClub:
-    path:     /admin/modifierClub/{id}
+    path:     /modifierClub/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierClub }
 modifierCategorie:
-    path:     /admin/modifierCategorie/{id}
+    path:     /modifierCategorie/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierCategorie }
 afficherAbonne:
-    path:     /admin/afficherAbonne
+    path:     /afficherAbonne
     defaults: { _controller: adminBundle:DashboardController:afficherAbonne }
 supprimerInscription:
-    path:     /admin/supprimerInscription/{id}
+    path:     /supprimerInscription/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerInscription }
 modifierInscription:
-    path:     /admin/modifierInscription/{id}
+    path:     /modifierInscription/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierInscription }
 ajouterClub:
-    path:     /admin/ajouterClub
+    path:     /ajouterClub
     defaults: { _controller: adminBundle:DashboardController:ajouterClub }
 ajouterCategorie:
-    path:     /admin/ajouterCategorie
+    path:     /ajouterCategorie
     defaults: { _controller: adminBundle:DashboardController:ajouterCategorie }
 testerEmail:
-    path:     /admin/testerEmail
+    path:     /testerEmail
     defaults: { _controller: adminBundle:DashboardController:testerEmail }
 galerie:
-    path:     /admin/galerie
+    path:     /galerie
     defaults: { _controller: adminBundle:DashboardController:galerie }
 export:
-    path:     /admin/export
+    path:     /export
     defaults: { _controller: adminBundle:DashboardController:export }
+envoyernewsletter:
+    path:     /envoyernewsletter
+    defaults: { _controller: adminBundle:DashboardController:envoyernewsletter }
 #PARITE IHEB
 
 afficherCategorieEvenement:
-    path:     /admin/afficherCategorieEvenement
+    path:     /afficherCategorieEvenement
     defaults: { _controller: adminBundle:DashboardController:afficherCategorieEvenement }
 supprimerCategorieEvenement:
-    path:     /admin/supprimerCategorieEvenement/{id}
+    path:     /supprimerCategorieEvenement/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerCategorieEvenement }
 
 supprimerEvenement:
-    path:     /admin/supprimerEvenement/{id}
+    path:     /supprimerEvenement/{id}
     defaults: { _controller: adminBundle:DashboardController:supprimerEvenement }
 
 modifiercategorieEvenement:
-    path:     admin//modifiercategorie/{id}
+    path:     /modifiercategorie/{id}
     defaults: { _controller: adminBundle:DashboardController:modifiercategorieEvenement }
 modifierEvenement:
-    path:     /admin/modifierEvenement/{id}
+    path:     /modifierEvenement/{id}
     defaults: { _controller: adminBundle:DashboardController:modifierEvenement }
 ajouterEvenement:
-    path:     /admin/ajouterEvenement
+    path:     /ajouterEvenement
     defaults: { _controller: adminBundle:DashboardController:ajouterEvenement }
 ajouterCategorieEvenement:
-    path:     /admin/ajouterCategorieEvenement
+    path:     /ajouterCategorieEvenement
     defaults: { _controller: adminBundle:DashboardController:ajouterCategorieEvenement }
+
+afficher_per:
+    path:     /afficher
+    defaults: { _controller: adminBundle:Dashboard:afficher }
+afficher_stat:
+    path:     /afficher_stat
+    defaults: { _controller: adminBundle:Dashboard:afficherstat }
+supprimerE:
+    path:     /supprimerE/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerE }
+supprimerP:
+    path:     /supprimerP/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerP }
+supprimerPer:
+    path:     /supprimerPer/{id}
+    defaults: { _controller: adminBundle:Dashboard:supprimerPer }
+modifierE:
+    path:     /modifierE/{id}
+    defaults: { _controller: adminBundle:Dashboard:modifierE }
+modifierP:
+    path:     /modifierP/{id}
+    defaults: { _controller: adminBundle:Dashboard:modifierP }
+modifierPer:
+    path:     /modifierPer/{id}
+    defaults: { _controller: adminBundle:Dashboard:modifierPersonnel }
+ajouterE:
+    path:     /ajouterE
+    defaults: { _controller: adminBundle:Dashboard:ajouterE }
+ajouterP:
+    path:     /ajouterP
+    defaults: { _controller: adminBundle:Dashboard:ajouterP }
+ajouterPer:
+    path:     /ajouterPer
+    defaults: { _controller: adminBundle:Dashboard:ajouterPer }
+tester_email:
+    path:     /testerEmail
+    defaults: { _controller: adminBundle:mail:testerEmail }
+affichereleve_admin:
+    path:     /affichereleves
+    defaults: { _controller: adminBundle:Dashboard:affichereleve }
+afficherparent_admin:
+    path:     /afficherparents
+    defaults: { _controller: adminBundle:Dashboard:afficherparents }
+afficherperso_admin:
+    path:     /afficherperso
+    defaults: { _controller: adminBundle:Dashboard:afficherperso }
+
+recherche_eleve_admin:
+    path:     /recherche-eleves
+    defaults: { _controller: adminBundle:Dashboard:Recherche }
+
+recherche_parent_admin:
+    path:     /recherche-parent
+    defaults: { _controller: adminBundle:Dashboard:Rechercheparent }
+
+recherche_perso_admin:
+    path:     /recherche-personnel
+    defaults: { _controller: adminBundle:Dashboard:Rechercheperso }
+
+trie_eleve_nom_admin:
+    path:     /trier-eleve
+    defaults: { _controller: adminBundle:Dashboard:trierelevenom }
+
+trie_eleve_nom_desc_admin:
+    path:     /trier-eleve-desc
+    defaults: { _controller: adminBundle:Dashboard:trierelevenomdes }
+gerer_demande:
+    path:     /GererDemande/{id}/{token}
+    defaults: { _controller: projetBundle:gestion:GererDemande }
+#Hamza
+
+admin_dashboard:
+    path:     /admin
+    defaults: { _controller: adminBundle:Default:index }
+
+
+

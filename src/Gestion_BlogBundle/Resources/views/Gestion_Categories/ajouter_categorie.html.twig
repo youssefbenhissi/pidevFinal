@@ -1,0 +1,108 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Gestion de Blog - Ajouter une Catégorie{% endblock %}
+
+
+{% block adminscript %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("[for='gestion_blogbundle_categorie_nom']").append('<span style="color:red;" id="alert"></span>');
+            $("[for='gestion_blogbundle_categorie_description']").append('<span style="color:red;" id="alert2"></span>');
+            $('#gestion_blogbundle_categorie_nom').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert').show();
+                    $('#alert').html('<span style="color:red;" id="alert"> (Nom ne doit pas être vide) </span>');
+                    $('#gestion_blogbundle_categorie_nom').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_blogbundle_categorie_nom" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert').hide();
+                    $('#gestion_blogbundle_categorie_nom').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+
+
+            });
+
+
+
+
+            $('#gestion_blogbundle_categorie_description').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0 ){
+                    $(this).val('');
+                    $('#alert2').show();
+                    $('#alert2').html('<span style="color:red;" id="alert2"> (Description ne doit pas être vide) </span>');
+                    $('#gestion_blogbundle_categorie_description').css('border-color','red');
+                    $('.btn').attr("disabled", true);
+                    $( "#gestion_blogbundle_categorie_description" ).effect( "shake" );
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $('#alert2').hide();
+                    $('#gestion_blogbundle_categorie_description').css('border-color','');
+                    $('.btn').attr("disabled", false);
+
+                }
+
+
+            });
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <section id="main-content">
+    <section class="wrapper" style="height: 559px;">
+    <h3><i class="fa fa-angle-right"></i> ADMIN :</h3>
+    <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-6 py-5 px-md-5 bg-primary">
+                    <div class="heading-section heading-section-white ftco-animate mb-5">
+                        <!--<span class="subheading">Ajouter un article :</span>-->
+
+                        <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter Une Catégorie : </h4>
+                    </div>
+                    {{ form_start(ajout_Form,{attr: {'novalidate': 'novalidate'}}) }}
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            {{ form_row(ajout_Form.nom, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="form-group ml-md-4">
+                            {{ form_row(ajout_Form.description, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group ml-md-4">
+                            {{ form_row(ajout_Form.Ajouter, {'attr': {'class': 'btn btn-secondary costum  py-3 px-4','value':'Ajouter'},'style':{'color':'red'} }) }}
+                        </div>
+                    </div>
+                    {{ form_end(ajout_Form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Gestion Cours {% endblock %}
+
+{% block content %}
+
+    <section id="main-content">
+    <section class="wrapper" style="height: 559px;">
+        <div class="row mt">
+
+
+            <div class="col-sm-3">
+                <section class="panel">
+                    <div class="panel-body">
+                        <a href="{{ path('gestion_cours_Ajout') }}" class="btn btn-compose">
+                            <i class="fa fa-plus"></i>  Ajouter Un Cour
+                        </a>
+
+                    </div>
+                </section>
+
+            </div>
+
+
+
+
+            <div class="col-sm-9">
+                <section class="panel">
+                    <header class="panel-heading wht-bg">
+                        <h4 class="gen-case">
+                            Liste des Cours :
+                            <div style="width: fit-content;float: right;">
+                                <form action="{{ path('Searche_cours_Admin') }}" method="get" >
+                                    <input type="text" name="terme" class="form-control" style="width: 119px;height: 27px;float: left;margin-right: 5px;padding: 7px !important;">
+                                    <input type="submit" class="btn btn-compose" value="Rechercher" style="width: 69px;height: 27px;font-size: 12px;color: white;padding: 0px 0px;float: left;padding-left: 2px;" >
+                                </form>
+                            </div>
+                        </h4>
+                    </header>
+
+
+                    <div class="panel-body minimal">
+                        <div class="table-inbox-wrap ">
+                            <table class="table table-inbox table-hover">
+                                <tbody>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TYPE</th>
+                                    <th>NOM</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>MODIFIER</th>
+                                    <th>SUPPRIMER</th>
+                                    <td class="view-message text-right"></td>
+                                </tr>
+
+
+
+{% for cate in cat %}
+                                <tr class="">
+                                    <td class="inbox-small-cells">
+{{ cate.id }}
+                                    </td>
+                                    <td class="inbox-small-cells"><i class="fa fa-book"></i></td>
+                                    <td class="view-message dont-show"><a href="{{ path('cour._homepage')}}" target="_blank">{{ cate.nom }}</a></td>
+                                    <td class="view-message">{{ cate.Description }}</td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('modifier_cour_Admin',{'id':cate.id}) }}"><i style="color: #4b00ff; font-size: x-large;"  class="fa fa-edit"></i></a></td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('supprimer_cour_Admin',{'id':cate.id}) }}"><i style="color: #ff000c; font-size: x-large;" class="fa fa-remove"></i></a></td>
+                                    <td class="view-message text-right"></td>
+                                </tr>
+
+{% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+    </section>
+
+{% endblock %}

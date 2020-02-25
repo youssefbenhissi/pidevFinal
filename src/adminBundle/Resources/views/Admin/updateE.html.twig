@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-9 main-chart">
+                    <h1>Update your School</h1>
+                    {{ form_start(form) }}
+                    <tr>
+                        <td>Adresse</td>
+                        {{ form_widget(form.adresse,{'attr':{'type':'text','required pattern':'[a-zA-Z-\.]{3,12}','class':'form-control','placeholder':'Adresse...'}}) }}
+                    </tr>
+                    <tr>
+                        <td>Nom</td>
+                        {{ form_widget(form.nom,{'attr':{'type':'text','required pattern':'[a-zA-Z-\.]{3,12}','class':'form-control','placeholder':'Nom...'}}) }}
+                    </tr>
+                    <tr>
+                        <td>Image</td>
+                        {{ form_widget(form.image,{'attr':{'type':'file','class':'form-control','placeholder':'images...'}}) }}
+                    </tr>
+                    <tr>
+                        <td>Num Tel</td>
+                        {{ form_widget(form.numTel,{'attr':{'type':'number','required pattern':'[0-9]','class':'form-control','placeholder':'NUM DE TEL...'}}) }}
+                    </tr>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

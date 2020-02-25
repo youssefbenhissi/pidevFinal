@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <section class="ftco-section ftco-no-pb" style="
+    margin-bottom: 132px;
+    margin-top: 70px;
+">
+        <div class="container" style="
+    width: fit-content;
+">
+            <div style="
+    width: fit-content;
+    margin: auto;
+    float: left;
+    /* margin-left: 284px; */
+"><a href="{{ path('modifierParents',{'id':p}) }}"><button type="" id="" name="" class="btn btn-primary py-3 px-5" value="modifier">Modifier vos informations</button></a></div><div style="
+    width: fit-content;
+    margin: auto;
+    float: left;
+    margin-left: 67px;
+"><a href="{{ path('ajouter_demande_parent') }}"><button type="" id="projetbundle_parents_Envoyer" name="projetbundle_parents[Envoyer]" class="btn btn-primary py-3 px-5" value="modifier">Demander autorisation !</button></a></div>
+
+
+            <div style="
+    width: fit-content;
+    margin: auto;
+    float: left;
+    margin-left: 67px;
+"><a href="{{ path('mesdemandes') }}"><button type="" id="projetbundle_parents_Envoyer" name="projetbundle_parents[Envoyer]" class="btn btn-primary py-3 px-5" value="modifier">Consulter mes demanndes</button></a></div>
+
+        </div>
+    </section>
+
+
+{% endblock %}

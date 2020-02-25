@@ -1,0 +1,22 @@
+gestion.cours_homepage:
+    path:     /
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:index }
+
+
+
+gestion_cours_Ajout:
+    path:     /ajouter
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:ajouter }
+
+modifier_cour_Admin:
+    path:     /modifier-cour/{id}
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:Update }
+
+supprimer_cour_Admin:
+    path:     /supprimer-cour/{id}
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:Delete }
+
+Searche_cours_Admin:
+    path:     /rechercher-cours
+    defaults: { _controller: Gestion_CoursBundle:Gestion_Cour:Recherche }
+

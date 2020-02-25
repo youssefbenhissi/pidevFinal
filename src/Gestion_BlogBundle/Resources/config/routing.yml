@@ -1,0 +1,72 @@
+
+
+ajouter_article_Admin:
+    path:     /ajouter-article
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:ajouter }
+
+gestion_blog_homepage_Admin:
+    path:     /
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Affiche_list_article }
+
+modifier_article_Admin:
+    path:     /modifier-article/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Update }
+
+supprimer_article_Admin:
+    path:     /supprimer-article/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Delete }
+
+
+
+Searche_article_Admin:
+    path:     /rechercher
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Recherche }
+
+
+
+Gestion_Categorie_Admin:
+    path:     /categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:index }
+
+ajouter_categorie_Admin:
+    path:     /ajouter-categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:ajout }
+
+modifier_categorie_Admin:
+    path:     /modifier-categorie/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Update }
+
+supprimer_categorie_Admin:
+    path:     /supprimer-categorie/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Delete }
+
+Affiche_tags_admin:
+    path:     /tags
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:index }
+
+ajouter_tag_Admin:
+    path:     /ajouter-tag
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:ajout }
+
+modifier_tag_Admin:
+    path:     /modifier-tag/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Update }
+
+supprimer_tag_Admin:
+    path:     /supprimer-tag/{id}
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Delete }
+
+
+Searche_cate_Admin:
+    path:     /rechercher-categorie
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Categories:Recherche }
+
+Searche_tags_Admin:
+    path:     /rechercher-tag
+    defaults: { _controller: Gestion_BlogBundle:Gestion_tags:Recherche }
+
+
+Affiche_Article_NBR:
+    path:     /nbr
+    defaults: { _controller: Gestion_BlogBundle:Gestion_Articles:Affiche_list_articlenbr }
+

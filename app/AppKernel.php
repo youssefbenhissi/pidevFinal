@@ -28,6 +28,16 @@ class AppKernel extends Kernel
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new Egyg33k\CsvBundle\Egyg33kCsvBundle(),
             new EvenementBundle\EvenementBundle(),
+            new BibliothequebackBundle\BibliothequebackBundle(),
+            new projetBundle\projetBundle(),
+            new Artgris\Bundle\FileManagerBundle\ArtgrisFileManagerBundle(),
+            new Gestion_BlogBundle\Gestion_BlogBundle(),
+            new BlogBundle\BlogBundle(),
+            new Gestion_CoursBundle\Gestion_CoursBundle(),
+            new Nzo\FileDownloaderBundle\NzoFileDownloaderBundle(),
+            new Cour_Bundle\Cour_Bundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new EtablissementBundle\EtablissementBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,0 +1,40 @@
+bibliothequeback_homepage:
+    path:     /
+    defaults: { _controller: BibliothequebackBundle:Default:index }
+
+bibliothequeback_ajoutCat:
+    path:     /admin/ajouterCat
+    defaults: { _controller: BibliothequebackBundle:Category:Ajouter }
+
+bibliothequeback_afficheCat:
+    path:     /admin/afficheCat
+    defaults: { _controller: BibliothequebackBundle:Category:affiche }
+
+bibliothequeback_updatCat:
+    path:     /admin/updateCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:update }
+
+bibliothequeback_deleteCat:
+    path:     /admin/deleteCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:supprimer }
+
+bibliothequeback_detailsCat:
+    path:     /admin/detailsCat/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:categoryDetails }
+
+bibliothequeback_afficheCatFront:
+    path:     /user/afficheCatFront
+    defaults: { _controller: BibliothequebackBundle:Category:afficheCatFront }
+
+bibliothequeback_detailsCatFront:
+    path:     /user/detailsCatFront/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:categoryDetailsFront }
+
+bibliothequeback_detailsLivreFront:
+    path:     /user/detailsLivreFront/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:livreDetailsFront }
+
+export:
+    path:     /admin/export
+    defaults: { _controller: BibliothequebackBundle:Category:export }
+

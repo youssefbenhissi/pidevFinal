@@ -1,18 +1,48 @@
+etablissement:
+    resource: "@EtablissementBundle/Resources/config/routing.yml"
+    prefix:   /etablissements
+
+bibliothequeback:
+    resource: "@BibliothequebackBundle/Resources/config/routing.yml"
+    prefix:   /bib
+
 evenement:
     resource: "@EvenementBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /evennements
 
 admin:
     resource: "@adminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 gerer_club:
     resource: "@gererClubBundle/Resources/config/routing.yml"
+    prefix:   /club
+
+personnel:
+    resource: "@projetBundle/Resources/config/routing.yml"
     prefix:   /
+
+cour.:
+    resource: "@Cour_Bundle/Resources/config/routing.yml"
+    prefix:   /cour
+
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+
+Gestion_Cours:
+    resource: "@Gestion_CoursBundle/Resources/config/routing.yml"
+    prefix:   /admin/gestion-cour
+
+gestion_blog:
+    resource: "@Gestion_BlogBundle/Resources/config/routing.yml"
+    prefix:   /admin/gestion-blog
 
 app:
     resource: '@AppBundle/Controller/'
@@ -24,3 +54,9 @@ _liip_imagine:
 mgilet_notification:
     resource: "@MgiletNotificationBundle/Controller/"
     prefix: /notifications
+
+
+artgris_bundle_file_manager:
+    resource: "@ArtgrisFileManagerBundle/Controller"
+    type:     annotation
+    prefix:   admin/manager

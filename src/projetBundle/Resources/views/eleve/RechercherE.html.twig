@@ -1,0 +1,23 @@
+{{ form(f,{'attr':{'novalidate':'novalidate'}}) }}
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Description</td>
+        <td>Adresse</td>
+        <td>Domaine</td>
+        <td>Delete</td>
+    </tr>
+    {% for cc in c %}
+        <tr>
+            <td>{{ cc.id }}</td>
+            <td>{{ cc.nom }}</td>
+            <td>{{ cc.prenom }}</td>
+            <td>{{ cc.adresse }}</td>
+            <td>{{ cc.domaine }}</td>
+            <td><a href="{{ path('Delete',{'id':cc.id}) }}">Delete</a></td>
+            <td><a href="{{ path('Update',{'id':cc.id}) }}">Update</a></td>
+
+        </tr>
+    {% endfor %}
+</table>

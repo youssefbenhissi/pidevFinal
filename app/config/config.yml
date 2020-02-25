@@ -7,12 +7,21 @@ imports:
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@MgiletNotificationBundle/Resources/config/services.yml" }
     - { resource: "@EvenementBundle/Resources/config/services.yml" }
+    - { resource: "@BibliothequebackBundle/Resources/config/services.yml" }
+    - { resource: "@projetBundle/Resources/config/services.yml" }
+    - { resource: "@Gestion_BlogBundle/Resources/config/services.yml" }
+    - { resource: "@BlogBundle/Resources/config/services.yml" }
+    - { resource: "@Gestion_CoursBundle/Resources/config/services.yml" }
+    - { resource: "@Cour_Bundle/Resources/config/services.yml" }
+    - { resource: "@EtablissementBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
     image_directory: '%kernel.project_dir%/web/assets/images'
+    images_articles_dossier: '%kernel.project_dir%/web/assets/images/'
+    pdf_dossier: '%kernel.project_dir%/web/pdf/'
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -142,3 +151,37 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+
+artgris_file_manager:
+    web_dir: web
+    conf:
+        default:
+            dir: "../web/images"
+
+ivory_ck_editor:
+    plugins:
+        image:
+            path:                       "web/bundles/ivoryckeditor/plugins/image2/"
+            filename:                   "plugin.js"
+    default_config:                     my_custom_alaa
+    configs:
+        my_custom_alaa:
+            language:                   "%locale%"
+            toolbar:                    "full"          # Charger la toolbar tollbar_1 modified
+            stylesSet:                  "my_styles"         # Chargement des styles personnalisables
+            uiColor:                    "#FCFCFC"           # Couleur de fond de l'interface
+            height:                     "500px"             # Hauteur
+            contentsCss:                ['bundles/app/css/style.css'] # Charge les styles dans l'éditeur (permet de voir en temps réel le résultat)
+            skin: "office2013, web/bundles/ivoryckeditor/skins/office2013/"
+
+    styles:         # Configuration des styles
+        my_styles:
+            - { name: "Alert Success", element: "div",  attributes: { class: "alert alert-success", role: "alert" }}
+            - { name: "Alert Info", element: "div",  attributes: { class: "alert alert-info", role: "alert" }}
+            - { name: "Alert Warning", element: "div",  attributes: { class: "alert alert-warning", role: "alert" }}
+            - { name: "Alert Danger", element: "div",  attributes: { class: "alert alert-danger", role: "alert" }}
+            - { name: "Badge", element: "span",  attributes: { class: "badge" }}
+
+
+

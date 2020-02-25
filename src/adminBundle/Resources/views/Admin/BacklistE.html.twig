@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <section id="main-content">
+        <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i> Schools</h3>
+            <div class="row mb">
+                <!-- page start-->
+                <div class="content-panel">
+                    <div class="adv-table">
+                        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Adresse</th>
+                                <th class="hidden-phone">Telephone</th>
+                                <th class="hidden-phone">Image</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for Etablissement in Etablissement %}
+                            <tr class="gradeX">
+                                <td>{{ Etablissement.nom }}</td>
+                                <td>{{ Etablissement.adresse }}</td>
+                                <td class="hidden-phone">{{ Etablissement.numTel }}</td>
+                                <td class="center hidden-phone"><img src="{{ asset('/web/assets/images/' ~ Etablissement.image) }}"></td>
+                                <td><a href="{{ path('delete_Etablissement',{'id':Etablissement.id}) }}">delete</a></td>
+                                <td><a href="{{ path('Modify_Etablissement',{'id':Etablissement.id}) }}">update</a></td>
+                            </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+{% endblock %}

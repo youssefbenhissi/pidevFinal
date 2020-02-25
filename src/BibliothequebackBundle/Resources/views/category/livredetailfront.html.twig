@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+    {% block section %}
+{% set urlc= app.request.uri %}
+
+
+{% set long = urlc|length %}
+
+{% set res=  urlc|slice(76, long) %}
+
+{% if livre.id == res %}
+ <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('images/') }}{{ livre.nomImage }}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">{{livre.nom}}</h1>
+             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="index.html">Category <i class="ion-ios-arrow-forward"></i></a></span> <span>{{livre.Category.libelle}} <i class="ion-ios-arrow-forward"></i></span>
+             <span>livre <i class="ion-ios-arrow-forward"></i></span><span>{{livre.nom}} <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Front/images/etoile pleine.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Front/images/etoile vide.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Front/images/demi etoile.png') }}" />
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+          <div class="col-lg-8 ftco-animate">
+            <h2 class="mb-3"> {{livre.nom}}</h2>
+            
+              <img src="{{ asset('images/') }}{{ livre.nomImage }}" alt="" class="img-fluid">
+            </p>
+           <p>{{livre.description}}</p>
+           
+            
+           
+
+
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5 h4 font-weight-bold">Comments</h3>
+                {% set urlc= app.request.uri %}
+                {% set long = urlc|length %}
+                {% set res=  urlc|slice(76, long) %}
+                        {% for commentaire in commentaires %}
+                            {% if commentaire.livre.id == res %}
+                        
+                  
+                                    <div class="comment-body">
+                                        <h4>
+
+
+                                            {{commentaire.contenue}}
+
+                                        </h4>
+                                        <div   class="meta mb-2">{{ commentaire.datecreate|date }}</div>
+                                        
+
+                                        <p>            {{ commentaire.rating|rating }}</p>
+                                        
+                                    </div>
+               
+
+                            {% endif %}
+                        {% endfor %}
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5 h4 font-weight-bold">Leave a comment</h3>
+                {{form(form)}}
+                
+              </div>
+            </div>
+          </div> <!-- .col-md-8 -->
+          
+          <div class="col-lg-4 sidebar ftco-animate">
+           
+            <div class="sidebar-box ftco-animate">
+            	<h3>Category</h3>
+              <ul class="categories">
+              {% for cat in categories %}
+                <li><a href="{{path('bibliothequeback_detailsCatFront',{'id':cat.id})}}">{{ cat.libelle }}</a></li>
+               {% endfor %}
+              </ul>
+            </div>
+
+           
+
+          
+
+
+           
+          </div><!-- END COL -->
+        </div>
+			</div>
+		</section>
+    {% endif %}
+    
+
+
+
+	{% endblock %}

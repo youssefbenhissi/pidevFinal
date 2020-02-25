@@ -1,0 +1,323 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Gestion de Blog{% endblock %}
+{% block adminscript %}
+    <style>
+
+        #scroll-one{
+            position: fixed
+            width:308px;
+        }
+    </style>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(window).scroll(function(e){
+            var $el = $('#scroll-one');
+            var isPositionFixed = ($el.css('position') == 'fixed');
+            if ($(this).scrollTop() > 300 && !isPositionFixed){
+                $el.css({'position': 'fixed', 'top': '68px','width':'273px'});
+            }
+            if ($(this).scrollTop() < 300 && isPositionFixed){
+                $el.css({'position': 'static', 'top': '0px','width':'273px'});
+            }
+        });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.form-control').on('keyup',function(){
+
+                if($(this).val().replace(/^\s+|\s+$/g, "").length == 0){
+                    $(this).val('');
+                    $(this).css('border-color','red');
+                    $("[value='Rechercher']").attr("disabled", true);
+                }else if($(this).val().replace(/^\s+|\s+$/g, "").length != 0){
+                    $(this).css('border-color','');
+                    $("[value='Rechercher']").attr("disabled", false);
+
+                }
+            });
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <section id="main-content">
+    <section class="wrapper">
+        <div class="row mt">
+
+
+            <div class="col-sm-3" >
+                <section class="panel" id="scroll-one" style="width: 273px;">
+                    <div class="panel-body" >
+                        <a href="{{ path('ajouter_article_Admin') }}" class="btn btn-compose">
+                            <i class="fa fa-pencil"></i>  Ajouter un Article
+                        </a>
+                        <ul class="nav nav-pills nav-stacked mail-nav">
+                            <li class="active"><a href="{{ path('gestion_blog_homepage_Admin') }}"> <i class="fa fa-file-text"></i> Liste des Articles </a></li>
+                            <li ><a href="{{ path('Gestion_Categorie_Admin') }}"> <i class="fa fa-certificate"></i> Catégories  </a></li>
+                            <li><a href="{{ path('Affiche_tags_admin') }}"> <i class="fa fa-tags"></i> Tags </a></li>
+
+
+
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+
+
+
+            <div class="col-sm-9">
+                <section class="panel">
+                    <header class="panel-heading wht-bg">
+                        <h4 class="gen-case">
+                            Articles
+
+
+
+
+
+                            <div style="width: fit-content;float: right;">
+                                <form action="{{ path('Searche_article_Admin') }}" method="get" >
+                                    <input type="text" placeholder="Rechercher" required="required" name="terme" class="form-control" style="width: 119px;height: 27px;float: left;margin-right: 5px;padding: 7px !important;">
+                                    <input type="submit"  class="btn btn-compose" value="Rechercher" style="width: 69px;height: 27px;font-size: 12px;color: white;padding: 0px 0px;float: left;padding-left: 2px;" >
+                                </form>
+                            </div>
+
+
+
+
+
+
+
+                        </h4>
+<div style="width: 100%;height: 28px;border-radius: 5px;background-color: #ececec;text-align: start;">
+    <span style="font-size: 19px;padding-left: 6px;color: #676767;">Nombre total ({{ nbrtotal }})</span>
+    <form action="{{ path('Affiche_Article_NBR') }}" method="get" style="width: fit-content;float: right;padding-right: 2px;">
+        <select style="width: 53px;height: 27px;padding: 0;" name='nbr' class="form-control" onchange='if(this.value != 0) { this.form.submit(); }'>
+
+            <option value='10'>10</option>
+            <option {% if nbr == 20 %} selected {% endif %} value='20'>20</option>
+            <option {% if nbr == 30 %} selected {% endif %} value='30'>30</option>
+            <option {% if nbr == 40 %} selected {% endif %} value='40'>40</option>
+            <option {% if nbr == null %} selected {% endif %} value='all'>Tous</option>
+        </select>
+        {% if ornom != null %}
+        <input type="hidden" name="ornom" value="{{ ornom }}">
+         {% endif %}
+        {% if ordate != null %}
+            <input type="hidden" name="ordate" value="{{ ordate }}">
+        {% endif %}
+        {% if ordvue != null %}
+            <input type="hidden" name="ordvue" value="{{ ordvue }}">
+        {% endif %}
+    </form>
+
+</div>
+
+
+                    </header>
+
+
+                    <div class="panel-body minimal">
+                        <div class="table-inbox-wrap ">
+                            <table class="table table-inbox table-hover">
+                                <tbody>
+                                <tr>
+                                    <th style="padding: 0px;padding-top: 8px;">Vue{% if ordvue == null or ordvue == 'asc' %}<a style="float: right;"
+href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ordvue':'desc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ordvue':'desc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ordvue':'desc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ordvue':'desc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ordvue':'desc'}) }}
+{% endif %}" >
+                                            <i class="fa fa-sort-amount-desc" ></i></a>
+                                    {% endif %}
+                                        {% if ordvue == 'desc' %}
+                                            <a style="float: right;" href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ordvue':'asc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ordvue':'asc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ordvue':'asc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ordvue':'asc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ordvue':'asc'}) }}
+{% endif %}" >
+                                                <i class="fa fa-sort-amount-asc" ></i></a>
+                                        {% endif %}
+                                    </th>
+                                    <th>TYPE</th>
+                                    <th>NOM {% if ornom == null or ornom == 'asc' %}<a href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ornom':'desc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ornom':'desc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ornom':'desc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ornom':'desc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ornom':'desc'}) }}
+{% endif %}" >
+                                            <i class="fa fa-sort-alpha-desc" ></i></a>
+                                    {% endif %}
+                                        {% if ornom == 'desc' %}
+                                            <a href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ornom':'asc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ornom':'asc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ornom':'asc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ornom':'asc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ornom':'asc'}) }}
+{% endif %}" >
+                                                <i class="fa fa-sort-alpha-asc" ></i></a>
+                                        {% endif %}
+                                    </th>
+                                    <th>DESCRIPTION</th>
+                                    <th>MODIFIER</th>
+                                    <th>SUPPRIMER</th>
+                                    <th style="padding: 2px;padding-top: 8px;">DATE
+
+                                        {% if ordate == null or ordate == 'desc' %}
+                                        <a href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ordate':'asc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ordate':'asc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ordate':'asc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ordate':'asc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ordate':'asc'}) }}
+{% endif %}" >
+
+                                            <i class="fa fa-sort-asc" ></i></a>
+                                    {% endif %}
+                                        {% if ordate == 'asc' %}
+                                            <a href="{% if nbr == 10 %}
+{{ path('Affiche_Article_NBR',{'nbr':10,'ordate':'desc'}) }}
+{% endif %}
+ {% if nbr == 20 %}
+{{ path('Affiche_Article_NBR',{'nbr':20,'ordate':'desc'}) }}
+{% endif %}
+ {% if nbr == 30 %}
+{{ path('Affiche_Article_NBR',{'nbr':30,'ordate':'desc'}) }}
+{% endif %}
+ {% if nbr == 40 %}
+{{ path('Affiche_Article_NBR',{'nbr':40,'ordate':'desc'}) }}
+{% endif %}
+ {% if nbr == null %}
+{{ path('Affiche_Article_NBR',{'nbr':'all','ordate':'desc'}) }}
+{% endif %}" >
+
+                                                <i class="fa fa-sort-desc" ></i></a>
+                                        {% endif %}
+                                    </th>
+                                </tr>
+
+
+
+{% for articles in article %}
+                                <tr class="">
+                                    <td class="inbox-small-cells">
+{{ articles.vues }}
+                                    </td>
+                                    <td class="inbox-small-cells">
+                                        {% if articles.type == 1 %}
+                                        PUB
+{% else %}
+    BRO
+    {% endif %}
+                                    </td>
+                                    <td class="view-message dont-show"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" target="_blank">{{ articles.titre }}</a></td>
+                                    <td class="view-message"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" target="_blank">{{ articles.description|raw }}</a></td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('modifier_article_Admin',{'id':articles.id}) }}"><i style="color: #4b00ff; font-size: x-large;"  class="fa fa-edit"></i></a></td>
+                                    <td class="view-message inbox-small-cells"><a href="{{ path('supprimer_article_Admin',{'id':articles.id}) }}"><i style="color: #ff000c; font-size: x-large;" class="fa fa-remove"></i></a></td>
+                                    <td class="view-message text-right">{{ articles.date|date("d M Y") }}</td>
+                                </tr>
+
+{% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+    </section>
+
+{% endblock %}

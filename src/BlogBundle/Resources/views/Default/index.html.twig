@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BLOG DE l'ecole x{% endblock %}
+
+ {% block script_front %}
+     <script
+             src="https://code.jquery.com/jquery-3.4.1.js"
+             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+             crossorigin="anonymous"></script>
+     <script type="text/javascript">
+         jQuery(document).ready(function() {
+             var searchRequest = null;
+             $('#res').html('');
+             $("#search").keyup(function() {
+                 var minlength = 1;
+                 var that = this;
+                 var value = $(this).val();
+                 var entitySelector = $("#entitiesNav").html('');
+                 if (value.length >= minlength ) {
+                     if (searchRequest != null)
+                         searchRequest.abort();
+                     searchRequest = $.ajax({
+                         type: "GET",
+                         url: "{{ path('Recherche_Article_user_ajax') }}",
+                         data: {
+                             'q' : value
+                         },
+                         dataType: "text",
+                         success: function(msg){
+                             //we need to check if the value is the same
+                             if (value===$(that).val()) {
+                                 var result = JSON.parse(msg);
+                                 $.each(result, function(key, arr) {
+                                     $.each(arr, function(id, value) {
+                                         if (key === 'posts') {
+                                             if (id !== 'error') {
+                                                 console.log(value[1]);
+                                                 entitySelector.append('<li style="width: 97%;margin: auto;height: 57px;font-size: large;border: 1px solid;border-radius: 12px;min-width: 97%;"><b style="\n' + '    margin-right: 177px;\n' + '"><a href="'+id+'">'+value[1]+'</a></b><a href="'+id+'">'+'<img src="../assets/images/'+value[0]+'" style="width: 100px;height: 100%;border-radius: 12px;float: right;"/>'+'</a></li>');
+                                             } else {
+                                                 entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                             }
+                                         }
+                                     });
+                                 });
+                             }
+                         }
+                     });
+                 }
+             });
+         });
+     </script>
+
+
+     <style>
+         .nvigation-div {
+             margin: auto;
+             width: fit-content;
+             border: 1px solid;
+             border-radius: 16px;
+         }
+         .navigation {
+             display: inline-block;
+         }
+
+         .navigation span {
+             color: black;
+             float: left;
+             padding: 8px 16px;
+             text-decoration: none;
+         }
+
+         .navigation span.current {
+             background-color: #fda639;
+             color: white;
+             border-radius: 16px;
+         }
+
+         .navigation span:hover:not(.active) {background-color: #ddd;border-radius: 16px;}
+     </style>
+ {% endblock %}
+
+
+
+{% block content %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{  asset('assets/images/bg_2.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <h1 class="mb-2 bread">Notre Blog</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="###">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+    <section class="ftco-section bg-light" style="padding: 18px;">
+        <form action="#" class="search-form" style="width: 65%;margin: auto;">
+            <div class="form-group">
+                <span class="icon icon-search"></span>
+                <input type="text" id="search" class="form-control" placeholder="Rechercher">
+            </div>
+        </form>
+        <ul class="nav" id="side-menu" style="width: 65%;margin: auto;">
+            <li style="width: fit-content;margin: auto;">
+                <a id="res" href="#"> Entities<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" id="entitiesNav">
+                </ul>
+            </li>
+        </ul>
+      <center>  <p class="breadcrumbs" style="font-size: large;">
+            CATEGORIES :
+            {% for categ in categories %}
+            <b><span class="mr-2"><a href="{{ path('Affiche_categorie_User',{'id':categ.id}) }}">{{ categ.nom }} </a></span>|</b>
+        {% endfor %}
+
+        </p>
+
+      </center>
+        <div class="container">
+            <div class="row">
+
+{% for articles in appointments %}
+
+                <div class="col-md-6 col-lg-4 ftco-animate">
+                    <div class="blog-entry">
+                        <a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" class="block-20 d-flex align-items-end" style="background-image: url('{{  asset('assets/images/') ~ articles.image }}');">
+                            <div class="meta-date text-center p-2">
+                                <span class="day">{{ articles.date|date("d") }}</span>
+                                <span class="mos">{{ articles.date|date("M") }}</span>
+                                <span class="yr">{{ articles.date|date("Y") }}</span>
+                            </div>
+                        </a>
+                        <div class="text bg-white p-4">
+                            <h3 class="heading"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}">{{ articles.titre }}</a></h3>
+                            <p>{{ articles.description|raw }}</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <p class="mb-0"><a href="{{ path('Single_Affiche_article_User',{'id':articles.id}) }}" class="btn btn-secondary">Lire la suite<span class="ion-ios-arrow-round-forward"></span></a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+        <div class="nvigation-div">
+        <div class="navigation">
+            {{ knp_pagination_render(appointments) }}
+        </div>
+        </div>
+    </section>
+{% endblock %}

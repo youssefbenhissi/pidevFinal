@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57b5b92edbce2b6ae760ec0a7048da32",
+    "content-hash": "bb345b92ab195843ae39a19f20e19787",
     "packages": [
+        {
+            "name": "artgris/filemanager-bundle",
+            "version": "1.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artgris/FileManagerBundle.git",
+                "reference": "c87947f2be5b0fe870033521458f712685f2b969"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artgris/FileManagerBundle/zipball/c87947f2be5b0fe870033521458f712685f2b969",
+                "reference": "c87947f2be5b0fe870033521458f712685f2b969",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "^1.1",
+                "php": ">=5.6.0",
+                "sensio/framework-extra-bundle": "~2.3|~3.0,>=3.0.2|4.0.x|~5.0",
+                "symfony/asset": "~2.3|~3.0|^4.0",
+                "symfony/form": "~2.3|~3.0|^4.0",
+                "symfony/translation": "~2.3|~3.0|^4.0",
+                "symfony/twig-bridge": "^2.3.4|~3.0|^4.0",
+                "symfony/twig-bundle": "^2.3.4|~3.0|^4.0",
+                "symfony/validator": "~2.3|~3.0|^4.0",
+                "twig/extensions": "~1.0",
+                "twig/twig": "^1.28 || ^2.0 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0|^5.0",
+                "symfony/browser-kit": "~2.3|~3.0|^4.0",
+                "symfony/css-selector": "~2.3|~3.0|^4.0",
+                "symfony/security-bundle": "~2.3|~3.0|^4.0",
+                "symfony/templating": "~2.3|~3.0|^4.0",
+                "symfony/var-dumper": "~2.3|~3.0|^4.0",
+                "symfony/yaml": "~2.3|~3.0|^4.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Artgris\\Bundle\\FileManagerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arthur Gribet",
+                    "email": "a.gribet@gmail.com"
+                }
+            ],
+            "description": "FileManager is a simple Multilingual File Manager Bundle for Symfony",
+            "homepage": "https://github.com/artgris/FileManagerBundle",
+            "keywords": [
+                "bundle",
+                "file manager",
+                "symfony"
+            ],
+            "time": "2020-02-16T17:41:09+00:00"
+        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "1.0.3",
@@ -107,6 +171,130 @@
                 "tls"
             ],
             "time": "2020-01-13T10:02:55+00:00"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "7d610d50aae61ae7ed6675e58efeabdf279bb5e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/7d610d50aae61ae7ed6675e58efeabdf279bb5e3",
+                "reference": "7d610d50aae61ae7ed6675e58efeabdf279bb5e3",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "^4.8.36"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "joomla",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "time": "2020-02-07T10:39:20+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -891,6 +1079,128 @@
             "time": "2017-12-17T02:57:51+00:00"
         },
         {
+            "name": "egeloen/ckeditor-bundle",
+            "version": "6.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
+                "reference": "9c9926918d3ae4b4d89ca2db578766ab9829ee7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/9c9926918d3ae4b4d89ca2db578766ab9829ee7a",
+                "reference": "9c9926918d3ae4b4d89ca2db578766ab9829ee7a",
+                "shasum": ""
+            },
+            "require": {
+                "egeloen/json-builder": "^2.0|^3.0",
+                "php": "^5.6|^7.0",
+                "symfony/dependency-injection": "^2.7|^3.0",
+                "symfony/form": "^2.7|^3.0",
+                "symfony/framework-bundle": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^5.0|^6.0",
+                "sensio/distribution-bundle": "^3.0.12|^4.0|^5.0",
+                "symfony/asset": "^2.7|^3.0",
+                "symfony/console": "^2.7|^3.0",
+                "symfony/phpunit-bridge": "^2.7|^3.0",
+                "symfony/templating": "^2.7|^3.0",
+                "symfony/twig-bridge": "^2.7|^3.0",
+                "symfony/yaml": "^2.7|^3.0",
+                "twig/twig": "^1.12"
+            },
+            "suggest": {
+                "egeloen/form-extra-bundle": "Allows to load CKEditor asynchronously",
+                "sensio/distribution-bundle": "Allows to install CKEditor via a script handler",
+                "symfony/asset": "Allows to rewrite/version assets",
+                "symfony/templating": "Allows to use PHP templates",
+                "symfony/twig-bridge": "Allows to use Twig templates",
+                "twig/twig": "Allows to use Twig templates"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\CKEditorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a CKEditor integration for your Symfony2 Project.",
+            "keywords": [
+                "CKEditor"
+            ],
+            "time": "2017-08-18T08:19:45+00:00"
+        },
+        {
+            "name": "egeloen/json-builder",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/ivory-json-builder.git",
+                "reference": "3e70bc681891d8aca88dd72164caea659739f284"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/ivory-json-builder/zipball/3e70bc681891d8aca88dd72164caea659739f284",
+                "reference": "3e70bc681891d8aca88dd72164caea659739f284",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^5.6|^7.0",
+                "symfony/property-access": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^5.0",
+                "symfony/phpunit-bridge": "^2.7|^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\JsonBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "JSON builder with escaping control for PHP 5.6+",
+            "keywords": [
+                "Escape",
+                "builder",
+                "json"
+            ],
+            "time": "2017-02-27T20:18:54+00:00"
+        },
+        {
             "name": "egyg33k/csv-bundle",
             "version": "1.0.1",
             "source": {
@@ -1060,6 +1370,86 @@
                 "rest"
             ],
             "time": "2019-12-18T15:40:05+00:00"
+        },
+        {
+            "name": "friendsofsymfony/ckeditor-bundle",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle.git",
+                "reference": "7d428b16154a7136e1dd4c11062573afa1bfb3df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSCKEditorBundle/zipball/7d428b16154a7136e1dd4c11062573afa1bfb3df",
+                "reference": "7d428b16154a7136e1dd4c11062573afa1bfb3df",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zip": "*",
+                "php": "^5.6 || ^7.0",
+                "symfony/asset": "^2.7 || ^3.0 || ^4.0",
+                "symfony/config": "^2.7 || ^3.0 || ^4.0",
+                "symfony/dependency-injection": "^2.7 || ^3.0 || ^4.0",
+                "symfony/expression-language": "^2.7 || ^3.0 || ^4.0",
+                "symfony/form": "^2.7 || ^3.0 || ^4.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0",
+                "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0",
+                "symfony/http-kernel": "^2.7 || ^3.0 || ^4.0",
+                "symfony/options-resolver": "^2.7 || ^3.0 || ^4.0",
+                "symfony/property-access": "^2.7 || ^3.0 || ^4.0",
+                "symfony/routing": "^2.7 || ^3.0 || ^4.0"
+            },
+            "conflict": {
+                "sebastian/environment": "<1.3.4",
+                "sebastian/exporter": "<2.0.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0 || ^2.0",
+                "phpunit/phpunit": "^5.0 || ^6.0",
+                "sensio/distribution-bundle": "^3.0.12 || ^4.0 || ^5.0",
+                "symfony/console": "^2.7 || ^3.0 || ^4.0",
+                "symfony/phpunit-bridge": "^4.0",
+                "symfony/templating": "^2.7 || ^3.0 || ^4.0",
+                "symfony/twig-bridge": "^2.7 || ^3.0 || ^4.0",
+                "symfony/yaml": "^2.7 || ^3.0 || ^4.0",
+                "twig/twig": "^1.34 || ^2.0"
+            },
+            "suggest": {
+                "egeloen/form-extra-bundle": "Allows to load CKEditor asynchronously"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\CKEditorBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/graphs/contributors"
+                }
+            ],
+            "description": "Provides a CKEditor integration for your Symfony project.",
+            "keywords": [
+                "CKEditor"
+            ],
+            "time": "2018-10-03T20:51:58+00:00"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1986,6 +2376,48 @@
                 "enum"
             ],
             "time": "2019-02-04T21:18:49+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3175,6 +3607,61 @@
             "time": "2020-01-21T12:30:09+00:00"
         },
         {
+            "name": "twig/extensions",
+            "version": "v1.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig-extensions.git",
+                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/57873c8b0c1be51caa47df2cdb824490beb16202",
+                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202",
+                "shasum": ""
+            },
+            "require": {
+                "twig/twig": "^1.27|^2.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4",
+                "symfony/translation": "^2.7|^3.4"
+            },
+            "suggest": {
+                "symfony/translation": "Allow the time_diff output to be translated"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_Extensions_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\Extensions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Common additional features for Twig that do not directly belong in core",
+            "keywords": [
+                "i18n",
+                "text"
+            ],
+            "time": "2018-12-05T18:34:18+00:00"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.42.5",
             "source": {
@@ -3323,6 +3810,54 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "nzo/file-downloader-bundle",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nayzo/NzoFileDownloaderBundle.git",
+                "reference": "05470a2c43b03cab2f5fd636a10feaba55cbb4af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nayzo/NzoFileDownloaderBundle/zipball/05470a2c43b03cab2f5fd636a10feaba55cbb4af",
+                "reference": "05470a2c43b03cab2f5fd636a10feaba55cbb4af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "^2.3|^3.0|^4.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Nzo\\FileDownloaderBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ala Eddine Khefifi",
+                    "email": "alakhefifi@gmail.com"
+                }
+            ],
+            "description": "The NzoFileDownloaderBundle is a Symfony Bundle used to Download all types of files from servers and Web applications safely and with ease. You can also read/show the file content in the Web Browser.",
+            "keywords": [
+                "browser",
+                "bundle",
+                "download",
+                "downloader",
+                "file",
+                "read",
+                "show",
+                "symfony",
+                "upload"
+            ],
+            "time": "2019-06-12T19:43:34+00:00"
+        },
         {
             "name": "sensio/generator-bundle",
             "version": "v3.1.7",

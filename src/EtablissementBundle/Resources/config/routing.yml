@@ -1,0 +1,33 @@
+etablissement_homepage:
+    path:     /
+    defaults: { _controller: EtablissementBundle:Etablissement:listEtablissement}
+list_Etablissement:
+    path:     /user/listEtablissement
+    defaults: { _controller: EtablissementBundle:Etablissement:listEtablissement }
+detailed_Etablissement:
+    path:     /user/detailedEtablissement/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:showdetailed}
+ajax_search:
+    path:     /user/search
+    defaults: { _controller: EtablissementBundle:Etablissement:search}
+add_comment:
+    path:     /user/addcomment
+    defaults: { _controller: EtablissementBundle:Etablissement:addComment}
+delete_comment:
+    path:     /deletecomment/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:deleteComment}
+add_reclamation:
+    path:     /user/addReclamation/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:addReclamation}
+list_reclamation:
+    path:     /user/listReclamation
+    defaults: { _controller: EtablissementBundle:Etablissement:listReclamation}
+delete_reclamation:
+    path:     /user/deleteReclamation/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:deleteReclamation}
+update_reclamation:
+    path:     /user/updateReclamation/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:updateReclamation}
+
+
+

@@ -2,6 +2,8 @@
 
 namespace gererClubBundle\Controller;
 
+use EvenementBundle\Entity\inscriptionEmail;
+use EvenementBundle\Form\inscriptionEmailType;
 use gererClubBundle\Entity\categorieClub;
 use gererClubBundle\Entity\Club;
 use gererClubBundle\Entity\inscription;
@@ -121,5 +123,17 @@ class clubController extends Controller
         }
         return $this->render('@gererClub/club/commantaire.html.twig',array('form'=>$form->createView()));
     }
-    
+    public function newsletterInscriptionAction(Request $request)
+    {
+        $inscriptionEmail=new inscriptionEmail();
+        $fromInscriptionForm=$this->createForm(inscriptionEmailType::class,$inscriptionEmail);
+        $fromInscriptionForm->handleRequest($request);
+        if($fromInscriptionForm->isSubmitted())
+        {
+            $this->getDoctrine()->getManager()->persist($inscriptionEmail);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('newsletterInscription');
+        }
+        return $this->render('@gererClub/club/contact.html.twig',array('form'=>$fromInscriptionForm->createView()));
+    }
 }
