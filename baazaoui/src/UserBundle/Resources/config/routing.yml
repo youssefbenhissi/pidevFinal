@@ -1,0 +1,16 @@
+admin_dashboard:
+    path:     /admin
+    defaults: { _controller: UserBundle:Default:index }
+Backlist_Etablissement:
+    path:     /admin/BacklistEtablissement
+    defaults: { _controller: UserBundle:User:BacklistEtablissement}
+add_Etablissement:
+    path:     /admin/addEtablissement
+    defaults: { _controller: UserBundle:User:addEtablissement}
+Modify_Etablissement:
+    path:     /admin/updateEtablissement/{id}
+    defaults: { _controller: UserBundle:User:updateEtablissement}
+delete_Etablissement:
+    path:     /admin/deleteEtablissement/{id}
+    defaults: { _controller: UserBundle:User:deleteEtablissement }
+

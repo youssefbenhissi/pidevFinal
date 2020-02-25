@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+        <div class="container">
+            <div class="row d-flex align-items-stretch no-gutters">
+                <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
+                    <h1>Write your complain</h1>
+                    {{ form_start(Form) }}
+                    <div class="form-group">
+                    {{ form_widget(Form.sujet,{'attr':{'type':'text','class':'form-control','placeholder':'Subject...'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(Form.description,{'attr':{'type':'text','onblur':'calculeLongueur();','onfocus':'calculeLongueur();','onkeyup':'calculeLongueur();','onkeydown':'calculeLongueur();','class':'form-control','placeholder':'Message...'}}) }}
+                    </div>
+                    {{ form_end(Form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <script language="javascript" type="text/javascript">
+        function calculeLongueur(){
+            var iLongueur, iLongueurRestante;
+            iLongueur = document.getElementById('autre').value.length;
+            if (iLongueur>10) {
+                document.getElementById('autre').value = document.getElementById('autre').value.substring(0,20);
+                iLongueurRestante = 0;
+            }
+            else {
+                iLongueurRestante = 20 - iLongueur;
+            }
+            if (iLongueurRestante <= 1)
+                document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;re&nbsp;disponible";
+            else
+                document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;res&nbsp;disponibles";
+        }
+    </script>
+{% endblock %}

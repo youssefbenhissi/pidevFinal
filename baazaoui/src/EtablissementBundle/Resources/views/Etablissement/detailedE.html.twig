@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="ftco-section" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row">
+                <input type="hidden" id="username" value="{{ app.user.username }}" />
+                <div id="testini" class="col-lg-8 ftco-animate">
+                    {% for role in app.user.roles %}
+                        {% if role == 'ROLE_ADMIN' %}
+                            Administrateur
+                        {% endif %}
+                        <br>{% endfor %}
+
+
+                    <h2 class="mb-3">{{ Nom|upper }}</h2>
+                    <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+                    <p>
+                        <img src="{{ asset('uploads/post/' ~ Image) }}" alt="" class="img-fluid">
+                    </p>
+
+                    <div class="pt-5 mt-5">
+                        <ul class="comment-list">
+                            {% for comment in Etablissement.comments %}
+                            <li class="comment">
+                                <div class="vcard bio">
+                                    <img src="images/teacher-1.jpg" alt="Image placeholder">
+                                </div>
+                                <div class="comment-body">
+                                    <h3>{{ comment.getUser().getUsername() }}</h3>
+                                    <div class="meta mb-2"></div>
+                                    <p>{{ comment.getContent() }}</p>
+
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    {%  if(comment.user.id==app.user.id) %}
+                                        <a href="{{ path('delete_comment',{'id': comment.id}) }}"> <button type="button" class="btn btn-primary">
+                                                Delete
+                                            </button></a>
+                                    {% else %}
+                                    {% endif %}
+                                    {% elseif is_granted('IS_AUTHENTICATED_ANOONYMOUSLY') %}
+                                    <br>
+                                </div>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+
+
+                        <!-- END comment-list -->
+
+                        <div class="comment-form-wrap pt-5">
+                            <h3 class="mb-5 h4 font-weight-bold">Leave a comment</h3>
+                            <!--<form action="{{ path('add_comment') }}" class="p-5 bg-light" id="comment" method="post">--!>
+
+                                <input type="hidden" id="etablissement_id" value="{{Etablissement.id}}" name="etablissement_id" />
+                                 <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea name="comment" id="comment_content" cols="30" rows="10" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input id="submit_comment" type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                                </div>
+                            <div class="form-group">
+                                <input type="hidden" id="etablissement_id" value="{{Etablissement.id}}" name="etablissement_id" />
+                               <a href="{{ path('add_reclamation',{'id':Etablissement.id}) }}" ><input  type="submit" value="Report" class="btn py-3 px-4 btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .col-md-8 -->
+                    </div>
+                </div><!-- END COL -->
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+    $(function(){
+        $('#submit_comment').click(function() {
+            $.ajax({
+                url: "/addcomment",
+                method: "POST",
+                data: 'etablissement_id=' + $('#etablissement_id').val() + '&comment=' + $('#comment_content').html(),
+                success: function (result) {
+                    $('.comment-list').append('<li class="comment"><div class="vcard bio"><img src="images/teacher-1.jpg" alt="Image placeholder"></div><div class="comment-body"><h3>' + $('#username').val() + '</h3><div class="meta mb-2"></div><p>' + $('#comment_content').html() + '</p><a href="/deletecomment/' + result + '"> <button id="delete_comment-' + result + '" type="button" class="btn btn-primary">Delete</button></a><br></div></li>');
+                }
+            });
+        });
+
+
+    })
+
+
+
+
+</script>
+{%  endblock %}

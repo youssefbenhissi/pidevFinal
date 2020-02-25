@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                {% for reclamation in Etablissement %}
+                    {%  if(reclamation.user.id==app.user.id) %}
+                <div class="col-md-6 course d-lg-flex ftco-animate">
+                    <div class="text bg-light p-4">
+                        <h3>School Name :<a href="#">{{ reclamation.getEtablissement().getNom() }}</a></h3>
+                        <h3>Subject :<a href="#">{{ reclamation.sujet }}</a></h3>
+                        <p>{{ reclamation.description }}</p>
+                        <a href="{{ path('delete_reclamation',{'id': reclamation.id}) }}"><input  type="submit" value="delete" class="btn py-3 px-4 btn-primary"></a>
+                        <a href="{{ path('update_reclamation',{'id':reclamation.id}) }}"><input  type="submit" value="update" class="btn py-3 px-4 btn-primary"></a>
+                    </div>
+                </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
