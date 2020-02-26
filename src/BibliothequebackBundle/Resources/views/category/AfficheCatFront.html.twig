@@ -8,6 +8,9 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Our Libraary</h1>
+              <div class="input-group custom-search-form">
+                  <input type="text" id="search" class="form-control" placeholder="Search here">
+              </div>
             <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Library <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
@@ -32,4 +35,47 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'cat') {
+                                            if (id !== 'error') {
+                                                console.log(value[1]);
+                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/bib/user//detailsCatFront//'+id+'">'+'<img src="/uploads/post/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}

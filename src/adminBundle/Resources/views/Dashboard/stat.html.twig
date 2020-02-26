@@ -34,21 +34,21 @@
 {% endblock %}
 
 {% block stat %}
-Morris.Bar({
-element: 'hero-bar',
-data: [
+    Morris.Bar({
+    element: 'hero-bar',
+    data: [
     {% for s in stat %}
-{age: 'Age :{{ s.age }}', nombre: {{ s.nombre }}},
+        {age: 'Age :{{ s.age }}', nombre: {{ s.nombre }}},
 
     {% endfor %}
 
-],
-xkey: 'age',
-ykeys: ['nombre'],
-labels: ['nombre'],
-barRatio: 0.4,
-xLabelAngle: 35,
-hideHover: 'auto',
-barColors: ['#ac92ec']
-});
+    ],
+    xkey: 'age',
+    ykeys: ['nombre'],
+    labels: ['nombre'],
+    barRatio: 0.4,
+    xLabelAngle: 35,
+    hideHover: 'auto',
+    barColors: ['#ac92ec']
+    });
 {% endblock %}

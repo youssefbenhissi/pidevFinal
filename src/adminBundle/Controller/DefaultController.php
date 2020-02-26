@@ -20,6 +20,14 @@ class DefaultController extends Controller
             return $this->redirectToRoute('club');
         }
 
+        if ($this->isGranted("ROLE_PARENT")){
+            return $this->redirectToRoute('club');
+        }
+
+        if ($this->isGranted("ROLE_ELEVE")){
+            return $this->redirectToRoute('club');
+        }
+
         return $this->redirectToRoute('fos_user_security_login');
     }
 

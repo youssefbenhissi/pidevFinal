@@ -70,7 +70,7 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-th"></i>
+                        <i class="fa fa-home"></i>
                         <span>etablissement</span>
                     </a>
                     <ul class="sub">
@@ -94,18 +94,12 @@
                         <span>évènement</span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-th"></i>
+                <li class="mt">
+                    <a  href="{{ path('bibliothequeback_afficheCat') }}">
+                        <i class="fa fa-book"></i>
                         <span>Bibliotheque</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="{{ path('bibliothequeback_afficheCat') }}">afficher categories</a></li>
-                        <li><a href="{{ path('bibliothequeback_ajoutCat') }}">ajouter categorie</a></li>
-                    </ul>
                 </li>
-
-
 
 
                 <li class="sub-menu">
@@ -272,155 +266,8 @@
 </script>
 
 
-
-
-<!--script for this page-->
-<script type="text/javascript">
-    /* Formating function for row details */
-    function fnFormatDetails(oTable, nTr) {
-        var aData = oTable.fnGetData(nTr);
-        var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-        sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
-        sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-        sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
-        sOut += '</table>';
-
-        return sOut;
-    }
-
-    $(document).ready(function() {
-        /*
-         * Insert a 'details' column to the table
-         */
-        /* var nCloneTh = document.createElement('th');
-         var nCloneTd = document.createElement('td');
-         nCloneTd.innerHTML = '<img src="lib/advanced-datatable/images/details_open.png">';
-         nCloneTd.className = "center";
-
-         $('#hidden-table-info thead tr').each(function() {
-             this.insertBefore(nCloneTh, this.childNodes[0]);
-         });
-
-         $('#hidden-table-info tbody tr').each(function() {
-             this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
-         });
- */
-        /*
-         * Initialse DataTables, with no sorting on the 'details' column
-         */
-        var oTable = $('#hidden-table-info').dataTable({
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [
-                [1, 'asc']
-            ]
-        });
-
-        /* Add event listener for opening and closing details
-         * Note that the indicator for showing which row is open is not controlled by DataTables,
-         * rather it is done here
-         */
-        $('#hidden-table-info tbody td img').live('click', function() {
-            var nTr = $(this).parents('tr')[0];
-            if (oTable.fnIsOpen(nTr)) {
-                /* This row is already open - close it */
-                this.src = "lib/advanced-datatable/media/images/details_open.png";
-                oTable.fnClose(nTr);
-            } else {
-                /* Open this row */
-                this.src = "lib/advanced-datatable/images/details_close.png";
-                oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
-            }
-        });
-
-
-        var oTable2 = $('#hidden-table-info2').dataTable({
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [
-                [1, 'asc']
-            ]
-        });
-
-        /* Add event listener for opening and closing details
-         * Note that the indicator for showing which row is open is not controlled by DataTables,
-         * rather it is done here
-         */
-        $('#hidden-table-info2 tbody td img').live('click', function() {
-            var nTr = $(this).parents('tr')[0];
-            if (oTable2.fnIsOpen(nTr)) {
-                /* This row is already open - close it */
-                this.src = "lib/advanced-datatable/media/images/details_open.png";
-                oTable2.fnClose(nTr);
-            } else {
-                /* Open this row */
-                this.src = "lib/advanced-datatable/images/details_close.png";
-                oTable2.fnOpen(nTr, fnFormatDetails(oTable2, nTr), 'details');
-            }
-        });
-
-
-
-        var oTable3 = $('#hidden-table-info3').dataTable({
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [
-                [1, 'asc']
-            ]
-        });
-
-        /* Add event listener for opening and closing details
-         * Note that the indicator for showing which row is open is not controlled by DataTables,
-         * rather it is done here
-         */
-        $('#hidden-table-info3 tbody td img').live('click', function() {
-            var nTr = $(this).parents('tr')[0];
-            if (oTable3.fnIsOpen(nTr)) {
-                /* This row is already open - close it */
-                this.src = "lib/advanced-datatable/media/images/details_open.png";
-                oTable3.fnClose(nTr);
-            } else {
-                /* Open this row */
-                this.src = "lib/advanced-datatable/images/details_close.png";
-                oTable3.fnOpen(nTr, fnFormatDetails(oTable3, nTr), 'details');
-            }
-        });
-
-
-        var oTable1 = $('#hidden-table-info1').dataTable({
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [0]
-            }],
-            "aaSorting": [
-                [1, 'asc']
-            ]
-        });
-
-        /* Add event listener for opening and closing details
-         * Note that the indicator for showing which row is open is not controlled by DataTables,
-         * rather it is done here
-         */
-        $('#hidden-table-info1 tbody td img').live('click', function() {
-            var nTr = $(this).parents('tr')[0];
-            if (oTable1.fnIsOpen(nTr)) {
-                /* This row is already open - close it */
-                this.src = "lib/advanced-datatable/media/images/details_open.png";
-                oTable1.fnClose(nTr);
-            } else {
-                /* Open this row */
-                this.src = "lib/advanced-datatable/images/details_close.png";
-                oTable1.fnOpen(nTr, fnFormatDetails(oTable1, nTr), 'details');
-            }
-        });
-    });
-</script>
+{% block scriptdatatable %}
+{% endblock %}
 
 <script>
     var Script = function () {
@@ -461,11 +308,8 @@
                  formatter: function (y) { return y + "%" }
              });*/
 
-
             {% block stat %}
-
             {% endblock %}
-
             new Morris.Line({
                 element: 'examplefirst',
                 xkey: 'year',

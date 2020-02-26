@@ -19,6 +19,7 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "egeloen/ckeditor-bundle": "^6.0",
+        "vresh/twilio-bundle": "dev-master",
         "egyg33k/csv-bundle": "^1.0",
         "endroid/qr-code": "^2.5",
         "friendsofsymfony/ckeditor-bundle": "^1.2",

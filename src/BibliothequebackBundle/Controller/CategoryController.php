@@ -59,7 +59,13 @@ class CategoryController extends Controller
         $em->flush();
         return $this->redirectToRoute('bibliothequeback_afficheCat');
     }
-
+    public function supprimerLivreAction($id){
+        $em=$this->getDoctrine()->getManager();
+        $category=$em->getRepository(Livre::class)->find($id);
+        $em->remove($category);
+        $em->flush();
+        return $this->redirectToRoute('bibliothequeback_afficheCat');
+    }
 
     public function categoryDetailsAction(Category $category,Request $request){
 
@@ -70,7 +76,10 @@ class CategoryController extends Controller
         $form =$this->createForm(LivreType::class,$livre);
         $form->handleRequest($request);
         if($form->isValid()){
-
+            $date=new \DateTime();
+            //$this->dateNaissance = substr($date,0,10);
+            $newDate = $date->format('d/m/Y');
+            $livre->setDate($newDate);
             $em=$this->getDoctrine()->getManager();
             //$category->uploadProfilePicture();
 
@@ -121,7 +130,33 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function reserverAction($id)
+    {
+        $livre=$this->getDoctrine()->getRepository(Livre::class)->find($id);
+        $livre->setStatus("Reserve");
+        $date=new \DateTime();
+        //$this->dateNaissance = substr($date,0,10);
+        $newDate = $date->format('d/m/Y');
+        $livre->setDate($newDate);
+        $this->getDoctrine()->getManager()->persist($livre);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('bibliothequeback_afficheCatFront');
+    }
+    public function modifierLivreAction(Request $request,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $category=$em->getRepository(Livre::class)->find($id);
+        $form=$this->createForm(LivreType::class,$category);
+        $form->handleRequest($request);
+        if($form->isSubmitted()){
+            $category->uploadProfilePicture();
+            $em->persist($category);
+            $em->flush();
+            return $this->redirectToRoute('bibliothequeback_afficheCat');
+        }
+        return $this->render('@Bibliothequeback/category/UpdateLivre.html.twig', array('form'=>$form->createView()));
 
+    }
     public function livreDetailsFrontAction($id,Request $request){
 
         $em=$this->getDoctrine()->getManager();
@@ -206,5 +241,24 @@ return $response; */
         $csv->output('categories.csv');
 
         die('export');
+    }
+    public function searchAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $requestString=$request->get('q');
+        $category=$em->getRepository('categorie')->findEntitiesByString($requestString);
+        if(!$category) {
+            $result['category']['error'] = "School Not found :( ";
+        }else{
+            $result['category']=$this->getRealEntities($category);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($category)
+    {
+        foreach ($category as $category){
+            $realEntities[$category->getId()] = [$category->getImage(),$category->getNom()];
+        }
+        return $realEntities;
     }
 }

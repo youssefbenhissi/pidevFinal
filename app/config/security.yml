@@ -5,7 +5,14 @@ security:
     role_hierarchy:
         ROLE_ADMIN: ROLE_ADMIN
         ROLE_USER: ROLE_USER
+        ROLE_PARENT: ROLE_PARENT
+        ROLE_ELEVE: ROLE_ELEVE
         ROLE_SUPER_ADMIN: ROLE_ADMIN
+    #ROLE_ADMIN: ROLE_ADMIN
+    #ROLE_USER: ROLE_USER
+    #ROLE_PARENT: ROLE_USER
+    #ROLE_ELEVE: ROLE_USER
+    #ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
         fos_userbundle:
@@ -30,4 +37,6 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/user/, role: ROLE_USER }
+        - { path: ^/parent/, role: ROLE_PARENT }
+        - { path: ^/eleve/, role: ROLE_ELEVE }
         - { path: ^/affichage/, role: ROLE_CLIENT }

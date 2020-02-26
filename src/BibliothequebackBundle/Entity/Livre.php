@@ -178,6 +178,51 @@ class Livre
     /**
      * @var string
      *
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $status="non reserve";
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return \Date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \Date $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="date")
+     */
+    private $date;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nom", type="string", length=255)
     @Assert\NotBlank(message="Nom ne doit pas être vide")
      * @Assert\Length(
@@ -199,9 +244,9 @@ class Livre
      * )
      */
     public $file;
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+
+
+
     public $nomImage;
     /**
      * @var string
@@ -244,6 +289,7 @@ class Livre
      * )
      */
     private $nombredepage;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Category")

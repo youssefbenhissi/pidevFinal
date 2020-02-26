@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb345b92ab195843ae39a19f20e19787",
+    "content-hash": "55e5c0449a895c2fd3ba119c597e3c81",
     "packages": [
         {
             "name": "artgris/filemanager-bundle",
@@ -3726,6 +3726,56 @@
             "time": "2020-02-11T05:59:23+00:00"
         },
         {
+            "name": "twilio/sdk",
+            "version": "4.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "0a88c48262fbee1c3841f721f46439d3de450b95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/0a88c48262fbee1c3841f721f46439d3de450b95",
+                "reference": "0a88c48262fbee1c3841f721f46439d3de450b95",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "mockery/mockery": ">=0.7.2",
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Services/Twilio.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Burke",
+                    "email": "kevin@twilio.com"
+                },
+                {
+                    "name": "Kyle Conroy",
+                    "email": "kyle+pear@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2017-11-17T22:59:03+00:00"
+        },
+        {
             "name": "vich/uploader-bundle",
             "version": "1.4.2",
             "source": {
@@ -3807,31 +3857,34 @@
                 "upload"
             ],
             "time": "2017-07-11T09:11:07+00:00"
-        }
-    ],
-    "packages-dev": [
+        },
         {
-            "name": "nzo/file-downloader-bundle",
-            "version": "v3.1.0",
+            "name": "vresh/twilio-bundle",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nayzo/NzoFileDownloaderBundle.git",
-                "reference": "05470a2c43b03cab2f5fd636a10feaba55cbb4af"
+                "url": "https://github.com/fridolin-koch/VreshTwilioBundle.git",
+                "reference": "95b432962d3dd1e430d6a012348a31b97bf03181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nayzo/NzoFileDownloaderBundle/zipball/05470a2c43b03cab2f5fd636a10feaba55cbb4af",
-                "reference": "05470a2c43b03cab2f5fd636a10feaba55cbb4af",
+                "url": "https://api.github.com/repos/fridolin-koch/VreshTwilioBundle/zipball/95b432962d3dd1e430d6a012348a31b97bf03181",
+                "reference": "95b432962d3dd1e430d6a012348a31b97bf03181",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "^2.3|^3.0|^4.0"
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1|~3.0",
+                "twilio/sdk": ">=4.0.2 <5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1",
+                "satooshi/php-coveralls": "~1.0"
             },
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "Nzo\\FileDownloaderBundle\\": ""
+                    "Vresh\\TwilioBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3840,24 +3893,20 @@
             ],
             "authors": [
                 {
-                    "name": "Ala Eddine Khefifi",
-                    "email": "alakhefifi@gmail.com"
+                    "name": "Fridolin Koch",
+                    "email": "info@fridokoch.de"
                 }
             ],
-            "description": "The NzoFileDownloaderBundle is a Symfony Bundle used to Download all types of files from servers and Web applications safely and with ease. You can also read/show the file content in the Web Browser.",
+            "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
+            "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
             "keywords": [
-                "browser",
-                "bundle",
-                "download",
-                "downloader",
-                "file",
-                "read",
-                "show",
-                "symfony",
-                "upload"
+                "twilio"
             ],
-            "time": "2019-06-12T19:43:34+00:00"
-        },
+            "abandoned": true,
+            "time": "2016-08-17T18:09:02+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "sensio/generator-bundle",
             "version": "v3.1.7",
@@ -3981,7 +4030,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "vresh/twilio-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

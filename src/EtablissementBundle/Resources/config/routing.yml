@@ -11,7 +11,7 @@ ajax_search:
     path:     /user/search
     defaults: { _controller: EtablissementBundle:Etablissement:search}
 add_comment:
-    path:     /user/addcomment
+    path:     /addcomment
     defaults: { _controller: EtablissementBundle:Etablissement:addComment}
 delete_comment:
     path:     /deletecomment/{id}

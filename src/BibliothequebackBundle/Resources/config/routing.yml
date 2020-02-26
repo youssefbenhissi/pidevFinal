@@ -17,10 +17,19 @@ bibliothequeback_updatCat:
 bibliothequeback_deleteCat:
     path:     /admin/deleteCat/{id}
     defaults: { _controller: BibliothequebackBundle:Category:supprimer }
+modifierLivre:
+    path:     /admin/modifierLivre/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:modifierLivre }
 
+supprimerLivre:
+    path:     /admin/supprimerLivre/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:supprimerLivre }
 bibliothequeback_detailsCat:
     path:     /admin/detailsCat/{id}
     defaults: { _controller: BibliothequebackBundle:Category:categoryDetails }
+reserver:
+    path:     /admin/reserver/{id}
+    defaults: { _controller: BibliothequebackBundle:Category:reserver }
 
 bibliothequeback_afficheCatFront:
     path:     /user/afficheCatFront
@@ -37,4 +46,7 @@ bibliothequeback_detailsLivreFront:
 export:
     path:     /admin/export
     defaults: { _controller: BibliothequebackBundle:Category:export }
+ajax_search:
+    path:     /user/search
+    defaults: { _controller: BibliothequebackBundle:Category:search}
 

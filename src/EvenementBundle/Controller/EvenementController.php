@@ -12,6 +12,7 @@ use Swift_Attachment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Lock\Key;
 use UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use EvenementBundle\Repository\EvenementRepository;
@@ -90,6 +91,7 @@ class EvenementController extends Controller
     public function envoyerTicketAction(Request $request)
     {
         $user = $this->getUser();
+
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $evenement = $em->getRepository('EvenementBundle:Evenement')->find($id);
@@ -106,7 +108,7 @@ class EvenementController extends Controller
             ->attach(Swift_Attachment::fromPath('Evenement/image/qrcode/qrcode.png')
                 ->setDisposition('inline'));
         $this->get('mailer')->send($message);
-        return $this->redirectToRoute('accueilEvenementRouting');
+        return $this->redirectToRoute('affichercategorie');
     }
 
 
@@ -188,7 +190,7 @@ class EvenementController extends Controller
     public function annulerReservationAction(Request $request)
     {
         $user = $this->getUser();
-        $id = $request->get('id');
+        //$id = $request->get('id');
         $idevenet = $request->get('id-event');
         $em = $this->getDoctrine()->getManager();
         $reservation = $em->getRepository('EvenementBundle:Reservation')->find($id);

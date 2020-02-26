@@ -10,4 +10,15 @@ namespace BibliothequebackBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findEntitiesByString($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT c
+                FROM BibliothequebackBundle:Category c
+                WHERE c.libelle LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
 }

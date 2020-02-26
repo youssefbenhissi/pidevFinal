@@ -117,8 +117,8 @@
                                     <td class="center hidden-phone">{{ livre.nombredepage }} </td>
 
 
-                                    <td ><button type="button" class="btn btn-labeled btn-infot"><span class="btn-label"></span><a href="">modifier</a> </button></td>
-                                    <td ><button type="button" class="btn btn-labeled btn-danger"> <span class="btn-label"></span><a href="">supprimer</a> </button></td>
+                                    <td ><button type="button" class="btn btn-labeled btn-infot"><span class="btn-label"></span><a href="{{path('modifierLivre',{'id':livre.id})}}">modifier</a> </button></td>
+                                    <td ><button type="button" class="btn btn-labeled btn-danger"> <span class="btn-label"></span><a href="{{path('supprimerLivre',{'id':livre.id})}}">supprimer</a> </button></td>
 
                                 </tr>
 

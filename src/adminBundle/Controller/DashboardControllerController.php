@@ -197,6 +197,7 @@ class DashboardControllerController extends Controller
             )
         );
     }
+
     public function galerieAction(Request $request)
     {
         $galerie=new galerie();
@@ -411,7 +412,7 @@ class DashboardControllerController extends Controller
             $em= $this->getDoctrine()->getManager();
             $file=$etablissement->getImage();
             $filename= md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move($this->getParameter('image_directory'), $filename);
+            $file->move($this->getParameter('photos_directory'), $filename);
             $etablissement->setImage($filename);
             $em->persist($etablissement);
             $em->flush();
@@ -441,7 +442,7 @@ class DashboardControllerController extends Controller
         {
             $file=$E->getImage();
             $filename= md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move($this->getParameter('image_directory'), $filename);
+            $file->move($this->getParameter('photos_directory'), $filename);
             $E->setImage($filename);
             $em=$this->getDoctrine()->getManager();
             $em->persist($E);

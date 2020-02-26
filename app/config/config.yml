@@ -19,6 +19,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    photos_directory: '%kernel.root_dir%/../web/uploads/post'
     image_directory: '%kernel.project_dir%/web/assets/images'
     images_articles_dossier: '%kernel.project_dir%/web/assets/images/'
     pdf_dossier: '%kernel.project_dir%/web/pdf/'
@@ -185,3 +186,12 @@ ivory_ck_editor:
 
 
 
+vresh_twilio:
+    #(Required) Your Account SID from www.twilio.com/user/account
+    sid: 'AC690f7dba7abae362ae6d179e1f0b4250'
+    #(Required) Your Auth Token from www.twilio.com/user/account
+    authToken: 'e28fdf19d2810da69cac981cf9072d7e'
+
+    version: '2010-04-01'
+
+    retryAttempts: 3

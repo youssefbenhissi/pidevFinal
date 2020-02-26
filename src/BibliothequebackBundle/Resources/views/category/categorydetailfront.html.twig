@@ -29,12 +29,17 @@
         <div class="row">
         {% for livre in livres %}
             <div class="col-md-6 course d-lg-flex ftco-animate fadeInUp ftco-animated">
-                <div class="img" style="background-image: url(../../../../images/{{livre.nomImage}});"></div>
+                <div class="img" style="background-image: url({{ asset('images/') }}{{ livre.nomImage }}"></div>
                 <div class="text bg-light p-4">
                     <h3><a href="{{path('bibliothequeback_detailsLivreFront',{'id':livre.id})}}">{{livre.nom}}</a></h3>
-                    <p class="subheading">{{livre.auteur}} </p>
-                    <span>{{livre.description}} </span>
+                    <p class="subheading">Auteur: {{livre.auteur}} </p>
+
+                    <p>Status: {{ livre.status }}</p>
+                    <span>Description: {{livre.description}} </span>
                     <p>{{livre.nombredepage}} pages</p>
+                    {% if livre.status== "non reserve" %}
+                    <button type="button" class="btn btn-secondary py-3 px-4'"><span class="btn-label"></span><a href="{{path('reserver',{'id':livre.id})}}}">reserver</a> </button>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

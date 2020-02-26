@@ -4,6 +4,7 @@ namespace gererClubBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class newsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('newsContenu')->add('sus',SubmitType::class);
+        $builder->add('newsContenu',TextareaType::class)->add('enregistrer',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

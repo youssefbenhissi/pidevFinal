@@ -70,7 +70,7 @@
         $(function(){
             $('#submit_comment').click(function() {
                 $.ajax({
-                    url: "/user/addcomment",
+                    url: "/etablissements/addcomment",
                     method: "POST",
                     data: 'etablissement_id=' + $('#etablissement_id').val() + '&comment=' + $('#comment_content').html(),
                     success: function (result) {
